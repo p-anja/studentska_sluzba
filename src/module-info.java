@@ -1,0 +1,2 @@
+module studentska_sluzba {
+}
