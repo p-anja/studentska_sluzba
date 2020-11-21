@@ -18,6 +18,11 @@ public class MainFrame extends JFrame {
 		setTitle("Studentska služba");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
+		
+		MenuBar menu = new MenuBar();
+		this.setJMenuBar(menu);
+		StatusBar statusBar = new StatusBar();
+		add(statusBar, BorderLayout.SOUTH);
 	
 	}
 }
