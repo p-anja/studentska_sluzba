@@ -23,6 +23,9 @@ public class MainFrame extends JFrame {
 		this.setJMenuBar(menu);
 		StatusBar statusBar = new StatusBar();
 		add(statusBar, BorderLayout.SOUTH);
+		Toolbar toolbar = new Toolbar();
+		add(toolbar, BorderLayout.NORTH);
+
 	
 	}
 }
