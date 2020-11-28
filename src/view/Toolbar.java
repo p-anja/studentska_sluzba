@@ -9,6 +9,8 @@ import javax.swing.SwingConstants;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -24,35 +26,74 @@ public class Toolbar extends JToolBar {
 		JPanel searchPanel = new JPanel();
 		
 		
-		JButton dodaj = new JButton();
-		dodaj.setToolTipText("Dodaj");
-		dodaj.setIcon(new ImageIcon("images/new.png"));
+		JButton add = new JButton();
+		add.setToolTipText("Dodaj");
+		add.setIcon(new ImageIcon("images/new.png"));
+		add.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
-		JButton izmeni = new JButton();
-		izmeni.setToolTipText("Izmeni");
-		izmeni.setIcon(new ImageIcon("images/edit.png"));
+		JButton edit = new JButton();
+		edit.setToolTipText("Izmeni");
+		edit.setIcon(new ImageIcon("images/edit.png"));
+		edit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
-		JButton obrisi = new JButton();
-		obrisi.setToolTipText("Obriši");
-		obrisi.setIcon(new ImageIcon("images/delete.png"));
+		JButton delete = new JButton();
+		delete.setToolTipText("Obriši");
+		delete.setIcon(new ImageIcon("images/delete.png"));
+		delete.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
-		JButton pretrazi = new JButton();
-		pretrazi.setToolTipText("Pretraži");
-		pretrazi.setIcon(new ImageIcon("images/search.png"));
+		JButton search = new JButton();
+		search.setToolTipText("Pretraži");
+		search.setIcon(new ImageIcon("images/search.png"));
+		search.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
-		JTextField txtPretraga = new JTextField();
+		JTextField txtSearch = new JTextField();
 		Dimension dimTxt = new Dimension(200, 20);
-		txtPretraga.setPreferredSize(dimTxt);
+		txtSearch.setPreferredSize(dimTxt);
+		txtSearch.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
 		
-		
-		buttonsPanel.add(dodaj);
-		buttonsPanel.add(izmeni);
-		buttonsPanel.add(obrisi);
+		buttonsPanel.add(add);
+		buttonsPanel.add(edit);
+		buttonsPanel.add(delete);
 		add(buttonsPanel, BorderLayout.WEST);
 		
 		
-		searchPanel.add(txtPretraga);
-		searchPanel.add(pretrazi);
+		searchPanel.add(txtSearch);
+		searchPanel.add(search);
 		add(searchPanel, BorderLayout.EAST);
 		
 		
