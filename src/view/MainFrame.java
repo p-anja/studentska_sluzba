@@ -1,10 +1,16 @@
 package view;
 
 import java.awt.BorderLayout;
+
 import java.awt.Dimension;
+import java.awt.Label;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+
 
 public class MainFrame extends JFrame {
 	
@@ -26,6 +32,16 @@ public class MainFrame extends JFrame {
 		Toolbar toolbar = new Toolbar();
 		add(toolbar, BorderLayout.NORTH);
 
-	
+		
+		JTabbedPane tabbedPane = new JTabbedPane();
+		JPanel studenti = new JPanel();
+		JPanel predmeti = new JPanel();
+		JPanel profesori = new JPanel();
+		
+		tabbedPane.addTab("Studenti", studenti);
+		tabbedPane.addTab("Predmeti", predmeti);
+		tabbedPane.addTab("Profesori", profesori);
+		add(tabbedPane, BorderLayout.CENTER);
+		
 	}
 }

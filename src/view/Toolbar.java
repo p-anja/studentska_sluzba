@@ -2,6 +2,7 @@ package view;
 
 import javax.swing.JToolBar;
 
+
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -23,35 +24,35 @@ public class Toolbar extends JToolBar {
 		JPanel searchPanel = new JPanel();
 		
 		
-		JButton add = new JButton();
-		add.setToolTipText("Dodaj");
-		add.setIcon(new ImageIcon("images/new.png"));
+		JButton dodaj = new JButton();
+		dodaj.setToolTipText("Dodaj");
+		dodaj.setIcon(new ImageIcon("images/new.png"));
 		
-		JButton edit = new JButton();
-		edit.setToolTipText("Izmeni");
-		edit.setIcon(new ImageIcon("images/edit.png"));
+		JButton izmeni = new JButton();
+		izmeni.setToolTipText("Izmeni");
+		izmeni.setIcon(new ImageIcon("images/edit.png"));
 		
-		JButton delete = new JButton();
-		delete.setToolTipText("Obriši");
-		delete.setIcon(new ImageIcon("images/delete.png"));
+		JButton obrisi = new JButton();
+		obrisi.setToolTipText("Obriši");
+		obrisi.setIcon(new ImageIcon("images/delete.png"));
 		
-		JButton search = new JButton();
-		search.setToolTipText("Pretraži");
-		search.setIcon(new ImageIcon("images/search.png"));
+		JButton pretrazi = new JButton();
+		pretrazi.setToolTipText("Pretraži");
+		pretrazi.setIcon(new ImageIcon("images/search.png"));
 		
-		JTextField txtSearch = new JTextField();
+		JTextField txtPretraga = new JTextField();
 		Dimension dimTxt = new Dimension(200, 20);
-		txtSearch.setPreferredSize(dimTxt);
+		txtPretraga.setPreferredSize(dimTxt);
 		
 		
-		buttonsPanel.add(add);
-		buttonsPanel.add(edit);
-		buttonsPanel.add(delete);
+		buttonsPanel.add(dodaj);
+		buttonsPanel.add(izmeni);
+		buttonsPanel.add(obrisi);
 		add(buttonsPanel, BorderLayout.WEST);
 		
 		
-		searchPanel.add(txtSearch);
-		searchPanel.add(search);
+		searchPanel.add(txtPretraga);
+		searchPanel.add(pretrazi);
 		add(searchPanel, BorderLayout.EAST);
 		
 		
