@@ -1,7 +1,7 @@
 package model;
 
 import java.util.ArrayList;
-//import model.Student;
+import model.Student;
 
 public class Predmet {
 
@@ -11,8 +11,8 @@ public class Predmet {
 	private int godina;
 	private Profesor profesor;
 	private int brEspb;
-	//private ArrayList<Student> studentiKojiSuPolozili;
-	//private ArrayList<Student> studentiKojiNisuPolozili;
+	private ArrayList<Student> studentiKojiSuPolozili;
+	private ArrayList<Student> studentiKojiNisuPolozili;
 	
 	public Predmet(String sifra, String naziv, String semestar, int godina, Profesor profesor, int brEspb) {
 		super();
@@ -22,8 +22,8 @@ public class Predmet {
 		this.godina = godina;
 		this.profesor = profesor;
 		this.brEspb = brEspb;
-		//this.studentiKojiSuPolozili = new ArrayList<Student>();
-		//this.studentiKojiNisuPolozili = new ArrayList<Student>();
+		this.studentiKojiSuPolozili = new ArrayList<Student>();
+		this.studentiKojiNisuPolozili = new ArrayList<Student>();
 	}
 
 	public String getSifra() {
@@ -73,7 +73,7 @@ public class Predmet {
 	public void setBrEspb(int brEspb) {
 		this.brEspb = brEspb;
 	}
-	/*
+	
 	public ArrayList<Student> getStudentiKojiSuPolozili() {
 		return studentiKojiSuPolozili;
 	}
@@ -89,7 +89,7 @@ public class Predmet {
 	public void setStudentiKojiNisuPolozili(ArrayList<Student> studentiKojiNisuPolozili) {
 		this.studentiKojiNisuPolozili = studentiKojiNisuPolozili;
 	}
-	*/
+	
 	@Override
 	public String toString() {
 		return sifra + ", " + naziv + ", " + semestar + ", " + godina + ", " + profesor + ", " + brEspb;

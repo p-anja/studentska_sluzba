@@ -2,19 +2,29 @@ package view;
 
 import java.awt.BorderLayout;
 
+
 import java.awt.Dimension;
-import java.awt.Label;
 import java.awt.Toolkit;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 
-public class MainFrame extends JFrame {
+public class MainFrame extends JFrame implements ChangeListener{
+	private JTabbedPane tabbedPane;
+	private static MainFrame instance = null;
 	
-	public MainFrame() {
+	public static MainFrame getInstance() {
+		if (instance == null) {
+			instance = new MainFrame();
+		}
+		return instance;
+	}
+	
+	private MainFrame() {
 
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = kit.getScreenSize();
@@ -32,8 +42,8 @@ public class MainFrame extends JFrame {
 		Toolbar toolbar = new Toolbar();
 		add(toolbar, BorderLayout.NORTH);
 
+		tabbedPane = new JTabbedPane();
 		
-		JTabbedPane tabbedPane = new JTabbedPane();
 		JPanel studenti = new JPanel();
 		JPanel predmeti = new JPanel();
 		JPanel profesori = new JPanel();
@@ -43,5 +53,13 @@ public class MainFrame extends JFrame {
 		tabbedPane.addTab("Profesori", profesori);
 		add(tabbedPane, BorderLayout.CENTER);
 		
+		
 	}
+
+	@Override
+	public void stateChanged(ChangeEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }
