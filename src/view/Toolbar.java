@@ -2,10 +2,10 @@ package view;
 
 import javax.swing.JToolBar;
 
-
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -24,67 +24,47 @@ public class Toolbar extends JToolBar {
 		
 		JPanel buttonsPanel = new JPanel();
 		JPanel searchPanel = new JPanel();
+		SelectedTab selectedtab;
 		
 		
 		JButton add = new JButton();
 		add.setToolTipText("Dodaj");
 		add.setIcon(new ImageIcon("images/new.png"));
-		add.addActionListener(new ActionListener() {
-			
+		add.addActionListener(new ActionListener(){
+
 			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+			public void actionPerformed(ActionEvent arg0) {
 				
+				switch(MainFrame.getInstance().getSelectedTab()) {
+					
+				case STUDENT:
+				{
+					DialogAddStudent dialog = new DialogAddStudent(MainFrame.getInstance(),
+					"Dodavanje novog studenta", true);
+					dialog.setVisible(true);
+					add.setSelected(false);
+					break;
+				}
 			}
+		}
 		});
 		
 		JButton edit = new JButton();
 		edit.setToolTipText("Izmeni");
 		edit.setIcon(new ImageIcon("images/edit.png"));
-		edit.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
 		
 		JButton delete = new JButton();
 		delete.setToolTipText("Obriši");
 		delete.setIcon(new ImageIcon("images/delete.png"));
-		delete.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
 		
 		JButton search = new JButton();
 		search.setToolTipText("Pretraži");
 		search.setIcon(new ImageIcon("images/search.png"));
-		search.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
 		
 		JTextField txtSearch = new JTextField();
 		Dimension dimTxt = new Dimension(200, 20);
 		txtSearch.setPreferredSize(dimTxt);
-		txtSearch.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-		});
+		
 		
 		buttonsPanel.add(add);
 		buttonsPanel.add(edit);
