@@ -15,6 +15,7 @@ import javax.swing.event.ChangeListener;
 
 public class MainFrame extends JFrame implements ChangeListener{
 	private JTabbedPane tabbedPane;
+	private SelectedTab selectedTab;
 	private static MainFrame instance = null;
 	
 	public static MainFrame getInstance() {
@@ -43,7 +44,7 @@ public class MainFrame extends JFrame implements ChangeListener{
 		add(toolbar, BorderLayout.NORTH);
 
 		tabbedPane = new JTabbedPane();
-		
+		tabbedPane.addChangeListener(this);
 		JPanel studenti = new JPanel();
 		JPanel predmeti = new JPanel();
 		JPanel profesori = new JPanel();
@@ -53,13 +54,44 @@ public class MainFrame extends JFrame implements ChangeListener{
 		tabbedPane.addTab("Profesori", profesori);
 		add(tabbedPane, BorderLayout.CENTER);
 		
-		
+		selectedTab = SelectedTab.STUDENT;
+	}
+	
+	public SelectedTab getSelectedTab()
+	{
+		return selectedTab;
 	}
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		// TODO Auto-generated method stub
+		JTabbedPane tabbedPane = (JTabbedPane)e.getSource();
+		int selectedIndex = tabbedPane.getSelectedIndex();
+		switch(selectedIndex)
+		{
+			case 0:
+			{
+				selectedTab = SelectedTab.STUDENT;
+				break;
+			}
+			case 1:
+			{
+				selectedTab = SelectedTab.PREDMET;
+				break;
+			}
+			case 2:
+			{
+				selectedTab = SelectedTab.PROFESOR;
+				break;
+			}
+			default:
+			{
+				return;
+			}
+		}
 		
 	}
+	
+	
+	
 	
 }
