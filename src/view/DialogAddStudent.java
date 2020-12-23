@@ -74,8 +74,7 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 
 		txtIme.setPreferredSize(dim);
 		txtIme.setName("txtIme");
-		txtIme.setBackground(Color.GRAY);
-		txtIme.addKeyListener(new KeyListener() {
+	    txtIme.addKeyListener(new KeyListener() {
 
 			@Override
 			public void keyPressed(KeyEvent arg0) {
@@ -106,7 +105,6 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 
 		txtPrezime.setPreferredSize(dim);
 		txtPrezime.setName("txtPrezime");
-		txtPrezime.setBackground(Color.GRAY);
 		txtPrezime.addKeyListener(new KeyListener() {
 
 			@Override
@@ -138,7 +136,6 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 
 		txtDatumRodjenja.setPreferredSize(dim);
 		txtDatumRodjenja.setName("txtDatumRodjenja");
-		txtDatumRodjenja.setBackground(Color.GRAY);
 		txtDatumRodjenja.addKeyListener(new KeyListener() {
 
 			@Override
@@ -170,7 +167,6 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 
 		txtAdresa.setPreferredSize(dim);
 		txtAdresa.setName("txtAdresa");
-		txtAdresa.setBackground(Color.GRAY);
 		txtAdresa.addKeyListener(new KeyListener() {
 
 			@Override
@@ -202,7 +198,6 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 
 		txtTelefon.setPreferredSize(dim);
 		txtTelefon.setName("txtTelefon");
-		txtTelefon.setBackground(Color.GRAY);
 		txtTelefon.addKeyListener(new KeyListener() {
 
 			@Override
@@ -234,7 +229,6 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 
 		txtEmail.setPreferredSize(dim);
 		txtEmail.setName("txtEmail");
-		txtEmail.setBackground(Color.GRAY);
 		txtEmail.addKeyListener(new KeyListener() {
 
 			@Override
@@ -267,7 +261,6 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 
 		txtIndeks.setPreferredSize(dim);
 		txtIndeks.setName("txtIndeks");
-		txtIndeks.setBackground(Color.GRAY);
 		txtIndeks.addKeyListener(new KeyListener() {
 
 			@Override
@@ -299,7 +292,6 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 
 		txtGodinaUpisa.setPreferredSize(dim);
 		txtGodinaUpisa.setName("txtGodinaUpisa");
-		txtGodinaUpisa.setBackground(Color.GRAY);
 		txtGodinaUpisa.addKeyListener(new KeyListener() {
 
 			@Override
@@ -534,11 +526,11 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 		String text[] = saveEnteredText();
 		boolean out = true;
 
-		if (!Pattern.matches("[a-zA-Z0-9čČćĆžŽšŠĐđ]*", text[0])) {
+		if (!Pattern.matches("[a-zA-Z0-9Ä�ÄŒÄ‡Ä†Å¾Å½Å¡Å Ä�Ä‘]*", text[0])) {
 			txtIme.setBackground(Color.RED);
 			return false;
 		}
-		if (!Pattern.matches("[a-zA-Z0-9_ čČćĆžŽšŠđĐ]*", text[1])) {
+		if (!Pattern.matches("[a-zA-Z0-9_ Ä�ÄŒÄ‡Ä†Å¾Å½Å¡Å Ä‘Ä�]*", text[1])) {
 			txtPrezime.setBackground(Color.RED);
 			return false;
 		}
@@ -548,7 +540,7 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 				return false;
 			}
 		}
-		if (!Pattern.matches("[a-zA-Z0-9_,čČćĆžŽšŠđĐ ]*", text[3])) {
+		if (!Pattern.matches("[a-zA-Z0-9_,Ä�ÄŒÄ‡Ä†Å¾Å½Å¡Å Ä‘Ä� ]*", text[3])) {
 			txtAdresa.setBackground(Color.RED);
 			return false;
 		}

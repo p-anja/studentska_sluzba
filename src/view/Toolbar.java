@@ -45,6 +45,7 @@ public class Toolbar extends JToolBar {
 					add.setSelected(false);
 					break;
 				}
+				
 			}
 		}
 		});
