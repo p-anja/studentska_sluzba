@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-//import model.Predmet;
+import model.Predmet;
 
 public class Profesor {
 	
@@ -16,7 +16,7 @@ public class Profesor {
 	private String brLicneKarte;
 	private String titula;
 	private String zvanje;
-	//private ArrayList<Predmet> spisakPredmeta;
+	private ArrayList<Predmet> spisakPredmeta;
 	
 	public Profesor(String ime, String prezime, String datumRodjenja, String adresaStanovanja, String kontaktTelefon, String email, 
 			String adresaKancelarije, String brLicneKarte, String titula, String zvanje) {
@@ -31,7 +31,7 @@ public class Profesor {
 		this.brLicneKarte = brLicneKarte;
 		this.titula = titula;
 		this.zvanje = zvanje;
-		//spisakPredmeta = new ArrayList<Predmet>();
+		spisakPredmeta = new ArrayList<Predmet>();
 	}
 	
 	public String getIme() {
@@ -114,13 +114,13 @@ public class Profesor {
 		this.zvanje = zvanje;
 	}
 
-	/*public ArrayList<Predmet> getSpisakPredmeta() {
+	public ArrayList<Predmet> getSpisakPredmeta() {
 		return spisakPredmeta;
 	}
 
 	public void setSpisakPredmeta(ArrayList<Predmet> spisakPredmeta) {
 		this.spisakPredmeta = spisakPredmeta;
-	}*/
+	}
 
 	@Override
 	public String toString() {
