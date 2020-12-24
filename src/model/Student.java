@@ -4,10 +4,6 @@ import java.util.ArrayList;
 
 public class Student {
 	
-	enum StatusStudent{
-		B,
-		S
-	}
 	
 	private String ime;
 	private String prezime;
