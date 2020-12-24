@@ -54,6 +54,7 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 
 		JPanel answer = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		JButton cancel = new JButton("ODUSTANI");
+		cancel.setBackground(new Color(255, 205 ,193));
 		cancel.addActionListener(new ActionListener() {
 
 			@Override
@@ -64,6 +65,7 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 		});
 		JButton ok = new JButton("POTVRDA");
 		ok.setEnabled(false);
+		ok.setBackground(new Color(255, 205 ,193));
 		ok.addActionListener(this);
 		
 		answer.add(cancel);
