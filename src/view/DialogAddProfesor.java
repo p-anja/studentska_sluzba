@@ -260,7 +260,7 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 			}
 		});
 		
-		JLabel labelBrLicneKarte = new JLabel("Broj liÄŤne karte*");
+		JLabel labelBrLicneKarte = new JLabel("Broj lične karte*");
 		labelBrLicneKarte.setPreferredSize(dim);
 		txtBrLicneKarte = new JTextField();
 		txtBrLicneKarte.setPreferredSize(dim);
