@@ -19,8 +19,7 @@ public class Student {
 	private ArrayList<Predmet> predmeti;
 	
 	public Student(String ime, String prezime, String datumRodjenja, String adresaStanovanja, String kontaktTelefon,
-			String email, String brojIndeksa, String godinaUpisa, int trenutnaGodStudija, StatusStudent status,
-			double prosecnaOcena, ArrayList<Predmet> predmeti) {
+			String email, String brojIndeksa, String godinaUpisa, int trenutnaGodStudija, StatusStudent status) {
 		super();
 		this.ime = ime;
 		this.prezime = prezime;
@@ -32,8 +31,7 @@ public class Student {
 		this.godinaUpisa = godinaUpisa;
 		this.trenutnaGodStudija = trenutnaGodStudija;
 		this.status = status;
-		this.prosecnaOcena = prosecnaOcena;
-		this.predmeti = predmeti;
+		predmeti = new ArrayList<Predmet>();
 	}
 
 	public String getIme() {
