@@ -45,6 +45,22 @@ public class Toolbar extends JToolBar {
 					add.setSelected(false);
 					break;
 				}
+				case PREDMET:
+				{
+					break;
+				}
+				case PROFESOR:
+				{	DialogAddProfesor dialog = new DialogAddProfesor(MainFrame.getInstance(),
+					"Dodavanje novog profesora", true);
+					dialog.setVisible(true);
+					add.setSelected(false);
+					break;
+				}
+				default:
+				{
+					return;
+				}
+				
 			}
 		}
 		});
