@@ -22,6 +22,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import controller.StudentController;
+import model.StatusStudent;
+
 
 public class DialogAddStudent extends JDialog implements ActionListener{
 
@@ -35,6 +38,8 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 	JTextField txtGodinaUpisa = new JTextField();
 	JComboBox<String> godinaComboBox;
 	JComboBox<String> finansiranjeComboBox;
+	
+
 	
 	
 	public DialogAddStudent(MainFrame instance, String title, boolean b) {
@@ -74,7 +79,7 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 
 		txtIme.setPreferredSize(dim);
 		txtIme.setName("txtIme");
-	    txtIme.addKeyListener(new KeyListener() {
+		txtIme.addKeyListener(new KeyListener() {
 
 			@Override
 			public void keyPressed(KeyEvent arg0) {
@@ -320,7 +325,7 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 		
 		JLabel lblGodina = new JLabel("Trenutna godina*:");
 		lblGodina.setPreferredSize(dim);
-		String godina[] = { "     ", "1 (prva)", "2 (druga)", "3 (treca)", "4 (cetvrta)" };
+		String godina[] = { "     ", "1 (prva)", "2 (druga)", "3 (treća)", "4 (četvrta)" };
 		godinaComboBox = new JComboBox<String>(godina);
 		godinaComboBox.addActionListener(new ActionListener() {
 
@@ -338,7 +343,7 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 		
 		JLabel lblFinansiranje = new JLabel("Nacin finansiranja*:");
 		lblFinansiranje.setPreferredSize(dim);
-		String fin[] = { "     ", "Budzet", "Samofinansiranje"};
+		String fin[] = { "     ", "Budžet", "Samofinansiranje"};
 		finansiranjeComboBox = new JComboBox<String>(fin);
 		finansiranjeComboBox.addActionListener(new ActionListener() {
 
@@ -593,10 +598,37 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 		return out;
 	}
 
-
-
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void actionPerformed(ActionEvent e) {
+		String text[] = saveEnteredText();
+		setVisible(true);
+	
+		String status;
+		int god = 0;
+		
+		if(text[9].equals("Budžet")) {
+			status = "B";
+		}
+		else {
+			status = "S";
+		}
+		
+		if(text[8].equals("1 (prva)")) {
+			god = 1;
+		}
+		else if(text[8].equals("2 (druga)")) {
+			god = 2;
+		}
+		else if(text[8].equals("3 (treća)")) {
+			god = 3;
+		}
+		else if(text[8].equals("4 (četvrta)")) {
+			god = 4;
+		}
+		
+		StudentController.getInstance().addStudent(text[0], text[1], text[2], text[3], text[4],
+				text[5], text[6], text[7], god, StatusStudent.valueOf(status));
+		setVisible(false);
 		
 	}
 	
