@@ -5,15 +5,20 @@ import java.awt.BorderLayout;
 
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
+import javax.swing.WindowConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 
 public class MainFrame extends JFrame implements ChangeListener{
+	
 	private JTabbedPane tabbedPane;
 	private SelectedTab selectedTab;
 	private static MainFrame instance = null;
@@ -55,6 +60,66 @@ public class MainFrame extends JFrame implements ChangeListener{
 		add(tabbedPane, BorderLayout.CENTER);
 		
 		selectedTab = SelectedTab.STUDENT;
+		
+		this.addWindowListener(new WindowListener() {
+
+			@Override
+			public void windowActivated(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowClosed(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowClosing(WindowEvent e) {
+				JFrame frame = (JFrame) e.getComponent();
+				int choice = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da zatvorite aplikaciju?",
+						"Close", JOptionPane.YES_NO_OPTION);
+				if (choice == JOptionPane.YES_OPTION) {
+
+					try {
+
+						//bp.cuvanje();
+					} catch (Exception t) {
+						// TODO: handle exception
+					}
+					frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+				} else {
+					frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+				}
+				
+			}
+
+			@Override
+			public void windowDeactivated(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowDeiconified(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowIconified(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void windowOpened(WindowEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		});
 	}
 	
 	public SelectedTab getSelectedTab()
@@ -90,8 +155,6 @@ public class MainFrame extends JFrame implements ChangeListener{
 		}
 		
 	}
-	
-	
-	
+
 	
 }
