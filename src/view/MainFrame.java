@@ -161,10 +161,31 @@ public class MainFrame extends JFrame implements ChangeListener{
 	}
 	
 	public void refresh() {
-		AbstractTableModelStudent modelS = panelStudent.getModel();
-		modelS.fireTableDataChanged();
-		validate();
+		switch(MainFrame.getInstance().getSelectedTab()) {
+		
+		case STUDENT:
+		{
+			AbstractTableModelStudent modelS = panelStudent.getModel();
+			modelS.fireTableDataChanged();
+			validate();
+			break;
+		}
+		case PREDMET:
+		{
+			break;
+		}
+		case PROFESOR:
+		{	
+			AbstractTableModelProfesor modelP = panelProfesor.getModel();
+			modelP.fireTableDataChanged();
+			validate();
+			break;
+		}
+		default:
+		{
+			return;
+		}
 	}
 
-	
+}
 }

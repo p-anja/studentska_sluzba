@@ -3,6 +3,7 @@ package view;
 import java.awt.BorderLayout;
 
 
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -24,6 +25,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
+import controller.ProfesorController;
+import model.Profesor;
+import model.ProfesorBase;
 import view.MainFrame;
 
 public class DialogAddProfesor extends JDialog implements ActionListener {
@@ -506,11 +510,11 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 	public boolean check() {
 		String text[] = getTxt();
 		
-		if (!Pattern.matches("[a-zA-Z0-9_ ÄŤÄŚÄ‡Ä†ĹľĹ˝ĹˇĹ Ä‘Ä]*", text[0])) {
+		if (!Pattern.matches("[a-zA-Z0-9_ čČćĆžŽšŠđĐ]*", text[0])) {
 			txtIme.setBackground(Color.RED);
 			return false;
 		}
-		if (!Pattern.matches("[a-zA-Z0-9_ ÄŤÄŚÄ‡Ä†ĹľĹ˝ĹˇĹ Ä‘Ä]*", text[1])) {
+		if (!Pattern.matches("[a-zA-Z0-9_ čČćĆžŽšŠđĐ]*", text[1])) {
 			txtPrezime.setBackground(Color.RED);
 			return false;
 		}
@@ -520,7 +524,7 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 				return false;
 			}
 		}
-		if (!Pattern.matches("[a-zA-Z0-9_ ÄŤÄŚÄ‡Ä†ĹľĹ˝ĹˇĹ Ä‘Ä,]*", text[3])) {
+		if (!Pattern.matches("[a-zA-Z0-9_ čČćĆžŽšŠđĐ,]*", text[3])) {
 			txtAdresaStanovanja.setBackground(Color.RED);
 			return false;
 		}
@@ -534,7 +538,7 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 				return false;
 			}
 		}
-		if (!Pattern.matches("[a-zA-Z0-9_ ÄŤÄŚÄ‡Ä†ĹľĹ˝ĹˇĹ Ä‘Ä,]*", text[6])) {
+		if (!Pattern.matches("[a-zA-Z0-9_ čČćĆžŽšŠđĐ,]*", text[6])) {
 			txtAdresaKancelarije.setBackground(Color.RED);
 			return false;
 		}
@@ -573,7 +577,26 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		String text[] = getTxt();
+		int value = 1;
+		for (Profesor p : ProfesorBase.getInstance().getListProfesor()) {
+			if (p.getBrLicneKarte().equals(text[7])) {
+				value = 0;
+			}
+		}
+		if(value == 0 ) {
+			setVisible(false);
+			JOptionPane.showMessageDialog(null, "Profesor sa tim brojem lične karte već postoji.", "Upozorenje!",
+					JOptionPane.ERROR_MESSAGE);
+			setVisible(true);
+		}
+		else {
+			setVisible(true);
+			ProfesorController.getInstance().addProfesor(text[0], text[1], text[2], text[3], text[4],
+					text[5], text[6], text[7], text[8], text[9]);
+			setVisible(false);
+		}
+
 }
 
 }
