@@ -21,6 +21,7 @@ public class MainFrame extends JFrame implements ChangeListener{
 	
 	private JTabbedPane tabbedPane;
 	private SelectedTab selectedTab;
+	private StudentTablePanel panelStudent;
 	private static MainFrame instance = null;
 	
 	public static MainFrame getInstance() {
@@ -50,11 +51,12 @@ public class MainFrame extends JFrame implements ChangeListener{
 
 		tabbedPane = new JTabbedPane();
 		tabbedPane.addChangeListener(this);
-		JPanel studenti = new JPanel();
 		JPanel predmeti = new JPanel();
 		JPanel profesori = new JPanel();
 		
-		tabbedPane.addTab("Studenti", studenti);
+		panelStudent = new StudentTablePanel();
+		
+		tabbedPane.addTab("Studenti", panelStudent);
 		tabbedPane.addTab("Predmeti", predmeti);
 		tabbedPane.addTab("Profesori", profesori);
 		add(tabbedPane, BorderLayout.CENTER);
@@ -154,6 +156,12 @@ public class MainFrame extends JFrame implements ChangeListener{
 			}
 		}
 		
+	}
+	
+	public void refresh() {
+		AbstractTableModelStudent modelS = panelStudent.getModel();
+		modelS.fireTableDataChanged();
+		validate();
 	}
 
 	
