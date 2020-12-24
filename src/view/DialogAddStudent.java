@@ -526,11 +526,11 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 		String text[] = saveEnteredText();
 		boolean out = true;
 
-		if (!Pattern.matches("[a-zA-Z0-9Ä�ÄŒÄ‡Ä†Å¾Å½Å¡Å Ä�Ä‘]*", text[0])) {
+		if (!Pattern.matches("[a-zA-ZčČćĆžŽšŠĐđ]*", text[0])) {
 			txtIme.setBackground(Color.RED);
 			return false;
 		}
-		if (!Pattern.matches("[a-zA-Z0-9_ Ä�ÄŒÄ‡Ä†Å¾Å½Å¡Å Ä‘Ä�]*", text[1])) {
+		if (!Pattern.matches("[a-zA-ZčČćĆžŽšŠđĐ]*", text[1])) {
 			txtPrezime.setBackground(Color.RED);
 			return false;
 		}
@@ -540,7 +540,7 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 				return false;
 			}
 		}
-		if (!Pattern.matches("[a-zA-Z0-9_,Ä�ÄŒÄ‡Ä†Å¾Å½Å¡Å Ä‘Ä� ]*", text[3])) {
+		if (!Pattern.matches("[a-zA-Z0-9,čČćĆžŽšŠđĐ ]*", text[3])) {
 			txtAdresa.setBackground(Color.RED);
 			return false;
 		}
@@ -556,13 +556,13 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 		}
 		if (text[6].length() != 0) {
 
-			if (!Pattern.matches("[A-Z]{2,3} [0-9]{1,3}/[0-9]{4}", text[6])) {
+			if (!Pattern.matches("[A-Z]{2,3}[0-9]{1,3}/[0-9]{4}", text[6])) {
 				txtIndeks.setBackground(Color.RED);
 				return false;
 			}
 		}
 		if (text[7].length() != 0) {
-			if (!Pattern.matches("^(3[01]|[12][0-9]|0[1-9]).(1[0-2]|0[1-9]).[0-9]{4}.", text[7])) {
+			if (!Pattern.matches("[0-9]{4}.", text[7])) {
 				txtGodinaUpisa.setBackground(Color.RED);
 				return false;
 			}
