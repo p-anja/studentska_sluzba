@@ -2,6 +2,7 @@ package view;
 
 import java.awt.BorderLayout;
 
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -18,10 +19,10 @@ import java.util.regex.Pattern;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
-
 
 import view.MainFrame;
 
@@ -41,21 +42,21 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 	
 	public DialogAddProfesor(MainFrame instance, String title, boolean b) {
 		super(instance, title, b);
-        
+		
 		setTitle("Dodavanje profesora");
 		setSize(400, 500);
 		setLocationRelativeTo(null);
 		setModal(true);
 		setResizable(false);
-		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		
 		Dimension dim = new Dimension(120, 20);
 		
 		JPanel panCommands = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		btnOk = new JButton("POTVRDA");
 		btnOk.addActionListener(this);
+		btnOk.setBackground(new Color(255, 205, 193));
 		btnCancel = new JButton("ODUSTANI");
-		btnCancel.addActionListener(this);
+		btnCancel.setBackground(new Color(255, 205 ,193));
 		btnCancel.addActionListener(new ActionListener() {
 
 			@Override
@@ -80,7 +81,7 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 		txtIme = new JTextField();
 		txtIme.setPreferredSize(dim);
 		txtIme.addKeyListener(new KeyListener() {
-
+		
 			@Override
 			public void keyTyped(KeyEvent e) {
 				// TODO Auto-generated method stub
@@ -259,7 +260,7 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 			}
 		});
 		
-		JLabel labelBrLicneKarte = new JLabel("Broj lične karte*");
+		JLabel labelBrLicneKarte = new JLabel("Broj liÄŤne karte*");
 		labelBrLicneKarte.setPreferredSize(dim);
 		txtBrLicneKarte = new JTextField();
 		txtBrLicneKarte.setPreferredSize(dim);
@@ -573,8 +574,6 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-	}
-	
-	
 }
 
+}
