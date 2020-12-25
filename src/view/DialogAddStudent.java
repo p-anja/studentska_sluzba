@@ -542,7 +542,7 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 			return false;
 		}
 		if (text[2].length() != 0) {
-			if (!Pattern.matches("^(3[01]|[12][0-9]|0[1-9]).(1[0-2]|0[1-9]).[0-9]{4}.", text[2])) {
+			if (!Pattern.matches("^(3[01]|[12][0-9]|0[1-9]).(1[0-2]|[1-9]).[0-9]{4}.", text[2])) {
 				txtDatumRodjenja.setBackground(Color.RED);
 				return false;
 			}
@@ -563,13 +563,13 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 		}
 		if (text[6].length() != 0) {
 
-			if (!Pattern.matches("[A-Z]{2,3}[0-9]{1,3}/[0-9]{4}", text[6])) {
+			if (!Pattern.matches("[A-Za-z]{2,3}-[0-9]{1,3}-[0-9]{4}", text[6])) {
 				txtIndeks.setBackground(Color.RED);
 				return false;
 			}
 		}
 		if (text[7].length() != 0) {
-			if (!Pattern.matches("[0-9]{4}.", text[7])) {
+			if (!Pattern.matches("[0-9]{4}", text[7])) {
 				txtGodinaUpisa.setBackground(Color.RED);
 				return false;
 			}
