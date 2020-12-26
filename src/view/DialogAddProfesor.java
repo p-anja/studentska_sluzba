@@ -519,7 +519,7 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 			return false;
 		}
 		if (text[2].length() != 0) {
-		    if (!Pattern.matches("^(3[01]|[12][0-9]|0[1-9]).(1[0-2]|0[1-9]).[0-9]{4}.", text[2])) {
+		    if (!Pattern.matches("^(3[01]|[12][0-9]|[1-9]).(1[0-2]|[1-9]).[0-9]{4}.", text[2])) {
 				txtDatumRodjenja.setBackground(Color.RED);
 				return false;
 			}
@@ -533,7 +533,7 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 			return false;
 		}
 		if (text[5].length() != 0) {
-			if (!Pattern.matches("^(.+)@(.+)$", text[5])) {
+			if (!Pattern.matches("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$", text[5])) {
 				txtEmail.setBackground(Color.RED);
 				return false;
 			}
@@ -542,7 +542,7 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 			txtAdresaKancelarije.setBackground(Color.RED);
 			return false;
 		}
-		if (!Pattern.matches("[\"a-zA-Z0-9_ ]*", text[7])) {
+		if (!Pattern.matches("^[0-9-/]*", text[7])) {
 			txtBrLicneKarte.setBackground(Color.RED);
 			return false;
 		}
