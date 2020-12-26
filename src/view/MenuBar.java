@@ -9,6 +9,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 
 public class MenuBar extends JMenuBar{
@@ -27,6 +30,9 @@ public class MenuBar extends JMenuBar{
 	private JMenuItem miDelete;
 	private JMenuItem miHelp;
 	private JMenuItem miAbout;
+	private JTextArea ta;
+	private JTextArea about;
+	private JScrollPane scrollPane;
 	
 	public static MenuBar getInstance() {
 		if(instance == null) {
@@ -48,7 +54,6 @@ public class MenuBar extends JMenuBar{
 		miNew = new JMenuItem("New");
 		miNew.setIcon(new ImageIcon("images/new.png"));
 		miNew.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK));
-		miNew.setMnemonic(KeyEvent.VK_N);
 		miNew.addActionListener(new ActionListener(){
 
 			@Override
@@ -90,33 +95,81 @@ public class MenuBar extends JMenuBar{
 		miClose = new JMenuItem("Close");
 		miClose.setIcon(new ImageIcon("images/close.png"));
 		miClose.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
-		miClose.setMnemonic(KeyEvent.VK_C);
 		file.add(miClose);
 
 		miEdit = new JMenuItem("Edit");
 		miEdit.setIcon(new ImageIcon("images/edit.png"));
 		miEdit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
-		miEdit.setMnemonic(KeyEvent.VK_E);
 		edit.add(miEdit);
 		edit.addSeparator();
 		
 		miDelete = new JMenuItem("Delete");
 		miDelete.setIcon(new ImageIcon("images/delete.png"));
 		miDelete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
-		miDelete.setMnemonic(KeyEvent.VK_D);
 		edit.add(miDelete);
 
 		miHelp = new JMenuItem("Help");
 		miHelp.setIcon(new ImageIcon("images/help.png"));
 		miHelp.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_H, ActionEvent.CTRL_MASK));
-		miHelp.setMnemonic(KeyEvent.VK_H);
+		miHelp.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				ta = new JTextArea("\t\t\t NAČIN KORIŠĆENJA APLIKACIJE \n\n" + "TABELA STUDENATA\n"
+						+ "1.Dodavanje studenta je moguće pomoću dugmeta u toolbar-u ili preko File -> New\n"
+						+ "Validacija unosa:\n" + "Datum je u formatu - dd.mm.yyyy.\n"
+						+ "Broj telefona može sadržati bilo koju cifru i znakove / i -.\n"
+						+ "Indeks je u formatu XX(X)00(0)/0000 (minimalno prva dva mala ili velika slova, maksimalno 3).\n"
+						+ "Email – bilo_šta@bilo_šta.\n"
+						+ "Sva polja u dialogu moraju biti popunjena da bi mogli da dodate studenta\n\n\n"
+						+ "TABELA PROFESORA\n"
+						+ "1.Dodavanja profesora na predmet moguće je pomoću dugmeta u toolbar-u ili preko File-> New\n"
+						+ "Validacija unosa:\n"
+						+"Broj lične karte - 9 cifara sa navodnicima na pocetku i kraju\n"
+						+ "Datum u formatu – dd.mm.yyyy.\n"
+						+ "Sva polja u dialogu moraju biti popunjena da bi mogli da dodate profesora\n\n\n"
+						+ "Prečice:\n" + "ctrl + N – New Student/Profesor u zavisnosti od otvorenog taba\n" 
+					 	+ "ctrl + H – Help\n"
+						+ "ctrl + A - About App\n\n" 
+					 	+"Mnemonici:\n"
+						+"alt + F - File\n" 
+					 	+"alt + E - Edit\n"
+						+"alt + H - Help\n" + "", 20, 70);
+
+				scrollPane = new JScrollPane(ta);
+				JOptionPane.showMessageDialog(null, scrollPane);
+				
+			}
+			
+		});
 		help.add(miHelp);
 		help.addSeparator();
 		
 		miAbout = new JMenuItem("About");
 		miAbout.setIcon(new ImageIcon("images/about.png"));
 		miAbout.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
-		miAbout.setMnemonic(KeyEvent.VK_A);
+		miAbout.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				about = new JTextArea(	"Java Aplikacija Studentska služba omogućava rad sa studentima, profesorima i predmetima.\n\n"
+						+ "Kratak opis korišćenja aplikacije:\n"
+						+ "1.Tabela student ima mogućnost dodavanja, brisanja, izmene, prikaza predmeta koje sluša student i pretragu studenata.\n"
+						+ "2.Tabela predmet ima mogućnost dodavanja, brisanja, izmene, pretrage predmeta, dodavanja studenta na predmet, brisanja studenta sa predmeta,\n"
+						+ " dodavanja profesora na predmet, brisanja profesora sa predmeta, prikaza liste profesora i studenata na predmetu.\n"
+						+ "3.Tabela profesor ima mogćnost dodavanja, brisanja, izmene profesora i prikaza predmeta na kojima predaje profesor.\n\n"
+						+"Student 1:\n"
+						+"Anja Pešić, rođena 17.8.1999. u Novom Sadu, student Računarstva i automatike, indeks RA36-2018.\n"
+						+"Student 2:\n"
+						+"Tanja Cupać, rođena 24.1.2000. u Somboru, student Računarstva i automatike, indeks RA40-2018.\n");
+				
+				scrollPane = new JScrollPane(about);
+				JOptionPane.showMessageDialog(null,	scrollPane);
+
+			}
+			
+		});
 		help.add(miAbout);
 		
 		add(file);
