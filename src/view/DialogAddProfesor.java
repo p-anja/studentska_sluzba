@@ -533,7 +533,7 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 			return false;
 		}
 		if (text[5].length() != 0) {
-			if (!Pattern.matches("^(.+)@(.+)$", text[5])) {
+			if (!Pattern.matches("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$", text[5])) {
 				txtEmail.setBackground(Color.RED);
 				return false;
 			}
@@ -542,7 +542,7 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 			txtAdresaKancelarije.setBackground(Color.RED);
 			return false;
 		}
-		if (!Pattern.matches("[\"a-zA-Z0-9_ ]*", text[7])) {
+		if (!Pattern.matches("^[0-9-/]*", text[7])) {
 			txtBrLicneKarte.setBackground(Color.RED);
 			return false;
 		}
