@@ -556,7 +556,7 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 			return false;
 		}
 		if (text[5].length() != 0) {
-			if (!Pattern.matches("^(.+)@(.+)$", text[5])) {
+			if (!Pattern.matches("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$", text[5])) {
 				txtEmail.setBackground(Color.RED);
 				return false;
 			}
