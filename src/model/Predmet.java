@@ -7,14 +7,14 @@ public class Predmet {
 
 	private String sifra;
 	private String naziv;
-	private String semestar;
+	private Semestar semestar;
 	private int godina;
 	private Profesor profesor;
 	private int brEspb;
 	private ArrayList<Student> studentiKojiSuPolozili;
 	private ArrayList<Student> studentiKojiNisuPolozili;
 	
-	public Predmet(String sifra, String naziv, String semestar, int godina, Profesor profesor, int brEspb) {
+	public Predmet(String sifra, String naziv, Semestar semestar, int godina, Profesor profesor, int brEspb) {
 		super();
 		this.sifra = sifra;
 		this.naziv = naziv;
@@ -42,11 +42,11 @@ public class Predmet {
 		this.naziv = naziv;
 	}
 
-	public String getSemestar() {
+	public Semestar getSemestar() {
 		return semestar;
 	}
 
-	public void setSemestar(String semestar) {
+	public void setSemestar(Semestar semestar) {
 		this.semestar = semestar;
 	}
 
