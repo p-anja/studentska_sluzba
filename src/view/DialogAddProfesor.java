@@ -519,7 +519,7 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 			return false;
 		}
 		if (text[2].length() != 0) {
-		    if (!Pattern.matches("^(3[01]|[12][0-9]|0[1-9]).(1[0-2]|0[1-9]).[0-9]{4}.", text[2])) {
+		    if (!Pattern.matches("^(3[01]|[12][0-9]|[1-9]).(1[0-2]|[1-9]).[0-9]{4}.", text[2])) {
 				txtDatumRodjenja.setBackground(Color.RED);
 				return false;
 			}
