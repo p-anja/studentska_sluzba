@@ -38,4 +38,14 @@ public class ProfesorTablePanel extends JPanel{
 	{
 		return (AbstractTableModelProfesor)this.profesorTable.getModel();
 	}
+
+	public ProfesorJTable getProfesorTable() {
+		return profesorTable;
+	}
+
+	public void setProfesorTable(ProfesorJTable profesorTable) {
+		this.profesorTable = profesorTable;
+	}
+	
+	
 }

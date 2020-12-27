@@ -1,5 +1,7 @@
 package controller;
 
+import model.Profesor;
+
 import model.ProfesorBase;
 import view.MainFrame;
 import view.ProfesorJTable;
@@ -22,5 +24,18 @@ private static ProfesorController instance = null;
 				email, adresaKancelarije, brLicneKarte, titula, zvanje);
 		MainFrame.getInstance().refresh();
 	}
+	
+	public void editProfesor(int selectedIndex, String ime, String prezime, String datumRodjenja, String adresaStanovanja, String kontaktTelefon,
+			String email, String adresaKancelarije, String titula, String zvanje ) {
+		if (selectedIndex < 0) {
+			return;
+		}
+
+		Profesor p = ProfesorBase.getInstance().getRow(selectedIndex);
+		ProfesorBase.getInstance().editProfesor(ime, prezime, datumRodjenja, adresaStanovanja, kontaktTelefon, 
+				email, adresaKancelarije, p.getBrLicneKarte(), titula, zvanje);
+		MainFrame.getInstance().refresh();
+	}
+			
 	
 }

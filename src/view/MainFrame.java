@@ -23,6 +23,7 @@ public class MainFrame extends JFrame implements ChangeListener{
 	private SelectedTab selectedTab;
 	private StudentTablePanel panelStudent;
 	private ProfesorTablePanel panelProfesor;
+	private PredmetTablePanel panelPredmet;
 	private static MainFrame instance = null;
 	
 	public static MainFrame getInstance() {
@@ -52,14 +53,13 @@ public class MainFrame extends JFrame implements ChangeListener{
 
 		tabbedPane = new JTabbedPane();
 		tabbedPane.addChangeListener(this);
-		JPanel predmeti = new JPanel();
-		JPanel profesori = new JPanel();
 		
 		panelStudent = new StudentTablePanel();
 		panelProfesor = new ProfesorTablePanel();
+		panelPredmet = new PredmetTablePanel();
 		
 		tabbedPane.addTab("Studenti", panelStudent);
-		tabbedPane.addTab("Predmeti", predmeti);
+		tabbedPane.addTab("Predmeti", panelPredmet);
 		tabbedPane.addTab("Profesori", panelProfesor);
 		add(tabbedPane, BorderLayout.CENTER);
 		
@@ -186,6 +186,25 @@ public class MainFrame extends JFrame implements ChangeListener{
 			return;
 		}
 	}
+	}
+	public int getSelectedRow() {
+		switch(MainFrame.getInstance().getSelectedTab()) {
+		
+		case STUDENT:
+		{
+			return 0;
+		}
+		case PREDMET:
+		{
+			return 0;
+		}
+		case PROFESOR:
+		{	
+			return panelProfesor.getProfesorTable().getSelectedRow();
+		}
+	}
+		return -1;
+	}
 
 }
-}
+
