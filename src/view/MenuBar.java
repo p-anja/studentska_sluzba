@@ -14,6 +14,10 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 
+import controller.PredmetController;
+import model.PredmetBase;
+import model.ProfesorBase;
+
 public class MenuBar extends JMenuBar{
 	/**
 	 * 
@@ -100,12 +104,61 @@ public class MenuBar extends JMenuBar{
 		miEdit = new JMenuItem("Edit");
 		miEdit.setIcon(new ImageIcon("images/edit.png"));
 		miEdit.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, ActionEvent.CTRL_MASK));
+		miEdit.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				switch(MainFrame.getInstance().getSelectedTab()) {
+				
+				case PROFESOR:
+					if (MainFrame.getInstance().getSelectedRow() >= 0 &&  
+					MainFrame.getInstance().getSelectedRow() < ProfesorBase.getInstance().getProfesorCount()) {
+						DialogEditProfesor dialog = new DialogEditProfesor(MainFrame.getInstance(),
+								"Izmena profesora", true);
+								dialog.setVisible(true);
+								edit.setSelected(false);
+								break;
+					} else {
+						JOptionPane.showMessageDialog(null, "Profesor nije selektovan.", "Upozorenje!",
+								JOptionPane.ERROR_MESSAGE);
+					}
+					
+
+				
+			}
+			}
+		});
 		edit.add(miEdit);
 		edit.addSeparator();
 		
 		miDelete = new JMenuItem("Delete");
 		miDelete.setIcon(new ImageIcon("images/delete.png"));
 		miDelete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
+		miDelete.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int row = MainFrame.getInstance().getSelectedRow();
+				switch(MainFrame.getInstance().getSelectedTab()) {
+				case PREDMET:
+					if (row >= 0 && row < PredmetBase.getInstance().getPredmetCount()) {
+						int option = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da obrišete predmet?",
+								"Brisanje predmeta", JOptionPane.YES_NO_OPTION);
+						if ( option == JOptionPane.YES_OPTION) {
+							PredmetController.getInstance().deletePredmet(row);
+							JOptionPane.showMessageDialog(null, "Predmet je obrisan!");
+						} else {
+							JOptionPane.showMessageDialog(null, "Predmet nije obrisan.");
+						}
+					} else {
+						JOptionPane.showMessageDialog(null, "Predmet nije selektovan.", "Upozorenje!",
+								JOptionPane.ERROR_MESSAGE);
+					}
+					miDelete.setSelected(false);
+					break;
+				}
+			}
+		});
 		edit.add(miDelete);
 
 		miHelp = new JMenuItem("Help");
