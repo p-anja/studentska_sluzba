@@ -3,11 +3,14 @@ package view;
 import javax.swing.JToolBar;
 
 
+
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import controller.PredmetController;
 import model.ProfesorBase;
+import model.PredmetBase;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -95,6 +98,7 @@ public class Toolbar extends JToolBar {
 					} else {
 						JOptionPane.showMessageDialog(null, "Profesor nije selektovan.", "Upozorenje!",
 								JOptionPane.ERROR_MESSAGE);
+						break;
 					}
 					
 				default:
@@ -114,10 +118,42 @@ public class Toolbar extends JToolBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				int row = MainFrame.getInstance().getSelectedRow();
+				switch(MainFrame.getInstance().getSelectedTab()) {
 				
+				case STUDENT:
+				{
+					break;
+				}
+				case PREDMET:
+					if (row >= 0 && row < PredmetBase.getInstance().getPredmetCount()) {
+						int option = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da obrišete predmet?",
+								"Brisanje predmeta", JOptionPane.YES_NO_OPTION);
+						if ( option == JOptionPane.YES_OPTION) {
+							PredmetController.getInstance().deletePredmet(row);
+							JOptionPane.showMessageDialog(null, "Predmet je obrisan!");
+						} else {
+							JOptionPane.showMessageDialog(null, "Predmet nije obrisan.");
+						}
+					} else {
+						JOptionPane.showMessageDialog(null, "Predmet nije selektovan.", "Upozorenje!",
+								JOptionPane.ERROR_MESSAGE);
+					}
+					delete.setSelected(false);
+					break;
+				case PROFESOR:
+					
+					break;
+					
+				default:
+				{
+					return;
+				}
+			
+				}
 			}
 		});
+		
 		
 		JButton search = new JButton();
 		search.setToolTipText("Pretraži");
@@ -155,5 +191,7 @@ public class Toolbar extends JToolBar {
 		
 		
 	}
-	}
+		}
+	
+	
 
