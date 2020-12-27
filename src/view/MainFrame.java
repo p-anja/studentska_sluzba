@@ -172,12 +172,15 @@ public class MainFrame extends JFrame implements ChangeListener{
 		}
 		case PREDMET:
 		{
+			AbstractTableModelPredmet modelPredmet = panelPredmet.getModel();
+			modelPredmet.fireTableDataChanged();
+			validate();
 			break;
 		}
 		case PROFESOR:
 		{	
-			AbstractTableModelProfesor modelP = panelProfesor.getModel();
-			modelP.fireTableDataChanged();
+			AbstractTableModelProfesor modelProfesor = panelProfesor.getModel();
+			modelProfesor.fireTableDataChanged();
 			validate();
 			break;
 		}

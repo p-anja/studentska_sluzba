@@ -32,9 +32,9 @@ public class PredmetTablePanel extends JPanel{
 		add(scrollPane, BorderLayout.CENTER);
 	}
 	
-	public AbstractTableModelProfesor getModel()
+	public AbstractTableModelPredmet getModel()
 	{
-		return (AbstractTableModelProfesor)this.predmetTable.getModel();
+		return (AbstractTableModelPredmet)this.predmetTable.getModel();
 	}
 	
 	

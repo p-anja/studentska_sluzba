@@ -17,7 +17,7 @@ public class PredmetBase {
 	
 	private PredmetBase() {
 		columns = new ArrayList<String>();
-		columns.add("�IFRA PREDMETA");
+		columns.add("ŠIFRA PREDMETA");
 		columns.add("NAZIV PREDMETA");
 		columns.add("ESPB");
 		columns.add("GODINA STUDIJA");
@@ -28,7 +28,7 @@ public class PredmetBase {
 	}
 	
 	private void init() {
-		listPredmet.add(new Predmet("E214", "Matemati;ka analiza 1", Semestar.ZIMSKI, 1, ProfesorBase.getInstance().getListProfesor().get(1), 
+		listPredmet.add(new Predmet("E214", "Matematička analiza 1", Semestar.ZIMSKI, 1, ProfesorBase.getInstance().getListProfesor().get(1), 
 				9));
 	}
 
