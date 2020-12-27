@@ -27,11 +27,11 @@ public class ProfesorBase {
 	}
 	
 	private void init() {
-		listProfesor.add(new Profesor("Marko", "Marković", "19.09.1965", "Vojvodjanska 10, Novi Sad", "021/485-2169", "mmarkovic@uns.ac.rs",
+		listProfesor.add(new Profesor("Marko", "Marković", "19.12.1965.", "Vojvodjanska 10, Novi Sad", "021/485-2169", "mmarkovic@uns.ac.rs",
 				"Trg Dositeja Obradovića 6, kabinet 122", "00456333", "Dr" , "Redovan profesor"));
-		listProfesor.add(new Profesor("Jelena", "Jelić", "01.03.1971.", "Šekspirova 42, Novi Sad", "021/485-1243", "jjelic@uns.ac.rs",
+		listProfesor.add(new Profesor("Jelena", "Jelić", "21.12.1971.", "Šekspirova 42, Novi Sad", "021/485-1243", "jjelic@uns.ac.rs",
 				"Trg Dositeja Obradovića 6, kabinet 5", "00765422", "Prof Dr" , "Redovan profesor"));
-		listProfesor.add(new Profesor("Ivana", "Ivanović", "16.05.1954.", "Maksima Gorkog 11, Novi Sad", "021/485-7534", "iivanovic@uns.ac.rs",
+		listProfesor.add(new Profesor("Ivana", "Ivanović", "16.12.1954.", "Maksima Gorkog 11, Novi Sad", "021/485-7534", "iivanovic@uns.ac.rs",
 				"Trg Dositeja Obradovića 6, kabinet 9", "00123456", "Prof Dr" , "Docent"));
 		
 	}
