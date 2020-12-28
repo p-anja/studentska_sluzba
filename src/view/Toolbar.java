@@ -52,6 +52,10 @@ public class Toolbar extends JToolBar {
 				}
 				case PREDMET:
 				{
+					DialogAddPredmet dialog = new DialogAddPredmet(MainFrame.getInstance(),
+					"Dodavanje novog predmeta", true);
+					dialog.setVisible(true);
+					add.setSelected(false);
 					break;
 				}
 				case PROFESOR:

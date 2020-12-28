@@ -74,6 +74,10 @@ public class MenuBar extends JMenuBar{
 				}
 				case PREDMET:
 				{
+					DialogAddPredmet dialog = new DialogAddPredmet(MainFrame.getInstance(),
+					"Dodavanje novog predmeta", true);
+					dialog.setVisible(true);
+					miNew.setSelected(false);
 					break;
 				}
 				case PROFESOR:

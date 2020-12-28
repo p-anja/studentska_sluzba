@@ -2,6 +2,8 @@ package controller;
 
 import model.Predmet;
 import model.PredmetBase;
+import model.Profesor;
+import model.Semestar;
 import view.MainFrame;
 
 public class PredmetController {
@@ -15,6 +17,12 @@ private static PredmetController instance = null;
 	}
 	
 	private PredmetController() {}
+	
+	public void addPredmet(String sifra, String naziv, Semestar semestar, int godina, Profesor profesor, int brEspb) {
+		
+		PredmetBase.getInstance().addPredmet(sifra, naziv, semestar, godina, profesor, brEspb);
+		MainFrame.getInstance().refresh();
+	}
 	
 	public void deletePredmet(int rowSelectedIndex) {
 		if (rowSelectedIndex < 0) {
