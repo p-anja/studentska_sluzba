@@ -38,5 +38,9 @@ public class StudentTablePanel extends JPanel{
 	{
 		return (AbstractTableModelStudent)this.studentTable.getModel();
 	}
+	
+	public StudentJTable getStudentTable() {
+		return studentTable;
+	}
 
 }

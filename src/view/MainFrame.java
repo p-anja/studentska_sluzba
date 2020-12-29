@@ -195,7 +195,7 @@ public class MainFrame extends JFrame implements ChangeListener{
 		
 		case STUDENT:
 		{
-			return 0;
+			return panelStudent.getStudentTable().getSelectedRow();
 		}
 		case PREDMET:
 		{

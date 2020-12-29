@@ -42,6 +42,9 @@ public class StudentBase {
 	public void setStudents(List<Student> students) {
 		this.students = students;
 	}
+	public int getStudentCount() {
+		return students.size();
+	}
 	public int getColumnCount() {
 		return cols.size();
 	}
@@ -125,7 +128,7 @@ public class StudentBase {
 		this.students.remove(row);
 	}
 	
-	public void editStudent(String ime, String prezime, String datumRodjenja, String adresaStanovanja, String kontaktTelefon, String email, String brojIndeksa, String godinaUpisa, int trenutnaGodStudija, StatusStudent status, double prosecnaOcena) {
+	public void editStudent(String ime, String prezime, String datumRodjenja, String adresaStanovanja, String kontaktTelefon, String email, String brojIndeksa, String godinaUpisa, int trenutnaGodStudija, StatusStudent status) {
 		for (Student s : students) {
 			if (s.getBrojIndeksa().equals(brojIndeksa)) {
 				s.setIme(ime);
@@ -138,7 +141,7 @@ public class StudentBase {
 				s.setGodinaUpisa(godinaUpisa);
 				s.setTrenutnaGodStudija(trenutnaGodStudija);
 				s.setStatus(status);
-				s.setProsecnaOcena(prosecnaOcena);
+				//s.setProsecnaOcena(prosecnaOcena);
 			}
 		}
 	}
