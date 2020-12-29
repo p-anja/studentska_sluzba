@@ -10,6 +10,7 @@ import javax.swing.SwingConstants;
 
 import controller.PredmetController;
 import model.ProfesorBase;
+import model.StudentBase;
 import model.PredmetBase;
 
 import java.awt.BorderLayout;
@@ -85,7 +86,18 @@ public class Toolbar extends JToolBar {
 				
 				case STUDENT:
 				{
-					break;
+					if (MainFrame.getInstance().getSelectedRow() >= 0 &&  
+							MainFrame.getInstance().getSelectedRow() < StudentBase.getInstance().getStudentCount()) {
+								DialogEditStudent dialog = new DialogEditStudent(MainFrame.getInstance(),
+										"Izmena studenta", true);
+										dialog.setVisible(true);
+										edit.setSelected(false);
+										break;
+							} else {
+								JOptionPane.showMessageDialog(null, "Student nije selektovan.", "Upozorenje!",
+										JOptionPane.ERROR_MESSAGE);
+								break;
+							}
 				}
 				case PREDMET:
 				{

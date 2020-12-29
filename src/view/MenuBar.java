@@ -17,6 +17,7 @@ import javax.swing.KeyStroke;
 import controller.PredmetController;
 import model.PredmetBase;
 import model.ProfesorBase;
+import model.StudentBase;
 
 public class MenuBar extends JMenuBar{
 	/**
@@ -126,6 +127,21 @@ public class MenuBar extends JMenuBar{
 						JOptionPane.showMessageDialog(null, "Profesor nije selektovan.", "Upozorenje!",
 								JOptionPane.ERROR_MESSAGE);
 					}
+				case STUDENT:
+				{
+					if (MainFrame.getInstance().getSelectedRow() >= 0 &&  
+							MainFrame.getInstance().getSelectedRow() < StudentBase.getInstance().getStudentCount()) {
+								DialogEditStudent dialog = new DialogEditStudent(MainFrame.getInstance(),
+										"Izmena studenta", true);
+										dialog.setVisible(true);
+										edit.setSelected(false);
+										break;
+							} else {
+								JOptionPane.showMessageDialog(null, "Student nije selektovan.", "Upozorenje!",
+										JOptionPane.ERROR_MESSAGE);
+								break;
+							}
+				}
 					
 
 				
