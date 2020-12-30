@@ -1,10 +1,12 @@
 package controller;
 
+import javax.swing.JOptionPane;
+
 import model.Profesor;
 
 import model.ProfesorBase;
 import view.MainFrame;
-import view.ProfesorJTable;
+
 
 public class ProfesorController {
 private static ProfesorController instance = null;
@@ -37,5 +39,37 @@ private static ProfesorController instance = null;
 		MainFrame.getInstance().refresh();
 	}
 			
-	
+	public void searchProfesor(String text) {
+		if(text.equals(""))
+		{
+			MainFrame.getInstance().getPanelProfesor().getProfesorTable().clearFilter();
+			MainFrame.getInstance().refresh();	
+		}
+		
+		String words[] = text.trim().split("\\s+");
+		
+		if(words.length == 1) {
+		String prezime = words[0];
+				MainFrame.getInstance().getPanelProfesor().getProfesorTable().setFilter(prezime, 1);
+				MainFrame.getInstance().refresh();
+		}
+		
+		
+		else if(words.length == 2) {
+		String prezime = words[0];
+		String ime = words[1];
+			MainFrame.getInstance().getPanelProfesor().getProfesorTable().setFilters(prezime, 1, ime, 0);
+			MainFrame.getInstance().refresh();
+		}
+		
+		else {
+			JOptionPane.showMessageDialog(null,
+					"Unete vrednosti nisu dobre! Moguće opcije su: <prezime>, <prezime ime>.",
+					"Upozorenje!", JOptionPane.ERROR_MESSAGE);
+			return;
+		}
+	}
+		
 }
+	
+
