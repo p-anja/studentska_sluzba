@@ -124,9 +124,10 @@ public class Profesor {
 
 	@Override
 	public String toString() {
-		return ime + ", " + prezime + ", " + datumRodjenja + ", " + adresaStanovanja + ", " + kontaktTelefon + ", " + email +
-			 ", " + adresaKancelarije + ", " + brLicneKarte + ", " + titula + ", " + zvanje; // + ", " + spisakPredmeta + "\n";
+		return ime + " " + prezime + " " + datumRodjenja + " " + adresaStanovanja + " " + kontaktTelefon + " " + email +
+			 " " + adresaKancelarije + " " + brLicneKarte + " " + titula + " " + zvanje; // + ", " + spisakPredmeta + "\n";
 	}
+
 
 	
 	

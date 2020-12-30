@@ -180,7 +180,7 @@ public class DialogAddPredmet extends JDialog implements ActionListener{
 
 		
 		profComboBox = new JComboBox<Profesor>();
-		profComboBox.addItem(null);
+		profComboBox.addItem(new Profesor("", "", "", "", "", "", "", "", "", ""));
 		
 		for (Profesor p : ProfesorBase.getInstance().getListProfesor())
 		{
@@ -335,7 +335,10 @@ public class DialogAddPredmet extends JDialog implements ActionListener{
 		}
 		text[0] = txtSifra.getText().toString();
 		text[1] = txtNaziv.getText().toString();
-		text[2] = txtESPB.getText().toString();
+		text[2] = semestarComboBox.getSelectedItem().toString();
+		text[3] = godinaComboBox.getSelectedItem().toString();
+		text[4] = profComboBox.getSelectedItem().toString();
+		text[5] = txtESPB.getText().toString();
 
 		return text;
 	}
@@ -401,7 +404,7 @@ public class DialogAddPredmet extends JDialog implements ActionListener{
 		}
 		
 		PredmetController.getInstance().addPredmet(text[0], text[1], Semestar.valueOf(semestar), god, (Profesor)profComboBox.getSelectedItem(),
-			Integer.parseInt(text[2]));
+			Integer.parseInt(text[5]));
 	    setVisible(false);
 		
 	}
