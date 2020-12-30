@@ -146,6 +146,15 @@ public class StudentBase {
 		}
 	}
 	
+	public void deleteStudent(String indeks) {
+		for (Student s : students) {
+			if (s.getBrojIndeksa().equals(indeks)) {
+				students.remove(s);
+				break;
+			}
+		}
+	}
+	
 	private void initStudents() {
 		this.students = new ArrayList<Student>();
 		students.add(new Student("Mika", "Mikić", "12.3.1999.", "Šumadijska 8, Novi Sad", "063563214", "mika@mail.com", "in-96-2018", "2018", 3, StatusStudent.B));

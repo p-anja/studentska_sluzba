@@ -11,6 +11,7 @@ import javax.swing.SwingConstants;
 
 import controller.PredmetController;
 import controller.ProfesorController;
+import controller.StudentController;
 import model.ProfesorBase;
 import model.StudentBase;
 import model.PredmetBase;
@@ -153,9 +154,21 @@ public class Toolbar extends JToolBar {
 				switch(MainFrame.getInstance().getSelectedTab()) {
 				
 				case STUDENT:
-				{
+					if (row >= 0 && row < StudentBase.getInstance().getStudentCount()) {
+						int option = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da obrišete studenta?",
+								"Brisanje studenta", JOptionPane.YES_NO_OPTION);
+						if ( option == JOptionPane.YES_OPTION) {
+							StudentController.getInstance().deleteStudent(row);
+							JOptionPane.showMessageDialog(null, "Student je obrisan!");
+						} else {
+							JOptionPane.showMessageDialog(null, "Student nije obrisan.");
+						}
+					} else {
+						JOptionPane.showMessageDialog(null, "Student nije selektovan.", "Upozorenje!",
+								JOptionPane.ERROR_MESSAGE);
+					}
+					delete.setSelected(false);
 					break;
-				}
 				case PREDMET:
 					if (row >= 0 && row < PredmetBase.getInstance().getPredmetCount()) {
 						int option = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da obrišete predmet?",

@@ -16,6 +16,7 @@ import javax.swing.KeyStroke;
 
 import controller.PredmetController;
 import controller.ProfesorController;
+import controller.StudentController;
 import model.PredmetBase;
 import model.ProfesorBase;
 import model.StudentBase;
@@ -176,6 +177,24 @@ public class MenuBar extends JMenuBar{
 			public void actionPerformed(ActionEvent e) {
 				int row = MainFrame.getInstance().getSelectedRow();
 				switch(MainFrame.getInstance().getSelectedTab()) {
+				
+				case STUDENT:
+					if (row >= 0 && row < StudentBase.getInstance().getStudentCount()) {
+						int option = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da obrišete studenta?",
+								"Brisanje studenta", JOptionPane.YES_NO_OPTION);
+						if ( option == JOptionPane.YES_OPTION) {
+							StudentController.getInstance().deleteStudent(row);
+							JOptionPane.showMessageDialog(null, "Student je obrisan!");
+						} else {
+							JOptionPane.showMessageDialog(null, "Student nije obrisan.");
+						}
+					} else {
+						JOptionPane.showMessageDialog(null, "Student nije selektovan.", "Upozorenje!",
+								JOptionPane.ERROR_MESSAGE);
+					}
+					miDelete.setSelected(false);
+					break;
+					
 				case PREDMET:
 					if (row >= 0 && row < PredmetBase.getInstance().getPredmetCount()) {
 						int option = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da obrišete predmet?",

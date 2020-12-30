@@ -37,5 +37,15 @@ public class StudentController {
 				email, brojIndeksa, godinaUpisa, trenutnaGodStudija, status);
 		MainFrame.getInstance().refresh();
 	}
+	
+	public void deleteStudent(int rowSelectedIndex) {
+		if (rowSelectedIndex < 0) {
+			return;
+		}
+		
+		Student student = StudentBase.getInstance().getRow(rowSelectedIndex);
+		StudentBase.getInstance().deleteStudent(student.getBrojIndeksa());
+		MainFrame.getInstance().refresh();
+	}
 
 }
