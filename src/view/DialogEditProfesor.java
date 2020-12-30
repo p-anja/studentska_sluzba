@@ -9,11 +9,11 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.List;
 import java.util.regex.Pattern;
 
 import javax.swing.JButton;
@@ -21,13 +21,17 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 import controller.ProfesorController;
-import model.ProfesorBase;
 import model.Profesor;
+import model.ProfesorBase;
 
-public class DialogEditProfesor extends JDialog implements ActionListener {
+public class DialogEditProfesor extends JDialog {
+	private JTabbedPane tabbedPane;
+	private JPanel panelInfo;
+	private PredmetProfesorTablePanel panelPredmeti;
 	private JTextField txtPrezime;
 	private JTextField txtIme;
 	private JTextField txtDatumRodjenja;
@@ -40,24 +44,41 @@ public class DialogEditProfesor extends JDialog implements ActionListener {
 	private JTextField txtZvanje;
 	private JButton btnOk;
 	private JButton btnCancel;
-	
 	private Profesor profesor;
 	
 	public DialogEditProfesor(MainFrame instance, String title, boolean b) {
 		super(instance, title, b);
 		
 		setTitle("Izmena profesora");
-		setSize(400, 500);
+		setSize(500, 550);
 		setLocationRelativeTo(null);
 		setResizable(false);
-		
+		setModal(true);
 		Dimension dim = new Dimension(120, 20);
 		
-		JPanel panCommands = new JPanel(new FlowLayout(FlowLayout.RIGHT));
-		btnOk = new JButton("POTVRDA");
-		btnOk.addActionListener(this);
+		
+		tabbedPane = new JTabbedPane();
+		
+
+		
+		JPanel panCommands = new JPanel((LayoutManager) new FlowLayout(FlowLayout.RIGHT));
+		JButton btnOk = new JButton("POTVRDA");
+		btnOk.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String text[] = getTxt();
+				setVisible(true);
+				ProfesorController.getInstance().editProfesor(MainFrame.getInstance().getSelectedRow(), text[0], text[1], text[2], text[3], text[4],
+						text[5], text[6], text[8], text[9]);
+				dispose();
+				JOptionPane.showMessageDialog((Component) e.getSource(), "UspeĹˇna izmena!");
+				setVisible(false);
+				
+			}
+		});
 		btnOk.setBackground(new Color(255, 205, 193));
-		btnCancel = new JButton("ODUSTANI");
+		JButton btnCancel = new JButton("ODUSTANI");
 		btnCancel.setBackground(new Color(255, 205 ,193));
 		btnCancel.addActionListener(new ActionListener() {
 
@@ -260,7 +281,7 @@ public class DialogEditProfesor extends JDialog implements ActionListener {
 			}
 		});
 		
-		JLabel labelBrLicneKarte = new JLabel("Broj lične karte*");
+		JLabel labelBrLicneKarte = new JLabel("Broj liÄŤne karte*");
 		labelBrLicneKarte.setPreferredSize(dim);
 		txtBrLicneKarte = new JTextField();
 		txtBrLicneKarte.setPreferredSize(dim);
@@ -481,12 +502,21 @@ public class DialogEditProfesor extends JDialog implements ActionListener {
 		gbcTxtZvanje.insets = new Insets(20, 20, 0, 20);
 		panEditProfesor.add(txtZvanje, gbcTxtZvanje);
 		
-		add(panEditProfesor, BorderLayout.CENTER);
-		add(panCommands, BorderLayout.SOUTH);
 		
+		panelInfo = new JPanel();
+		//panEditProfesor.setSize(400,500);
+		//panelInfo.setSize(400, 500);
+		panelInfo.add(panEditProfesor, BorderLayout.CENTER);
+		panelInfo.add(panCommands, BorderLayout.SOUTH);
 		setProfesor();
 		txtBrLicneKarte.setEditable(false);
 		
+		panelPredmeti = new PredmetProfesorTablePanel();
+		panelPredmeti.setVisible(true);
+		
+		tabbedPane.add("Info", panelInfo);
+		tabbedPane.addTab("Predmeti", panelPredmeti);
+		add(tabbedPane, BorderLayout.CENTER);
 	}
 	
 	public String[] getTxt() {
@@ -510,11 +540,11 @@ public class DialogEditProfesor extends JDialog implements ActionListener {
 	public boolean check() {
 		String text[] = getTxt();
 		
-		if (!Pattern.matches("[a-zA-Z0-9_ čČćĆžŽšŠđĐ]*", text[0])) {
+		if (!Pattern.matches("[a-zA-Z0-9_ ÄŤÄŚÄ‡Ä†ĹľĹ˝ĹˇĹ Ä‘Ä]*", text[0])) {
 			txtIme.setBackground(Color.RED);
 			return false;
 		}
-		if (!Pattern.matches("[a-zA-Z0-9_ čČćĆžŽšŠđĐ]*", text[1])) {
+		if (!Pattern.matches("[a-zA-Z0-9_ ÄŤÄŚÄ‡Ä†ĹľĹ˝ĹˇĹ Ä‘Ä]*", text[1])) {
 			txtPrezime.setBackground(Color.RED);
 			return false;
 		}
@@ -524,7 +554,7 @@ public class DialogEditProfesor extends JDialog implements ActionListener {
 				return false;
 			}
 		}
-		if (!Pattern.matches("[a-zA-Z0-9_ čČćĆžŽšŠđĐ,]*", text[3])) {
+		if (!Pattern.matches("[a-zA-Z0-9_ ÄŤÄŚÄ‡Ä†ĹľĹ˝ĹˇĹ Ä‘Ä,]*", text[3])) {
 			txtAdresaStanovanja.setBackground(Color.RED);
 			return false;
 		}
@@ -538,7 +568,7 @@ public class DialogEditProfesor extends JDialog implements ActionListener {
 				return false;
 			}
 		}
-		if (!Pattern.matches("[a-zA-Z0-9_ čČćĆžŽšŠđĐ,]*", text[6])) {
+		if (!Pattern.matches("[a-zA-Z0-9_ ÄŤÄŚÄ‡Ä†ĹľĹ˝ĹˇĹ Ä‘Ä,]*", text[6])) {
 			txtAdresaKancelarije.setBackground(Color.RED);
 			return false;
 		}
@@ -596,16 +626,6 @@ public class DialogEditProfesor extends JDialog implements ActionListener {
 		txtBrLicneKarte.setText(profesor.getBrLicneKarte());
 		txtTitula.setText(profesor.getTitula());
 		txtZvanje.setText(profesor.getZvanje());
-	}
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		String text[] = getTxt();
-		setVisible(true);
-		ProfesorController.getInstance().editProfesor(MainFrame.getInstance().getSelectedRow(), text[0], text[1], text[2], text[3], text[4],
-				text[5], text[6], text[8], text[9]);
-		dispose();
-		JOptionPane.showMessageDialog((Component) e.getSource(), "Uspešna izmena!");
-		setVisible(false);
 	}
 	
 	
