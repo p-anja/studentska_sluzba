@@ -17,7 +17,7 @@ public class Profesor {
 	private String titula;
 	private String zvanje;
 	private ArrayList<Predmet> spisakPredmeta;
-	
+
 	public Profesor(String ime, String prezime, String datumRodjenja, String adresaStanovanja, String kontaktTelefon, String email, 
 			String adresaKancelarije, String brLicneKarte, String titula, String zvanje) {
 		super();
@@ -31,9 +31,8 @@ public class Profesor {
 		this.brLicneKarte = brLicneKarte;
 		this.titula = titula;
 		this.zvanje = zvanje;
-		spisakPredmeta = new ArrayList<Predmet>();
+		this.spisakPredmeta = new ArrayList<Predmet>();
 	}
-	
 	public String getIme() {
 		return ime;
 	}

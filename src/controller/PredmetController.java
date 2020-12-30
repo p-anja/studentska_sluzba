@@ -56,7 +56,7 @@ private static PredmetController instance = null;
 			MainFrame.getInstance().refresh();	
 		}
 		else {
-		MainFrame.getInstance().getPanelPredmet().getPredmetTable().setFilter(text, 1);
+		MainFrame.getInstance().getPanelPredmet().getPredmetTable().setFilter(text.trim(), 1);
 		MainFrame.getInstance().refresh();
 	}
 }

@@ -33,13 +33,13 @@ public class ProfesorJTable extends JTable {
 	
 	public void setFilter(String s, int i)
 	{
-		sorter.setRowFilter(RowFilter.regexFilter(s, i));
+		sorter.setRowFilter(RowFilter.regexFilter("(?i)" + s, i));
 	}
 	
 	public void setFilters(String s1, int col1, String s2, int col2) {
 		List<RowFilter<Object,Object>> filters = new ArrayList<RowFilter<Object,Object>>(2);
-		filters.add(RowFilter.regexFilter(s1, col1));
-		filters.add(RowFilter.regexFilter(s2, col2));
+		filters.add(RowFilter.regexFilter("(?i)" + s1, col1));
+		filters.add(RowFilter.regexFilter("(?i)" + s2, col2));
 		RowFilter<Object,Object> rf = RowFilter.andFilter(filters);
 		sorter.setRowFilter(rf);
 		

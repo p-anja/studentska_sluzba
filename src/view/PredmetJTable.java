@@ -29,7 +29,7 @@ public class PredmetJTable extends JTable {
 	
 	public void setFilter(String s, int i)
 	{
-		sorter.setRowFilter(RowFilter.regexFilter(s, i));
+		sorter.setRowFilter(RowFilter.regexFilter("(?i)" +s  , i));
 	}
 	
 	@Override
