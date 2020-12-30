@@ -142,6 +142,21 @@ public class MenuBar extends JMenuBar{
 								break;
 							}
 				}
+				case PREDMET:
+				{
+					if (MainFrame.getInstance().getSelectedRow() >= 0 &&  
+							MainFrame.getInstance().getSelectedRow() < PredmetBase.getInstance().getPredmetCount()) {
+								DialogEditPredmet dialog = new DialogEditPredmet(MainFrame.getInstance(),
+										"Izmena predmeta", true);
+										dialog.setVisible(true);
+										edit.setSelected(false);
+										break;
+							} else {
+								JOptionPane.showMessageDialog(null, "Predmet nije selektovan.", "Upozorenje!",
+										JOptionPane.ERROR_MESSAGE);
+								break;
+							}
+				}
 					
 
 				

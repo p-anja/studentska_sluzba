@@ -101,7 +101,18 @@ public class Toolbar extends JToolBar {
 				}
 				case PREDMET:
 				{
-					break;
+					if (MainFrame.getInstance().getSelectedRow() >= 0 &&  
+							MainFrame.getInstance().getSelectedRow() < PredmetBase.getInstance().getPredmetCount()) {
+								DialogEditPredmet dialog = new DialogEditPredmet(MainFrame.getInstance(),
+										"Izmena predmeta", true);
+										dialog.setVisible(true);
+										edit.setSelected(false);
+										break;
+							} else {
+								JOptionPane.showMessageDialog(null, "Predmet nije selektovan.", "Upozorenje!",
+										JOptionPane.ERROR_MESSAGE);
+								break;
+							}
 				}
 				case PROFESOR:
 					if (MainFrame.getInstance().getSelectedRow() >= 0 &&  

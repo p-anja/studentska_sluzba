@@ -36,6 +36,9 @@ public class PredmetTablePanel extends JPanel{
 	{
 		return (AbstractTableModelPredmet)this.predmetTable.getModel();
 	}
+	public PredmetJTable getPredmetTable() {
+		return predmetTable;
+	}
 	
 	
 }

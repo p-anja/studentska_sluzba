@@ -199,7 +199,7 @@ public class MainFrame extends JFrame implements ChangeListener{
 		}
 		case PREDMET:
 		{
-			return 0;
+			return panelPredmet.getPredmetTable().getSelectedRow();
 		}
 		case PROFESOR:
 		{	
