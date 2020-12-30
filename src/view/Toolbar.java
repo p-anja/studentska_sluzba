@@ -4,11 +4,13 @@ import javax.swing.JToolBar;
 
 
 
+
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import controller.PredmetController;
+import controller.ProfesorController;
 import model.ProfesorBase;
 import model.StudentBase;
 import model.PredmetBase;
@@ -17,6 +19,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -182,6 +186,53 @@ public class Toolbar extends JToolBar {
 		});
 		
 		
+		JTextField txtSearch = new JTextField();
+		Dimension dimTxt = new Dimension(200, 20);
+		txtSearch.setPreferredSize(dimTxt);
+		txtSearch.setToolTipText("Upis za pretragu");
+		txtSearch.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				JTextField txt = (JTextField) e.getComponent();
+				if (txt.getText().trim().length() == 0) {
+					switch(MainFrame.getInstance().getSelectedTab()) {
+					case STUDENT:
+					{
+						break;
+					}
+					case PREDMET:
+					{
+						PredmetController.getInstance().searchPredmet("");
+						MainFrame.getInstance().refresh();
+					}
+					case PROFESOR:
+					{
+						ProfesorController.getInstance().searchProfesor("");
+						MainFrame.getInstance().refresh();
+					}
+						
+					default:
+					{
+						return;
+					}
+				}
+
+			}
+			}
+			@Override
+			public void keyPressed(KeyEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+		
 		JButton search = new JButton();
 		search.setToolTipText("Pretraži");
 		search.setIcon(new ImageIcon("images/search.png"));
@@ -189,22 +240,35 @@ public class Toolbar extends JToolBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				switch(MainFrame.getInstance().getSelectedTab()) {
 				
-			}
-		});
-		
-		JTextField txtSearch = new JTextField();
-		Dimension dimTxt = new Dimension(200, 20);
-		txtSearch.setPreferredSize(dimTxt);
-		txtSearch.addActionListener(new ActionListener() {
+				case STUDENT:
+				{
+					break;
+				}
+				case PREDMET:
+				{
+					String s = txtSearch.getText();
+					PredmetController.getInstance().searchPredmet(s);
+					search.setSelected(false);
+				}
+				case PROFESOR:
+				{	
+					String s = txtSearch.getText();
+					ProfesorController.getInstance().searchProfesor(s);
+					search.setSelected(false);
+	
+				}
+					default:
+				{
+					return;
+				}
 			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
+				}
 			}
 		});
+
+
 		
 		buttonsPanel.add(add);
 		buttonsPanel.add(edit);

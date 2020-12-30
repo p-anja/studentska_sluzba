@@ -209,5 +209,22 @@ public class MainFrame extends JFrame implements ChangeListener{
 		return -1;
 	}
 
+	public ProfesorTablePanel getPanelProfesor() {
+		return panelProfesor;
+	}
+
+	public void setPanelProfesor(ProfesorTablePanel panelProfesor) {
+		this.panelProfesor = panelProfesor;
+	}
+
+	public PredmetTablePanel getPanelPredmet() {
+		return panelPredmet;
+	}
+
+	public void setPanelPredmet(PredmetTablePanel panelPredmet) {
+		this.panelPredmet = panelPredmet;
+	}
+
+	
 }
 

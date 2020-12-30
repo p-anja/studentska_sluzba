@@ -1,5 +1,7 @@
 package controller;
 
+import javax.swing.JOptionPane;
+
 import model.Predmet;
 import model.PredmetBase;
 import model.Profesor;
@@ -46,4 +48,16 @@ private static PredmetController instance = null;
 		PredmetBase.getInstance().deletePredmet(predmet.getSifra());
 		MainFrame.getInstance().refresh();
 	}
+	
+	public void searchPredmet(String text) {
+		if(text.equals(""))
+		{
+			MainFrame.getInstance().getPanelPredmet().getPredmetTable().clearFilter();
+			MainFrame.getInstance().refresh();	
+		}
+		else {
+		MainFrame.getInstance().getPanelPredmet().getPredmetTable().setFilter(text, 1);
+		MainFrame.getInstance().refresh();
+	}
+}
 }
