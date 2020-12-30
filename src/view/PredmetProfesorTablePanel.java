@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -26,15 +28,21 @@ public class PredmetProfesorTablePanel extends JPanel{
 		btnAdd = new JButton("Dodaj predmet");
 		btnRemove = new JButton("Ukloni predmet");
 		panCommands.add(btnAdd);
+		btnAdd.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				DialogAddPredmetToProfesor dialog = new DialogAddPredmetToProfesor(MainFrame.getInstance(), "Dodaj predmet", true);
+				dialog.setVisible(true);
+				refresh();
+				dialog.setVisible(false);
+				btnAdd.setSelected(false);
+			}
+		});
 		panCommands.add(btnRemove);
 		add(panCommands, BorderLayout.NORTH);
 	}
 	
-	public AbstractTableModelPredmet getModel()
-	{
-		return (AbstractTableModelPredmet)this.predmetTable.getModel();
-	}
-
 	public PredmetProfesorJTable getPredmetTable() {
 		return predmetTable;
 	}
@@ -42,4 +50,12 @@ public class PredmetProfesorTablePanel extends JPanel{
 	public void setPredmetProfesorTable(PredmetProfesorJTable predmetTable) {
 		this.predmetTable = predmetTable;
 	}
+	
+	
+	public void refresh() {
+		AbstractTableModelPredmetProfesor apt = (AbstractTableModelPredmetProfesor)predmetTable.getModel();
+		apt.fireTableDataChanged();
+		validate();
+	}
+
 }

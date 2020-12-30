@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ProfesorBase {
 	private static ProfesorBase instance = null;
-
+	
 	public static ProfesorBase getInstance() {
 		if (instance == null) {
 			instance = new ProfesorBase();
@@ -25,6 +25,7 @@ public class ProfesorBase {
 		listProfesor = new ArrayList<Profesor>();
 		init();
 	}
+
 	
 	private void init() {
 		listProfesor.add(new Profesor("Marko", "Marković", "19.12.1965.", "Vojvodjanska 10, Novi Sad", "021/485-2169", "mmarkovic@uns.ac.rs",
@@ -35,6 +36,7 @@ public class ProfesorBase {
 				"Trg Dositeja Obradovića 6, kabinet 9", "00123456", "Prof Dr" , "Docent"));
 		
 	}
+
 
 	public ArrayList<Profesor> getListProfesor() {
 		return listProfesor;
