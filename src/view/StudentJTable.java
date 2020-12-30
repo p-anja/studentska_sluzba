@@ -5,9 +5,14 @@ import java.awt.Component;
 
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.RowFilter;
 import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 public class StudentJTable extends JTable{
+	
+	private TableRowSorter<TableModel> sorter;
 	
 	private static StudentJTable instance = null;
 	
@@ -24,6 +29,18 @@ public class StudentJTable extends JTable{
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new AbstractTableModelStudent());
+		sorter = new TableRowSorter<TableModel>((AbstractTableModelStudent)this.getModel());
+		this.setRowSorter(sorter);
+	}
+	
+	public void clearFilter()
+	{
+		sorter.setRowFilter(RowFilter.regexFilter("", 0, 1, 2));
+	}
+	
+	public void setFilter(String s, int i)
+	{
+		sorter.setRowFilter(RowFilter.regexFilter(s, i));
 	}
 
 	@Override
@@ -37,12 +54,7 @@ public class StudentJTable extends JTable{
 		return c;
 	}
 	
-	/*	public void refresh() {
-	AbstractTableModelStudent ars = (AbstractTableModelStudent) this.getModel();
-	ars.fireTableDataChanged();
-	validate();
-
-}*/
+	
 	
 	
 	
