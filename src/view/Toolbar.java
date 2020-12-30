@@ -232,7 +232,9 @@ public class Toolbar extends JToolBar {
 					switch(MainFrame.getInstance().getSelectedTab()) {
 					case STUDENT:
 					{
-						break;
+						StudentController.getInstance().searchStudent("");
+						MainFrame.getInstance().refresh();
+						
 					}
 					case PREDMET:
 					{
@@ -271,6 +273,9 @@ public class Toolbar extends JToolBar {
 				
 				case STUDENT:
 				{
+					String s = txtSearch.getText();
+					StudentController.getInstance().searchStudent(s);
+					search.setSelected(false);
 					break;
 				}
 				case PREDMET:
@@ -278,12 +283,14 @@ public class Toolbar extends JToolBar {
 					String s = txtSearch.getText();
 					PredmetController.getInstance().searchPredmet(s);
 					search.setSelected(false);
+					break;
 				}
 				case PROFESOR:
 				{	
 					String s = txtSearch.getText();
 					ProfesorController.getInstance().searchProfesor(s);
 					search.setSelected(false);
+					break;
 	
 				}
 					default:
