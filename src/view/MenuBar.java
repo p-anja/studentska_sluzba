@@ -15,6 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
 
 import controller.PredmetController;
+import controller.ProfesorController;
 import model.PredmetBase;
 import model.ProfesorBase;
 import model.StudentBase;
@@ -187,6 +188,23 @@ public class MenuBar extends JMenuBar{
 						}
 					} else {
 						JOptionPane.showMessageDialog(null, "Predmet nije selektovan.", "Upozorenje!",
+								JOptionPane.ERROR_MESSAGE);
+					}
+					miDelete.setSelected(false);
+					break;
+					
+				case PROFESOR:
+					if (row >= 0 && row < ProfesorBase.getInstance().getProfesorCount()) {
+						int option = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da obrišete profesora?",
+								"Brisanje profesora", JOptionPane.YES_NO_OPTION);
+						if ( option == JOptionPane.YES_OPTION) {
+							ProfesorController.getInstance().deleteProfesor(row);
+							JOptionPane.showMessageDialog(null, "Profesor je obrisan!");
+						} else {
+							JOptionPane.showMessageDialog(null, "Profesor nije obrisan.");
+						}
+					} else {
+						JOptionPane.showMessageDialog(null, "Profesor nije selektovan.", "Upozorenje!",
 								JOptionPane.ERROR_MESSAGE);
 					}
 					miDelete.setSelected(false);

@@ -172,8 +172,22 @@ public class Toolbar extends JToolBar {
 					}
 					delete.setSelected(false);
 					break;
-				case PROFESOR:
 					
+				case PROFESOR:
+					if (row >= 0 && row < ProfesorBase.getInstance().getProfesorCount()) {
+						int option = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da obrišete profesora?",
+								"Brisanje profesora", JOptionPane.YES_NO_OPTION);
+						if ( option == JOptionPane.YES_OPTION) {
+							ProfesorController.getInstance().deleteProfesor(row);
+							JOptionPane.showMessageDialog(null, "Profesor je obrisan!");
+						} else {
+							JOptionPane.showMessageDialog(null, "Profesor nije obrisan.");
+						}
+					} else {
+						JOptionPane.showMessageDialog(null, "Profesor nije selektovan.", "Upozorenje!",
+								JOptionPane.ERROR_MESSAGE);
+					}
+					delete.setSelected(false);
 					break;
 					
 				default:

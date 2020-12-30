@@ -38,6 +38,15 @@ private static ProfesorController instance = null;
 				email, adresaKancelarije, p.getBrLicneKarte(), titula, zvanje);
 		MainFrame.getInstance().refresh();
 	}
+	public void deleteProfesor(int rowSelectedIndex) {
+		if (rowSelectedIndex < 0) {
+			return;
+		}
+		
+		Profesor profesor = ProfesorBase.getInstance().getRow(rowSelectedIndex);
+		ProfesorBase.getInstance().deleteProfesor(profesor.getBrLicneKarte());
+		MainFrame.getInstance().refresh();
+	}
 			
 	public void searchProfesor(String text) {
 		if(text.equals(""))
