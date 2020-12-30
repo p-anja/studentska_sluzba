@@ -19,9 +19,10 @@ public class PredmetBase {
 		columns = new ArrayList<String>();
 		columns.add("ŠIFRA PREDMETA");
 		columns.add("NAZIV PREDMETA");
-		columns.add("ESPB");
-		columns.add("GODINA STUDIJA");
 		columns.add("SEMESTAR");
+		columns.add("GODINA STUDIJA");
+		columns.add("PROFESOR");
+		columns.add("ESPB");
 		
 		listPredmet = new ArrayList<Predmet>();
 		init();
@@ -41,7 +42,7 @@ public class PredmetBase {
 	}
 	
 	public int getColumnCount() {
-		return 5;
+		return 6;
 	}
 	
 	public int getPredmetCount() {
@@ -71,7 +72,9 @@ public class PredmetBase {
 			}
 			case 2:
 			{
-				return Integer.toString(predmet.getBrEspb());
+				if(predmet.getSemestar()==Semestar.LETNJI) return "Letnji";
+				else return "Zimski";
+				
 			}
 			case 3:
 			{
@@ -79,8 +82,11 @@ public class PredmetBase {
 			}
 			case 4:
 			{
-				if(predmet.getSemestar()==Semestar.LETNJI) return "Letnji";
-				else return "Zimski";
+				return predmet.getProfesor().getIme() + " " + predmet.getProfesor().getPrezime();
+			}
+			case 5:
+			{
+				return Integer.toString(predmet.getBrEspb());
 			}
 			default:
 				return null;

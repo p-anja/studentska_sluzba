@@ -4,6 +4,9 @@ import model.Predmet;
 import model.PredmetBase;
 import model.Profesor;
 import model.Semestar;
+import model.StatusStudent;
+import model.Student;
+import model.StudentBase;
 import view.MainFrame;
 
 public class PredmetController {
@@ -21,6 +24,16 @@ private static PredmetController instance = null;
 	public void addPredmet(String sifra, String naziv, Semestar semestar, int godina, Profesor profesor, int brEspb) {
 		
 		PredmetBase.getInstance().addPredmet(sifra, naziv, semestar, godina, profesor, brEspb);
+		MainFrame.getInstance().refresh();
+	}
+	
+	public void editPredmet(int selectedIndex, String sifra, String naziv, Semestar semestar, int godina, Profesor profesor, int brEspb) {
+		if (selectedIndex < 0) {
+			return;
+		}
+
+		Predmet p = PredmetBase.getInstance().getRow(selectedIndex);
+		PredmetBase.getInstance().editPredmet(sifra, naziv, semestar, godina, profesor, brEspb);
 		MainFrame.getInstance().refresh();
 	}
 	
