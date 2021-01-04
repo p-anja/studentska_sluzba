@@ -117,6 +117,25 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 		minus = new JButton("-");
 		minus.setPreferredSize(new Dimension(30, 30));
 		minus.setMargin(new Insets(0, 0, 0, 0));
+        minus.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int option = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da uklonite profesora?",
+						"Brisanje profesora", JOptionPane.YES_NO_OPTION);
+				if ( option == JOptionPane.YES_OPTION) {
+					txtProf.setText("");
+					Profesor p = predmet.getProfesor();
+					p.getSpisakPredmeta().remove(predmet);
+					predmet.setProfesor(new Profesor("", "", "", "", "", "", "", "", "", ""));
+					minus.setEnabled(false);
+					plus.setEnabled(true);
+					JOptionPane.showMessageDialog(null, "Profesor je obrisan!");
+				} else {
+					JOptionPane.showMessageDialog(null, "Profesor nije obrisan.");
+				}
+			}
+		});
 		
 		JLabel labelSifra = new JLabel("Šifra*:");
 		labelSifra.setPreferredSize(dim);
