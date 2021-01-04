@@ -91,9 +91,21 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 				plus.setSelected(true);
 				DialogAddProfesorToPredmet dialog = new DialogAddProfesorToPredmet(MainFrame.getInstance(), "Odaberi profesora", true);
 				dialog.setVisible(true);
-				txtProf.setText(predmet.getProfesor().getIme() + " " + predmet.getProfesor().getPrezime());
-				MainFrame.getInstance().refresh();
-				plus.setEnabled(false);
+				
+				if(predmet.getProfesor().toStringWithoutSpaces().equals("")) {
+					txtProf.setText("");
+					minus.setEnabled(false);
+					plus.setEnabled(true);
+					
+				}
+				else {
+					
+					txtProf.setText(predmet.getProfesor().getIme() + " " + predmet.getProfesor().getPrezime());
+					MainFrame.getInstance().refresh();
+					plus.setEnabled(false);
+					minus.setEnabled(true);
+				}
+				
 				if (check()) {
 					ok.setEnabled(true);
 				} else {
@@ -398,11 +410,13 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 		
 		System.out.println(predmet.getProfesor().toStringWithoutSpaces().length());
 		if(predmet.getProfesor().toStringWithoutSpaces().length() == 0) {
-			System.out.println("usao");
+	
 			plus.setEnabled(true);
+			minus.setEnabled(false);
 		}
 		else {
 			plus.setEnabled(false);
+			
 		}
 		
 		String semestar = predmet.getSemestar().toString();
