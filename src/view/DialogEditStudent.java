@@ -20,6 +20,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 import controller.StudentController;
@@ -31,6 +32,10 @@ import model.StudentBase;
 
 public class DialogEditStudent extends JDialog implements ActionListener{
 
+	private JTabbedPane tabbedPane;
+	private JPanel panelInfo;
+	private JPanel panelPolozeni;
+	private JPanel panelNepolozeni;
 	private JTextField txtIme = new JTextField();
 	private JTextField txtPrezime = new JTextField();
 	private JTextField txtDatumRodjenja = new JTextField();
@@ -50,13 +55,16 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 		super(instance, title, b);
 		
 		setTitle("Izmena studenta");
-		setSize(400, 500);
+		setSize(400, 550);
 		setLocationRelativeTo(null);
 		setResizable(false);
+		setModal(true);
+		tabbedPane = new JTabbedPane();
 		
 		Dimension dim = new Dimension(120, 20);
 		
 		JPanel panCommands = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		panCommands.setBackground(new Color(204, 227, 249));
 		ok = new JButton("POTVRDA");
 		ok.addActionListener(this);
 		ok.setBackground(new Color(255, 205, 193));
@@ -504,13 +512,30 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 		gbcComboBoxFinansiranje.insets = new Insets(20, 20, 0, 20);
 		panEditStudent.add(finansiranjeComboBox, gbcComboBoxFinansiranje);
 		
-		add(panEditStudent, BorderLayout.CENTER);
-		add(panCommands, BorderLayout.SOUTH);
+		
+		panelInfo = new JPanel();
+		
+		panelInfo.add(panEditStudent, BorderLayout.CENTER);
+		panelInfo.add(panCommands, BorderLayout.SOUTH);
+		panelInfo.setBackground(new Color(204, 227, 249));
+		setStudent();
+		txtIndeks.setEditable(false);
 
 		setResizable(false);
 		
-		setStudent();
-		txtIndeks.setEditable(false);
+		
+		panelPolozeni = new JPanel();
+		panelPolozeni.setVisible(true);
+		panelPolozeni.setBackground(new Color(204, 227, 249));
+		
+		panelNepolozeni = new JPanel();
+		panelNepolozeni.setVisible(true);
+		panelNepolozeni.setBackground(new Color(204, 227, 249));
+		
+		tabbedPane.add("Info", panelInfo);
+		tabbedPane.addTab("Položeni", panelPolozeni);
+		tabbedPane.addTab("Nepoloženi", panelNepolozeni);
+		add(tabbedPane, BorderLayout.CENTER);
 		
 	}
 	

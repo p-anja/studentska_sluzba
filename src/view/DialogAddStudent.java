@@ -20,6 +20,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 import controller.StudentController;
@@ -28,16 +29,17 @@ import model.StatusStudent;
 
 public class DialogAddStudent extends JDialog implements ActionListener{
 
-	JTextField txtIme = new JTextField();
-	JTextField txtPrezime = new JTextField();
-	JTextField txtDatumRodjenja = new JTextField();
-	JTextField txtAdresa = new JTextField();
-	JTextField txtTelefon = new JTextField();
-	JTextField txtEmail = new JTextField();
-	JTextField txtIndeks = new JTextField();
-	JTextField txtGodinaUpisa = new JTextField();
-	JComboBox<String> godinaComboBox;
-	JComboBox<String> finansiranjeComboBox;
+	
+	private JTextField txtIme = new JTextField();
+	private JTextField txtPrezime = new JTextField();
+	private JTextField txtDatumRodjenja = new JTextField();
+	private JTextField txtAdresa = new JTextField();
+	private JTextField txtTelefon = new JTextField();
+	private JTextField txtEmail = new JTextField();
+	private JTextField txtIndeks = new JTextField();
+	private JTextField txtGodinaUpisa = new JTextField();
+	private JComboBox<String> godinaComboBox;
+	private JComboBox<String> finansiranjeComboBox;
 	
 
 	
@@ -49,6 +51,7 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		setTitle("Dodavanje studenta");
+		
 		
 		Dimension dim = new Dimension(120, 20);
 
