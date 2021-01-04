@@ -443,8 +443,8 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 		text[1] = txtNaziv.getText().toString();
 		text[2] = semestarComboBox.getSelectedItem().toString();
 		text[3] = godinaComboBox.getSelectedItem().toString();
-		text[4] = txtProf.getText().toString();
-		text[5] = txtESPB.getText().toString();
+		text[4] = txtESPB.getText().toString();
+		text[5] = txtProf.getText().toString();
 		
 		if(predmet.getProfesor().toStringWithoutSpaces().length() == 0) {
 			plus.setEnabled(true);
@@ -469,20 +469,20 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 			return false;
 		}
 		
-		if (!Pattern.matches("^[0-9]*", text[5])) {
+		if (!Pattern.matches("^[0-9]*", text[4])) {
 			txtESPB.setBackground(Color.RED);
 			return false;
 		}
 
-		for (String t : text) {
-			if ((t = t.trim()).length() == 0) {
+		for(int i = 0; i < 5; i++) {
+			if ((text[i] = text[i].trim()).length() == 0) {
 				txtSifra.setBackground(Color.WHITE);
 				txtNaziv.setBackground(Color.WHITE);
 				txtProf.setBackground(Color.WHITE);
 				txtESPB.setBackground(Color.WHITE);
 				out = false;
 			}
-		} 
+		}
 
 		return out;
 	}
@@ -519,13 +519,13 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 		
 		for(Profesor p : ProfesorBase.getInstance().getListProfesor()) {
 			String s = p.getIme() + " " + p.getPrezime();
-			if(s.equals(text[4])) {
+			if(s.equals(text[5])) {
 				prof = p;
 			}
 		}
 		
 		PredmetController.getInstance().editPredmet(MainFrame.getInstance().getSelectedRow(), text[0], text[1], Semestar.valueOf(semestar), god, prof,
-			Integer.parseInt(text[5]));
+			Integer.parseInt(text[4]));
 	    setVisible(false);
 		
 	}
