@@ -7,6 +7,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,8 +39,10 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 	JTextField txtNaziv = new JTextField();
 	JComboBox<String> semestarComboBox;
 	JComboBox<String> godinaComboBox;
-	JComboBox<Profesor> profComboBox;
+	JTextField txtProf = new JTextField();
 	JTextField txtESPB = new JTextField();
+	JButton plus;
+	JButton minus;
 	
 	private Predmet predmet;
 	
@@ -52,7 +55,7 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		setTitle("Izmena predmeta");
 		
-		Dimension dim = new Dimension(120, 20);
+		Dimension dim = new Dimension(100, 30);
 
 		JPanel answer = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		JButton cancel = new JButton("ODUSTANI");
@@ -68,7 +71,16 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 		JButton ok = new JButton("POTVRDA");
 		ok.setEnabled(false);
 		ok.setBackground(new Color(255, 205 ,193));
-		ok.addActionListener(this);
+		ok.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				MainFrame.getInstance().refresh();
+				dispose();
+			}
+			
+		});
 		
 		answer.add(cancel);
 		answer.add(ok);
@@ -77,6 +89,29 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 		panEdit.setBackground(Color.white);
 		panEdit.setLayout(new GridBagLayout());
 		panEdit.setBackground(new Color(204, 227, 249));
+		
+		plus = new JButton("+");
+		plus.setPreferredSize(new Dimension(30, 30));
+		plus.setMargin(new Insets(0, 0, 0, 0));
+		plus.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				DialogAddProfesorToPredmet dialog = new DialogAddProfesorToPredmet(MainFrame.getInstance(), "Odaberi profesora", true);
+				dialog.setVisible(true);
+				txtProf.setText(predmet.getProfesor().getIme() + " " + predmet.getProfesor().getPrezime());
+				plus.setEnabled(false);
+				if (check()) {
+					ok.setEnabled(true);
+				} else {
+					ok.setEnabled(false);
+				}
+				
+			}
+		});
+		minus = new JButton("-");
+		minus.setPreferredSize(new Dimension(30, 30));
+		minus.setMargin(new Insets(0, 0, 0, 0));
 		
 		JLabel labelSifra = new JLabel("Šifra*:");
 		labelSifra.setPreferredSize(dim);
@@ -180,24 +215,31 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 		
 		JLabel labelProfesor = new JLabel("Profesor*:");
 		labelProfesor.setPreferredSize(dim);
-
 		
-		profComboBox = new JComboBox<Profesor>();
-		profComboBox.addItem(new Profesor("", "", "", "", "", "", "", "", "", ""));
-		
-		for (Profesor p : ProfesorBase.getInstance().getListProfesor())
-		{
-			profComboBox.addItem(p);
-		}
-		profComboBox.addActionListener(new ActionListener() {
+	
+		txtProf.setPreferredSize(dim);
+		txtProf.setName("txtProf");
+		txtProf.addKeyListener(new KeyListener() {
 
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
+			public void keyPressed(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void keyReleased(KeyEvent arg0) {
 				if (check()) {
 					ok.setEnabled(true);
 				} else {
 					ok.setEnabled(false);
 				}
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				// TODO Auto-generated method stub
 				
 			}
 			
@@ -225,6 +267,7 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 					ok.setEnabled(false);
 				}
 				
+				
 			}
 
 			@Override
@@ -246,7 +289,6 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 		gbcNaziv.gridx = 0;
 		gbcNaziv.gridy = 1;
 		gbcNaziv.insets = new Insets(20, 20, 0, 0);
-		gbcNaziv.anchor = GridBagConstraints.LINE_START;
 		panEdit.add(labelNaziv, gbcNaziv);
 
 		GridBagConstraints gbcSemestar = new GridBagConstraints();
@@ -261,24 +303,24 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 		gbcGodina.insets = new Insets(20, 20, 0, 0);
 		panEdit.add(lblGodina, gbcGodina);
 
-		GridBagConstraints gbcProfesor = new GridBagConstraints();
-		gbcProfesor.gridx = 0;
-		gbcProfesor.gridy = 4;
-		gbcProfesor.insets = new Insets(20, 20, 0, 0);
-		panEdit.add(labelProfesor, gbcProfesor);
-
 		GridBagConstraints gbcESPB = new GridBagConstraints();
 		gbcESPB.gridx = 0;
-		gbcESPB.gridy = 5;
+		gbcESPB.gridy = 4;
 		gbcESPB.insets = new Insets(20, 20, 0, 0);
 		panEdit.add(labelESPB, gbcESPB);
-
 		
+		GridBagConstraints gbcProfesor = new GridBagConstraints();
+		gbcProfesor.gridx = 0;
+		gbcProfesor.gridy = 5;
+		gbcProfesor.insets = new Insets(20, 20, 20, 0);
+		panEdit.add(labelProfesor, gbcProfesor);
+
 
 		GridBagConstraints gbcTekstSifra = new GridBagConstraints();
 		gbcTekstSifra.gridx = 1;
 		gbcTekstSifra.gridy = 0;
 		gbcTekstSifra.weightx = 200;
+		gbcTekstSifra.gridwidth = 200;
 		gbcTekstSifra.fill = GridBagConstraints.HORIZONTAL;
 		gbcTekstSifra.insets = new Insets(20, 20, 0, 20);
 		panEdit.add(txtSifra, gbcTekstSifra);
@@ -287,6 +329,7 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 		gbcTekstNaziv.gridx = 1;
 		gbcTekstNaziv.gridy = 1;
 		gbcTekstNaziv.weightx = 200;
+		gbcTekstNaziv.gridwidth = 200;
 		gbcTekstNaziv.fill = GridBagConstraints.HORIZONTAL;
 		gbcTekstNaziv.insets = new Insets(20, 20, 0, 20);
 		panEdit.add(txtNaziv, gbcTekstNaziv);
@@ -295,6 +338,7 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 		gbcTekstSemestar.gridx = 1;
 		gbcTekstSemestar.gridy = 2;
 		gbcTekstSemestar.weightx = 200;
+		gbcTekstSemestar.gridwidth = 200;
 		gbcTekstSemestar.fill = GridBagConstraints.HORIZONTAL;
 		gbcTekstSemestar.insets = new Insets(20, 20, 0, 20);
 		panEdit.add(semestarComboBox, gbcTekstSemestar);
@@ -303,26 +347,44 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 		gbcTekstGodina.gridx = 1;
 		gbcTekstGodina.gridy = 3;
 		gbcTekstGodina.weightx = 200;
+		gbcTekstGodina.gridwidth = 200;
 		gbcTekstGodina.fill = GridBagConstraints.HORIZONTAL;
 		gbcTekstGodina.insets = new Insets(20, 20, 0, 20);
 		panEdit.add(godinaComboBox, gbcTekstGodina);
 
-		GridBagConstraints gbcTekstProfesor = new GridBagConstraints();
-		gbcTekstProfesor.gridx = 1;
-		gbcTekstProfesor.gridy = 4;
-		gbcTekstProfesor.weightx = 200;
-		gbcTekstProfesor.fill = GridBagConstraints.HORIZONTAL;
-		gbcTekstProfesor.insets = new Insets(20, 20, 0, 20);
-		panEdit.add(profComboBox, gbcTekstProfesor);
-
 		GridBagConstraints gbcTekstESPB = new GridBagConstraints();
 		gbcTekstESPB.gridx = 1;
-		gbcTekstESPB.gridy = 5;
+		gbcTekstESPB.gridy = 4;
 		gbcTekstESPB.weightx = 200;
+		gbcTekstESPB.gridwidth = 200;
 		gbcTekstESPB.fill = GridBagConstraints.HORIZONTAL;
 		gbcTekstESPB.insets = new Insets(20, 20, 0, 20);
 		panEdit.add(txtESPB, gbcTekstESPB);
 		
+		GridBagConstraints gbcTekstProfesor = new GridBagConstraints();
+		gbcTekstProfesor.gridx = 1;
+		gbcTekstProfesor.gridy = 5;
+		gbcTekstProfesor.weightx = 200;
+		gbcTekstProfesor.gridwidth = 30;
+		gbcTekstProfesor.fill = GridBagConstraints.HORIZONTAL;
+		gbcTekstProfesor.insets = new Insets(20, 20, 20, 130);
+		panEdit.add(txtProf, gbcTekstProfesor);
+		
+		GridBagConstraints gbcPlus = new GridBagConstraints();
+		gbcPlus.gridx = 2;
+		gbcPlus.gridy = 5;
+		gbcPlus.fill = GridBagConstraints.CENTER;
+		gbcPlus.insets = new Insets(0, 160, 0, 0);
+		panEdit.add(plus, gbcPlus);
+		
+		GridBagConstraints gbcMinus = new GridBagConstraints();
+		gbcMinus.gridx = 3;
+		gbcMinus.gridy = 5;
+		gbcMinus.fill = GridBagConstraints.CENTER;
+		gbcMinus.insets = new Insets(0, 25, 0, 0);
+		panEdit.add(minus, gbcMinus);
+		
+
 		add(panEdit, BorderLayout.CENTER);
 		add(answer, BorderLayout.SOUTH);
 
@@ -339,6 +401,16 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 		txtSifra.setText(predmet.getSifra());
 		txtNaziv.setText(predmet.getNaziv());
 		txtESPB.setText(Integer.toString(predmet.getBrEspb()));
+		txtProf.setText(predmet.getProfesor().getIme() + " " + predmet.getProfesor().getPrezime());
+		
+		System.out.println(predmet.getProfesor().toStringWithoutSpaces().length());
+		if(predmet.getProfesor().toStringWithoutSpaces().length() == 0) {
+			System.out.println("usao");
+			plus.setEnabled(true);
+		}
+		else {
+			plus.setEnabled(false);
+		}
 		
 		String semestar = predmet.getSemestar().toString();
 		
@@ -367,15 +439,6 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 			godinaComboBox.setSelectedIndex(godina);
 		}
 
-		Profesor prof = predmet.getProfesor();
-		
-		for(int i= 1; i <profComboBox.getItemCount(); i++) {
-			if(profComboBox.getItemAt(i).equals(prof)) {
-				profComboBox.setSelectedIndex(i);
-			}
-		}
-
-		
 	}
 	
 	public String[] saveEnteredText() {
@@ -387,8 +450,15 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 		text[1] = txtNaziv.getText().toString();
 		text[2] = semestarComboBox.getSelectedItem().toString();
 		text[3] = godinaComboBox.getSelectedItem().toString();
-		text[4] = profComboBox.getSelectedItem().toString();
+		text[4] = txtProf.getText().toString();
 		text[5] = txtESPB.getText().toString();
+		
+		if(predmet.getProfesor().toStringWithoutSpaces().length() == 0) {
+			plus.setEnabled(true);
+		}
+		else{
+			plus.setEnabled(false);
+		}
 		
 		return text;
 	}
@@ -415,7 +485,7 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 			if ((t = t.trim()).length() == 0) {
 				txtSifra.setBackground(Color.WHITE);
 				txtNaziv.setBackground(Color.WHITE);
-				profComboBox.setBackground(Color.WHITE);
+				txtProf.setBackground(Color.WHITE);
 				txtESPB.setBackground(Color.WHITE);
 				out = false;
 			}
@@ -452,9 +522,19 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 			god = 4;
 		}
 		
-		PredmetController.getInstance().editPredmet(MainFrame.getInstance().getSelectedRow(), text[0], text[1], Semestar.valueOf(semestar), god, (Profesor)profComboBox.getSelectedItem(),
+		Profesor prof = new Profesor("","","","","","","","","","");
+		
+		for(Profesor p : ProfesorBase.getInstance().getListProfesor()) {
+			String s = p.getIme() + " " + p.getPrezime();
+			if(s.equals(text[4])) {
+				prof = p;
+			}
+		}
+		
+		PredmetController.getInstance().editPredmet(MainFrame.getInstance().getSelectedRow(), text[0], text[1], Semestar.valueOf(semestar), god, prof,
 			Integer.parseInt(text[5]));
 	    setVisible(false);
 		
 	}
+	
 }
