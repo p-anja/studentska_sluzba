@@ -95,6 +95,7 @@ public class DialogAddPredmetToProfesor extends JDialog implements ActionListene
 				}
 			}
 			JOptionPane.showMessageDialog(null, "Predmet uspešno dodat!");
+			setVisible(false);
 		}
 	}
 }

@@ -35,7 +35,7 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 	private JTabbedPane tabbedPane;
 	private JPanel panelInfo;
 	private JPanel panelPolozeni;
-	private JPanel panelNepolozeni;
+	private NepolozeniIspitiTablePanel panelNepolozeni;
 	private JTextField txtIme = new JTextField();
 	private JTextField txtPrezime = new JTextField();
 	private JTextField txtDatumRodjenja = new JTextField();
@@ -528,7 +528,7 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 		panelPolozeni.setVisible(true);
 		panelPolozeni.setBackground(new Color(204, 227, 249));
 		
-		panelNepolozeni = new JPanel();
+		panelNepolozeni = new NepolozeniIspitiTablePanel();
 		panelNepolozeni.setVisible(true);
 		panelNepolozeni.setBackground(new Color(204, 227, 249));
 		
