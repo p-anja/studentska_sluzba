@@ -91,6 +91,7 @@ public class DialogEditProfesor extends JDialog {
 		
 		panCommands.add(btnCancel);
 		panCommands.add(btnOk);
+		panCommands.setBackground(new Color(204, 227, 249));
 		
 		JPanel panEditProfesor = new JPanel();
 		panEditProfesor.setLayout(new GridBagLayout());
@@ -506,6 +507,7 @@ public class DialogEditProfesor extends JDialog {
 		panelInfo = new JPanel();
 		//panEditProfesor.setSize(400,500);
 		//panelInfo.setSize(400, 500);
+		panelInfo.setBackground(new Color(204, 227, 249));
 		panelInfo.add(panEditProfesor, BorderLayout.CENTER);
 		panelInfo.add(panCommands, BorderLayout.SOUTH);
 		setProfesor();

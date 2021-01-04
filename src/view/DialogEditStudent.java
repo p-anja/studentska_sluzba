@@ -55,7 +55,7 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 		super(instance, title, b);
 		
 		setTitle("Izmena studenta");
-		setSize(400, 550);
+		setSize(500, 550);
 		setLocationRelativeTo(null);
 		setResizable(false);
 		setModal(true);
