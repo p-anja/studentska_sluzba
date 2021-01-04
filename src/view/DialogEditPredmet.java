@@ -71,16 +71,7 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 		JButton ok = new JButton("POTVRDA");
 		ok.setEnabled(false);
 		ok.setBackground(new Color(255, 205 ,193));
-		ok.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				MainFrame.getInstance().refresh();
-				dispose();
-			}
-			
-		});
+		ok.addActionListener(this);
 		
 		answer.add(cancel);
 		answer.add(ok);
@@ -97,9 +88,11 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				plus.setSelected(true);
 				DialogAddProfesorToPredmet dialog = new DialogAddProfesorToPredmet(MainFrame.getInstance(), "Odaberi profesora", true);
 				dialog.setVisible(true);
 				txtProf.setText(predmet.getProfesor().getIme() + " " + predmet.getProfesor().getPrezime());
+				MainFrame.getInstance().refresh();
 				plus.setEnabled(false);
 				if (check()) {
 					ok.setEnabled(true);
