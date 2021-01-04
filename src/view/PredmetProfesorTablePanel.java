@@ -6,10 +6,20 @@ import java.awt.FlowLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+
+import controller.PredmetController;
+import controller.StudentController;
+import model.Predmet;
+import model.PredmetBase;
+import model.Profesor;
+import model.ProfesorBase;
+import model.StudentBase;
 
 public class PredmetProfesorTablePanel extends JPanel{
 	private PredmetProfesorJTable predmetTable;
@@ -40,6 +50,43 @@ public class PredmetProfesorTablePanel extends JPanel{
 			}
 		});
 		panCommands.add(btnRemove);
+		btnRemove.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				int row = predmetTable.getSelectedRow();
+				Profesor p = ProfesorBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow());
+				
+				if (row >= 0 && row <= predmetTable.getRowCount()) {
+					int option = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da obrišete predmet sa profesora?",
+							"Brisanje predmeta", JOptionPane.YES_NO_OPTION);
+					if ( option == JOptionPane.YES_OPTION) {
+						
+						for(Predmet pr : PredmetBase.getInstance().getListPredmet()) {
+							if(p.getSpisakPredmeta().get(row).equals(pr)) {
+								PredmetBase.getInstance().editPredmet(pr.getSifra(), pr.getNaziv(), pr.getSemestar(),
+										pr.getGodina(), new Profesor("","","","","","","","","",""), pr.getBrEspb());
+							}
+						}
+						
+						p.getSpisakPredmeta().remove(row);
+						refresh();
+			
+			
+						
+						JOptionPane.showMessageDialog(null, "Predmet je obrisan!");
+					} else {
+						JOptionPane.showMessageDialog(null, "Predmet nije obrisan.");
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, "Predmet nije selektovan.", "Upozorenje!",
+							JOptionPane.ERROR_MESSAGE);
+				}
+				btnRemove.setSelected(false);
+				
+			}
+			
+		});
 		add(panCommands, BorderLayout.NORTH);
 	}
 	

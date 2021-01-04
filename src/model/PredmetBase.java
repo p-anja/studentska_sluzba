@@ -29,10 +29,11 @@ public class PredmetBase {
 	}
 	
 	private void init() {
-		
 		listPredmet.add(new Predmet("E214", "Matematička analiza 1", Semestar.ZIMSKI, 1, ProfesorBase.getInstance().getListProfesor().get(1), 
 				9));
 		listPredmet.add(new Predmet("GG03", "Nacrtna geometrija", Semestar.ZIMSKI, 2, ProfesorBase.getInstance().getListProfesor().get(2), 
+				5));
+		listPredmet.add(new Predmet("E123", "Algebra", Semestar.ZIMSKI, 1, new Profesor("","","","","","","","","",""), 
 				5));
 
 	}
@@ -122,7 +123,5 @@ public class PredmetBase {
 			}
 		}
 	}
-
-
-		
+	
 }
