@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Student {
 	
-	
 	private String ime;
 	private String prezime;
 	private String datumRodjenja;
@@ -16,7 +15,8 @@ public class Student {
 	private int trenutnaGodStudija;
 	private StatusStudent status;
 	private double prosecnaOcena;
-	private ArrayList<Predmet> predmeti;
+	private ArrayList<Ocena> polozeniIspiti;
+	private ArrayList<Predmet> nepolozeniIspiti;
 	
 	public Student(String ime, String prezime, String datumRodjenja, String adresaStanovanja, String kontaktTelefon,
 			String email, String brojIndeksa, String godinaUpisa, int trenutnaGodStudija, StatusStudent status) {
@@ -31,8 +31,31 @@ public class Student {
 		this.godinaUpisa = godinaUpisa;
 		this.trenutnaGodStudija = trenutnaGodStudija;
 		this.status = status;
-		predmeti = new ArrayList<Predmet>();
+		polozeniIspiti = new ArrayList<Ocena>();
+		nepolozeniIspiti = new ArrayList<Predmet>();
 	}
+	
+	
+
+	public Student(String ime, String prezime, String datumRodjenja, String adresaStanovanja, String kontaktTelefon,
+			String email, String brojIndeksa, String godinaUpisa, int trenutnaGodStudija, StatusStudent status,
+			 ArrayList<Ocena> polozeniIspiti, ArrayList<Predmet> nepolozeniIspiti) {
+		super();
+		this.ime = ime;
+		this.prezime = prezime;
+		this.datumRodjenja = datumRodjenja;
+		this.adresaStanovanja = adresaStanovanja;
+		this.kontaktTelefon = kontaktTelefon;
+		this.email = email;
+		this.brojIndeksa = brojIndeksa;
+		this.godinaUpisa = godinaUpisa;
+		this.trenutnaGodStudija = trenutnaGodStudija;
+		this.status = status;
+		this.polozeniIspiti = polozeniIspiti;
+		this.nepolozeniIspiti = nepolozeniIspiti;
+	}
+
+
 
 	public String getIme() {
 		return ime;
@@ -122,11 +145,27 @@ public class Student {
 		this.prosecnaOcena = prosecnaOcena;
 	}
 
+	public ArrayList<Ocena> getPolozeniIspiti() {
+		return polozeniIspiti;
+	}
+
+	public void setPolozeniIspiti(ArrayList<Ocena> polozeniIspiti) {
+		this.polozeniIspiti = polozeniIspiti;
+	}
+
+	public ArrayList<Predmet> getNepolozeniIspiti() {
+		return nepolozeniIspiti;
+	}
+
+	public void setNepolozeniIspiti(ArrayList<Predmet> nepolozeniIspiti) {
+		this.nepolozeniIspiti = nepolozeniIspiti;
+	}
+
 	@Override
 	public String toString() {
 		return ime + "-" + prezime + "-" + datumRodjenja + "-" + adresaStanovanja + "-" + kontaktTelefon +
 				"-" + email + " - " + brojIndeksa + " - " + godinaUpisa + " - " + trenutnaGodStudija + " - "
-				+ status + " - " + predmeti + "\n";
+				+ status + " - " + polozeniIspiti + nepolozeniIspiti + "\n";
 	}
 	
 	
