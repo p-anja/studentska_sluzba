@@ -91,20 +91,24 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 				plus.setSelected(true);
 				DialogAddProfesorToPredmet dialog = new DialogAddProfesorToPredmet(MainFrame.getInstance(), "Odaberi profesora", true);
 				dialog.setVisible(true);
+				Profesor p = dialog.getProf();
+					
+				if(p != null) {
+					
+					if(p.toStringWithoutSpaces().equals("")) {
+						txtProf.setText("");
+						plus.setEnabled(true);
+						minus.setEnabled(false);
+						
+					}
+					else {
+						
+						txtProf.setText(p.getIme() + " " + p.getPrezime());
+						plus.setEnabled(false);
+						minus.setEnabled(true);
+					}
+				}
 				
-				if(predmet.getProfesor().toStringWithoutSpaces().equals("")) {
-					txtProf.setText("");
-					minus.setEnabled(false);
-					plus.setEnabled(true);
-					
-				}
-				else {
-					
-					txtProf.setText(predmet.getProfesor().getIme() + " " + predmet.getProfesor().getPrezime());
-					MainFrame.getInstance().refresh();
-					plus.setEnabled(false);
-					minus.setEnabled(true);
-				}
 				
 				if (check()) {
 					ok.setEnabled(true);
@@ -427,7 +431,6 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 		txtESPB.setText(Integer.toString(predmet.getBrEspb()));
 		txtProf.setText(predmet.getProfesor().getIme() + " " + predmet.getProfesor().getPrezime());
 		
-		System.out.println(predmet.getProfesor().toStringWithoutSpaces().length());
 		if(predmet.getProfesor().toStringWithoutSpaces().length() == 0) {
 	
 			plus.setEnabled(true);
@@ -435,6 +438,7 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 		}
 		else {
 			plus.setEnabled(false);
+			minus.setEnabled(true);
 			
 		}
 		
@@ -478,13 +482,6 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 		text[3] = godinaComboBox.getSelectedItem().toString();
 		text[4] = txtESPB.getText().toString();
 		text[5] = txtProf.getText().toString();
-		
-		if(predmet.getProfesor().toStringWithoutSpaces().length() == 0) {
-			plus.setEnabled(true);
-		}
-		else{
-			plus.setEnabled(false);
-		}
 		
 		return text;
 	}

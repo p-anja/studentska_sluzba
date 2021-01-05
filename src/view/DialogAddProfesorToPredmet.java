@@ -27,6 +27,7 @@ import model.ProfesorBase;
 		private JButton btnCancel;
 		private String selectedProfesor;
 		private JList listProfesor;
+		private Profesor prof;
 		
 		public DialogAddProfesorToPredmet(MainFrame instance, String title, boolean b) {
 			super(instance, title, b);
@@ -87,8 +88,7 @@ import model.ProfesorBase;
 					
 					if(ime.equals(p.getIme()) && prezime.equals(p.getPrezime())) {
 						
-						PredmetBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow()).setProfesor(p);
-						p.getSpisakPredmeta().add(PredmetBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow()));
+						prof = p;
 						
 					}
 				}
@@ -97,6 +97,10 @@ import model.ProfesorBase;
 				dispose();
 			}
 			
+		}
+		
+		public Profesor getProf() {
+			return this.prof;
 		}
 	}
 
