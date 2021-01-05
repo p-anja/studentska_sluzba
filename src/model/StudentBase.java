@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,8 @@ public class StudentBase {
 	
 	private List<String> cols;
 	protected List<Student> students;
+	protected ArrayList<Ocena> polozeni;
+	protected ArrayList<Predmet> nepolozeni;
 	
 	private StudentBase() {
 		
@@ -39,11 +42,11 @@ public class StudentBase {
 	public List<Student> getStudents() {
 		return students;
 	}
-	public void setStudents(List<Student> students) {
-		this.students = students;
-	}
 	public int getStudentCount() {
 		return students.size();
+	}
+	public void setStudents(List<Student> students) {
+		this.students = students;
 	}
 	public int getColumnCount() {
 		return cols.size();
@@ -157,12 +160,26 @@ public class StudentBase {
 	
 	private void initStudents() {
 		this.students = new ArrayList<Student>();
-		students.add(new Student("Mika", "Mikić", "12.3.1999.", "Šumadijska 8, Novi Sad", "063563214", "mika@mail.com", "in-96-2018", "2018", 3, StatusStudent.B));
+		this.polozeni = new ArrayList<Ocena>();
+		this.nepolozeni = new ArrayList<Predmet>();
+		
+		Predmet p1 = new Predmet("E214", "Matematička analiza 1", Semestar.ZIMSKI, 1, ProfesorBase.getInstance().getListProfesor().get(1), 
+				9);
+		Predmet p2 = new Predmet("E214", "Algebra", Semestar.ZIMSKI, 1, ProfesorBase.getInstance().getListProfesor().get(2), 
+				9);
+		Ocena o1 = new Ocena(null, p1, 9, "22.1.2019.");
+		Ocena o2 = new Ocena(null, p2, 8, "23.1.2019.");
+		polozeni.add(o1);
+		polozeni.add(o2);
+		
+		students.add(new Student("Mika", "Mikić", "12.3.1999.", "Šumadijska 8, Novi Sad", "063563214", "mika@mail.com", "in-96-2018", "2018", 3, StatusStudent.B, polozeni, nepolozeni));
 		students.add(new Student("Pera", "Perić", "11.10.1998.", "Zlatne grede 1, Novi Sad", "065852963", "pera@mail.com", "ra-33-2017", "2017", 4, StatusStudent.S));
 		students.add(new Student("Toma", "Tomić", "20.3.2000.", "Alekse Šantića 3, Novi Sad", "063773214", "toma@mail.com", "ar-96-2019", "2019", 2, StatusStudent.B));
 		students.add(new Student("Ana", "Vidić", "20.2.2001.", "Ćirpanova 3, Novi Sad", "063721324", "ana@mail.com", "in-96-2020", "2020", 1, StatusStudent.B));
 		students.add(new Student("Jelena", "Čavić", "15.3.1999.", "Laze Kostića 2, Novi Sad", "064214564", "jelena@mail.com", "ar-180-2018", "2018", 3, StatusStudent.S));
 		students.add(new Student("Nikola", "Nikolić", "10.8.2000.", "Balzakova 13, Novi Sad", "062456987", "nikola@mail.com", "in-3-2019", "2019", 2, StatusStudent.S));
+		
+		
 	}
 	
 
