@@ -171,13 +171,17 @@ public class StudentBase {
 		Ocena o2 = new Ocena(null, p2, 8, "23.1.2019.");
 		polozeni.add(o1);
 		polozeni.add(o2);
+		ArrayList<Predmet> nep = new ArrayList<Predmet>();
+		nep.add(p1);
+		ArrayList<Ocena> pol = new ArrayList<Ocena>();
+
 		
 		students.add(new Student("Mika", "Mikić", "12.3.1999.", "Šumadijska 8, Novi Sad", "063563214", "mika@mail.com", "in-96-2018", "2018", 3, StatusStudent.B, polozeni, nepolozeni));
 		students.add(new Student("Pera", "Perić", "11.10.1998.", "Zlatne grede 1, Novi Sad", "065852963", "pera@mail.com", "ra-33-2017", "2017", 4, StatusStudent.S));
 		students.add(new Student("Toma", "Tomić", "20.3.2000.", "Alekse Šantića 3, Novi Sad", "063773214", "toma@mail.com", "ar-96-2019", "2019", 2, StatusStudent.B));
 		students.add(new Student("Ana", "Vidić", "20.2.2001.", "Ćirpanova 3, Novi Sad", "063721324", "ana@mail.com", "in-96-2020", "2020", 1, StatusStudent.B));
 		students.add(new Student("Jelena", "Čavić", "15.3.1999.", "Laze Kostića 2, Novi Sad", "064214564", "jelena@mail.com", "ar-180-2018", "2018", 3, StatusStudent.S));
-		students.add(new Student("Nikola", "Nikolić", "10.8.2000.", "Balzakova 13, Novi Sad", "062456987", "nikola@mail.com", "in-3-2019", "2019", 2, StatusStudent.S));
+		students.add(new Student("Nikola", "Nikolić", "10.8.2000.", "Balzakova 13, Novi Sad", "062456987", "nikola@mail.com", "in-3-2019", "2019", 2, StatusStudent.S,pol,nep));
 		
 		
 	}
