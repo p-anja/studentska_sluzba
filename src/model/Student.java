@@ -138,11 +138,19 @@ public class Student {
 	}
 
 	public double getProsecnaOcena() {
+		double suma = 0;
+		for(Ocena o : this.polozeniIspiti) {
+			suma += o.getVrednostOcene();
+		}
+		prosecnaOcena = suma / polozeniIspiti.size();
 		return prosecnaOcena;
 	}
-
-	public void setProsecnaOcena(double prosecnaOcena) {
-		this.prosecnaOcena = prosecnaOcena;
+	public int getBodove() {
+		int suma = 0;
+		for(Ocena o : this.polozeniIspiti) {
+			suma += o.getPredmet().getBrEspb();
+		}
+		return suma;
 	}
 
 	public ArrayList<Ocena> getPolozeniIspiti() {
