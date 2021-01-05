@@ -2,6 +2,7 @@ package view;
 
 import java.awt.BorderLayout;
 
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -542,11 +543,11 @@ public class DialogEditProfesor extends JDialog {
 	public boolean check() {
 		String text[] = getTxt();
 		
-		if (!Pattern.matches("[a-zA-Z0-9_ ÄŤÄŚÄ‡Ä†ĹľĹ˝ĹˇĹ Ä‘Ä]*", text[0])) {
+		if (!Pattern.matches("[a-zA-Z0-9_ čČćĆžŽšŠđĐ]*", text[0])) {
 			txtIme.setBackground(Color.RED);
 			return false;
 		}
-		if (!Pattern.matches("[a-zA-Z0-9_ ÄŤÄŚÄ‡Ä†ĹľĹ˝ĹˇĹ Ä‘Ä]*", text[1])) {
+		if (!Pattern.matches("[a-zA-Z0-9_ čČćĆžŽšŠđĐ]*", text[1])) {
 			txtPrezime.setBackground(Color.RED);
 			return false;
 		}
@@ -556,7 +557,7 @@ public class DialogEditProfesor extends JDialog {
 				return false;
 			}
 		}
-		if (!Pattern.matches("[a-zA-Z0-9_ ÄŤÄŚÄ‡Ä†ĹľĹ˝ĹˇĹ Ä‘Ä,]*", text[3])) {
+		if (!Pattern.matches("[a-zA-Z0-9_ čČćĆžŽšŠđĐ,]*", text[3])) {
 			txtAdresaStanovanja.setBackground(Color.RED);
 			return false;
 		}
@@ -570,7 +571,7 @@ public class DialogEditProfesor extends JDialog {
 				return false;
 			}
 		}
-		if (!Pattern.matches("[a-zA-Z0-9_ ÄŤÄŚÄ‡Ä†ĹľĹ˝ĹˇĹ Ä‘Ä,]*", text[6])) {
+		if (!Pattern.matches("[a-zA-Z0-9_ čČćĆžŽšŠđĐ,]*", text[6])) {
 			txtAdresaKancelarije.setBackground(Color.RED);
 			return false;
 		}

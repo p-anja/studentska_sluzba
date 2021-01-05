@@ -29,7 +29,7 @@ public class ProfesorTablePanel extends JPanel{
 		right.setPreferredSize(new Dimension(width / 10, height));
 		add(left, BorderLayout.WEST);
 		add(right, BorderLayout.EAST);
-		profesorTable = new ProfesorJTable();
+		profesorTable = ProfesorJTable.getInstance();
 		scrollPane = new JScrollPane(profesorTable);
 		add(scrollPane, BorderLayout.CENTER);
 	}

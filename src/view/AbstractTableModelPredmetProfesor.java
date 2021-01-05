@@ -12,9 +12,9 @@ import model.Semestar;
 
 public class AbstractTableModelPredmetProfesor extends AbstractTableModel{
 	
+	private Profesor p = ProfesorJTable.getInstance().selected();
 	@Override
 	public int getRowCount() {
-		Profesor p = ProfesorBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow());
 		return p.getSpisakPredmeta().size();
 	}
 	
@@ -56,7 +56,6 @@ public class AbstractTableModelPredmetProfesor extends AbstractTableModel{
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		Profesor p = ProfesorBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow());
 		ArrayList<Predmet> list= p.getSpisakPredmeta();
 		Predmet predmet = list.get(rowIndex);
 		switch(columnIndex)

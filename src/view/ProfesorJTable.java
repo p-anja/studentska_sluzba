@@ -13,17 +13,33 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+import model.Profesor;
+import model.ProfesorBase;
+
 
 public class ProfesorJTable extends JTable {
 	private TableRowSorter<TableModel> sorter;
-	public ProfesorJTable()
-	{
+	private static ProfesorJTable instance = null;
+	
+	public static ProfesorJTable getInstance() {
+		if(instance == null) {
+			instance = new ProfesorJTable();
+		}
+		return instance;
+	}
+	
+	private ProfesorJTable() {
+		
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
 		this.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		this.setModel(new AbstractTableModelProfesor());
 		sorter = new TableRowSorter<TableModel>((AbstractTableModelProfesor)this.getModel());
 		this.setRowSorter(sorter);
+	}
+	
+	public Profesor selected() {
+		return ProfesorBase.getInstance().getRow(this.getSelectedRow());
 	}
 	
 	public void clearFilter()
