@@ -34,6 +34,7 @@ import model.StudentBase;
 		public DialogAddPredmetToStudent(MainFrame instance, String title, boolean b) {
 			super(instance, title, b);
 			
+			
 			setTitle("Dodavanje predmeta");
 			setSize(400, 400);
 			setLocationRelativeTo(null);

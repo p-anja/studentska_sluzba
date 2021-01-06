@@ -64,6 +64,7 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 	private int bodovi;
 	private double avgOcena;
 	
+	
 	public DialogEditStudent(MainFrame instance, String title, boolean b) {
 		super(instance, title, b);
 		
