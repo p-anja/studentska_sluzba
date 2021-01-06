@@ -12,6 +12,7 @@ import model.StudentBase;
 
 public class AbstractTableModelPolozeniIspiti extends AbstractTableModel{
 
+	Student s = StudentJTable.getInstance().selected();
 	@Override
 	public int getColumnCount() {
 		// TODO Auto-generated method stub
@@ -21,14 +22,14 @@ public class AbstractTableModelPolozeniIspiti extends AbstractTableModel{
 	@Override
 	public int getRowCount() {
 		// TODO Auto-generated method stub
-		Student s = StudentBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow());
+	
 		return s.getPolozeniIspiti().size();
 	}
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
 		// TODO Auto-generated method stub
-		Student s = StudentBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow());
+	
 		ArrayList<Ocena> list= s.getPolozeniIspiti();
 		Ocena o = list.get(rowIndex);
 		switch(columnIndex)

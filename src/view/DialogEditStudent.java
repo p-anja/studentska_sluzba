@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
@@ -20,6 +21,7 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
@@ -34,8 +36,8 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 
 	private JTabbedPane tabbedPane;
 	private JPanel panelInfo;
-	private PolozeniIspitiTablePanel panelPolozeni;
-	private NepolozeniIspitiTablePanel panelNepolozeni;
+	private JPanel panelPolozeni;
+	private JPanel panelNepolozeni;
 	private JTextField txtIme = new JTextField();
 	private JTextField txtPrezime = new JTextField();
 	private JTextField txtDatumRodjenja = new JTextField();
@@ -48,8 +50,19 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 	private JComboBox<String> finansiranjeComboBox;
 	private JButton ok;
 	private JButton cancel;
-	
+	private NepolozeniIspitiJTable table;
+	private JButton btnAdd;
+	private JButton btnDelete;
+	private JButton btnExam;
+	private JScrollPane scrollPane;
 	private Student student;
+	private PolozeniIspitiJTable polozeniTable;
+	private JButton ponistiOcenu;
+	private JScrollPane scrollPane1;
+	private JLabel prosek;
+	private JLabel espb;
+	private int bodovi;
+	private double avgOcena;
 	
 	public DialogEditStudent(MainFrame instance, String title, boolean b) {
 		super(instance, title, b);
@@ -524,13 +537,81 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 		setResizable(false);
 		
 		
-		panelPolozeni = new PolozeniIspitiTablePanel();
+		panelPolozeni = new JPanel();
 		panelPolozeni.setVisible(true);
 		panelPolozeni.setBackground(new Color(204, 227, 249));
+		panelPolozeni.setLayout(new BorderLayout());
+		panelPolozeni.setOpaque(false);
 		
-		panelNepolozeni = new NepolozeniIspitiTablePanel();
+		polozeniTable = new PolozeniIspitiJTable();
+		scrollPane = new JScrollPane(polozeniTable);
+		panelPolozeni.add(scrollPane, BorderLayout.CENTER);
+		
+		JPanel panCommands1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		ponistiOcenu = new JButton("Poništi ocenu");
+		panCommands1.add(ponistiOcenu);
+		panelPolozeni.add(panCommands1, BorderLayout.NORTH);
+		
+		JPanel panLabels = new JPanel(new BorderLayout());
+		JPanel panLabel1 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		JPanel panLabel2 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
+		panLabel1.setBackground(new Color(204, 227, 249));
+		panLabel2.setBackground(new Color(204, 227, 249));
+		avgOcena = student.getProsecnaOcena();
+		prosek = new JLabel("Prosečnna ocena: "+ avgOcena);
+		bodovi =  student.getBodove();
+		espb = new JLabel("Ukupno ESPB: "+ bodovi);
+		panLabel1.add(prosek);
+		panLabel2.add(espb);
+		panLabels.add(panLabel1, BorderLayout.NORTH);
+		panLabels.add(panLabel2, BorderLayout.SOUTH);
+		
+		panelPolozeni.add(panLabels, BorderLayout.SOUTH);
+		
+		
+		panelNepolozeni = new JPanel();
 		panelNepolozeni.setVisible(true);
 		panelNepolozeni.setBackground(new Color(204, 227, 249));
+		panelNepolozeni.setLayout(new BorderLayout());
+		panelNepolozeni.setOpaque(false);
+		table = new NepolozeniIspitiJTable();
+		scrollPane1 = new JScrollPane(table);
+		panelNepolozeni.add(scrollPane1, BorderLayout.CENTER);
+		JPanel panCommands11 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		btnAdd = new JButton("Dodaj");
+		btnDelete = new JButton("Obriši");
+		
+		btnExam = new JButton("Polaganje");
+		btnExam.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (table.getSelectedRow() >= 0 &&  table.getSelectedRow() < table.getRowCount())
+				{
+					DialogAddMarkToStudent dialog = new DialogAddMarkToStudent(MainFrame.getInstance(), "Unos ocene", true, 
+							student.getNepolozeniIspiti().get((table.getSelectedRow())));
+					dialog.setVisible(true);
+					btnExam.setSelected(false);
+					refresh();
+					MainFrame.getInstance().refresh();
+					
+				}
+				else {
+							JOptionPane.showMessageDialog(null, "Predmet nije selektovan.", "Upozorenje!",
+									JOptionPane.ERROR_MESSAGE);
+					}
+				
+			}
+		});
+		panCommands11.add(btnAdd);
+		panCommands11.add(btnDelete);
+		panCommands11.add(btnExam);
+		panelNepolozeni.add(panCommands11, BorderLayout.NORTH);
+		
+		
+		
+		
+		
 		
 		tabbedPane.add("Info", panelInfo);
 		tabbedPane.addTab("Položeni", panelPolozeni);
@@ -614,18 +695,10 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 				txtEmail.setBackground(Color.WHITE);
 				txtIndeks.setBackground(Color.WHITE);
 				txtGodinaUpisa.setBackground(Color.WHITE);
-				return false;
+				out = false;
 			}
 		}
-		txtIme.setBackground(Color.WHITE);
-		txtPrezime.setBackground(Color.WHITE);
-		txtDatumRodjenja.setBackground(Color.WHITE);
-		txtAdresa.setBackground(Color.WHITE);
-		txtTelefon.setBackground(Color.WHITE);
-		txtEmail.setBackground(Color.WHITE);
-		txtIndeks.setBackground(Color.WHITE);
-		txtGodinaUpisa.setBackground(Color.WHITE);
-		return true;
+		return out;
 	}
 	
 	public void setStudent() {
@@ -699,5 +772,13 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 		dispose();
 		JOptionPane.showMessageDialog((Component) e.getSource(), "Uspešna izmena!");
 		setVisible(false);
+	}
+	
+	void refresh() {
+		AbstractTableModelPolozeniIspiti apt = (AbstractTableModelPolozeniIspiti)polozeniTable.getModel();
+		apt.fireTableDataChanged();
+		
+		AbstractTableModelNepolozeniIspiti apt1 = (AbstractTableModelNepolozeniIspiti)table.getModel();
+		apt1.fireTableDataChanged();
 	}
 }

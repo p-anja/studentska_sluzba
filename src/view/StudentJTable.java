@@ -12,6 +12,9 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+import model.Student;
+import model.StudentBase;
+
 public class StudentJTable extends JTable{
 	
 	private TableRowSorter<TableModel> sorter;
@@ -25,6 +28,10 @@ public class StudentJTable extends JTable{
 		return instance;
 	}
 	
+	public Student selected() {
+		return StudentBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow());
+		
+	}
 	private StudentJTable() {
 		
 		this.setRowSelectionAllowed(true);

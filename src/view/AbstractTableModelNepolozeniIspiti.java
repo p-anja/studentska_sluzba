@@ -12,10 +12,9 @@ import model.Student;
 import model.StudentBase;
 
 public class AbstractTableModelNepolozeniIspiti extends AbstractTableModel{
-
+	Student s = StudentJTable.getInstance().selected();
 	@Override
 	public int getRowCount() {
-		Student s = StudentBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow());
 		return s.getNepolozeniIspiti().size();
 	}
 
@@ -56,7 +55,7 @@ public class AbstractTableModelNepolozeniIspiti extends AbstractTableModel{
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		Student s = StudentBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow());
+		
 		ArrayList<Predmet> list= s.getNepolozeniIspiti();
 		Predmet predmet = list.get(rowIndex);
 		switch(columnIndex)
