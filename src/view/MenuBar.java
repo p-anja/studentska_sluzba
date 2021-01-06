@@ -124,6 +124,7 @@ public class MenuBar extends JMenuBar{
 								"Izmena profesora", true);
 								dialog.setVisible(true);
 								edit.setSelected(false);
+								
 								break;
 					} else {
 						JOptionPane.showMessageDialog(null, "Profesor nije selektovan.", "Upozorenje!",
@@ -137,6 +138,7 @@ public class MenuBar extends JMenuBar{
 										"Izmena studenta", true);
 										dialog.setVisible(true);
 										edit.setSelected(false);
+										MainFrame.getInstance().refresh();
 										break;
 							} else {
 								JOptionPane.showMessageDialog(null, "Student nije selektovan.", "Upozorenje!",

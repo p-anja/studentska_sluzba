@@ -190,6 +190,7 @@ public class StudentBase {
 		polozeni.add(o2);
 		ArrayList<Predmet> nep = new ArrayList<Predmet>();
 		nep.add(p1);
+		nep.add(p2);
 		ArrayList<Ocena> pol = new ArrayList<Ocena>();
 
 		

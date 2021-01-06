@@ -97,6 +97,7 @@ public class Toolbar extends JToolBar {
 										"Izmena studenta", true);
 										dialog.setVisible(true);
 										edit.setSelected(false);
+										MainFrame.getInstance().refresh();
 										break;
 							} else {
 								JOptionPane.showMessageDialog(null, "Student nije selektovan.", "Upozorenje!",
@@ -112,6 +113,7 @@ public class Toolbar extends JToolBar {
 										"Izmena predmeta", true);
 										dialog.setVisible(true);
 										edit.setSelected(false);
+										
 										break;
 							} else {
 								JOptionPane.showMessageDialog(null, "Predmet nije selektovan.", "Upozorenje!",
