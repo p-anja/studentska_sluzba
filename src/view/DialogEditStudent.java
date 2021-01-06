@@ -26,6 +26,9 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 import controller.StudentController;
+import model.Ocena;
+import model.Predmet;
+import model.PredmetBase;
 import model.StatusStudent;
 import model.Student;
 import model.StudentBase;
@@ -548,10 +551,6 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 		scrollPane = new JScrollPane(polozeniTable);
 		panelPolozeni.add(scrollPane, BorderLayout.CENTER);
 		
-		JPanel panCommands1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
-		ponistiOcenu = new JButton("Poništi ocenu");
-		panCommands1.add(ponistiOcenu);
-		panelPolozeni.add(panCommands1, BorderLayout.NORTH);
 		
 		JPanel panLabels = new JPanel(new BorderLayout());
 		JPanel panLabel1 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
@@ -566,6 +565,7 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 		prosektxt.setBackground(new Color(204, 227, 249));
 		panLabel1.add(prosek);
 		panLabel1.add(prosektxt);
+		
 		espb = new JLabel("Ukupno ESPB: ");
 	    JTextField espbtxt = new JTextField();
 		espbtxt.setEditable(false);
@@ -580,6 +580,52 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 		
 		panelPolozeni.add(panLabels, BorderLayout.SOUTH);
 		
+		JPanel panCommands1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
+		ponistiOcenu = new JButton("Poništi ocenu");
+		panCommands1.add(ponistiOcenu);
+		ponistiOcenu.addActionListener(new ActionListener(){
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				int row = polozeniTable.getSelectedRow();
+				Student s = StudentJTable.getInstance().selected();
+				
+				if (row >= 0 && row <= polozeniTable.getRowCount()) {
+					int option = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da poništite ocenu?",
+							"Poništavanje ocene", JOptionPane.YES_NO_OPTION);
+					if ( option == JOptionPane.YES_OPTION) {
+						
+						Ocena o = s.getPolozeniIspiti().get(row);
+						s.getPolozeniIspiti().remove(row);
+						for(Predmet p : PredmetBase.getInstance().getListPredmet()) {
+							if(o.getPredmet().getSifra().equals(p.getSifra())) {
+								s.getNepolozeniIspiti().add(p);
+							}
+						}
+						polozeniTable.remove(row);
+						refresh();
+						MainFrame.getInstance().refresh();
+						
+						prosektxt.setText(Double.toString(student.getProsecnaOcena()));
+						espbtxt.setText(Integer.toString(student.getBodove()));
+						
+						
+						
+						JOptionPane.showMessageDialog(null, "Ocena je poništena!");
+					} else {
+						JOptionPane.showMessageDialog(null, "Ocena nije poništena.");
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, "Ocena nije selektovana.", "Upozorenje!",
+							JOptionPane.ERROR_MESSAGE);
+				}
+				ponistiOcenu.setSelected(false);
+				
+			}
+			
+		});
+		panelPolozeni.add(panCommands1, BorderLayout.NORTH);
 		
 		panelNepolozeni = new JPanel();
 		panelNepolozeni.setVisible(true);
