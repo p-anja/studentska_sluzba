@@ -595,13 +595,10 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 
 					int option = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da poništite ocenu?",
 							"Poništavanje ocene", JOptionPane.YES_NO_OPTION);
-				
-
 					if ( option == JOptionPane.YES_OPTION) {
 						
 						Ocena o = s.getPolozeniIspiti().get(row);
-						s.getPolozeniIspiti().remove(o);
-						
+						s.getPolozeniIspiti().remove(row);
 						for(Predmet p : PredmetBase.getInstance().getListPredmet()) {
 							if(o.getPredmet().getSifra().equals(p.getSifra())) {
 								s.getNepolozeniIspiti().add(p);
@@ -657,6 +654,39 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 		});
 
 		btnDelete = new JButton("Obriši");
+		btnDelete.addActionListener(new ActionListener(){
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				int row = table.getSelectedRow();
+				Student s = StudentJTable.getInstance().selected();
+				
+				if (row >= 0 && row <= table.getRowCount()) {
+
+					int option = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da uklonite predmet?",
+							"Uklanjanje predmeta", JOptionPane.YES_NO_OPTION);
+					if ( option == JOptionPane.YES_OPTION) {
+						
+						Predmet p = s.getNepolozeniIspiti().get(row);
+						s.getNepolozeniIspiti().remove(row);
+						
+						refresh();
+					
+						
+						JOptionPane.showMessageDialog(null, "Predmet je uklonjen!");
+					} else {
+						JOptionPane.showMessageDialog(null, "Predmet nije uklonjen.");
+					}
+				} else {
+					JOptionPane.showMessageDialog(null, "Predmet nije selektovana.", "Upozorenje!",
+							JOptionPane.ERROR_MESSAGE);
+				}
+				btnDelete.setSelected(false);
+				
+			}
+			
+		});
 		
 		btnExam = new JButton("Polaganje");
 		btnExam.addActionListener(new ActionListener() {
@@ -670,7 +700,6 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 					dialog.setVisible(true);
 					btnExam.setSelected(false);
 					refresh();
-					
 					prosektxt.setText(Double.toString(student.getProsecnaOcena()));
 					espbtxt.setText(Integer.toString(student.getBodove()));
 					
@@ -856,8 +885,7 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 	void refresh() {
 		AbstractTableModelPolozeniIspiti apt = (AbstractTableModelPolozeniIspiti)polozeniTable.getModel();
 		apt.fireTableDataChanged();
-	
-	
+		
 		AbstractTableModelNepolozeniIspiti apt1 = (AbstractTableModelNepolozeniIspiti)table.getModel();
 		apt1.fireTableDataChanged();
 	}
