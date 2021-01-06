@@ -557,12 +557,23 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 		JPanel panLabel2 = new JPanel(new FlowLayout(FlowLayout.RIGHT));
 		panLabel1.setBackground(new Color(204, 227, 249));
 		panLabel2.setBackground(new Color(204, 227, 249));
-		avgOcena = student.getProsecnaOcena();
-		prosek = new JLabel("Prosečnna ocena: "+ avgOcena);
-		bodovi =  student.getBodove();
-		espb = new JLabel("Ukupno ESPB: "+ bodovi);
+		
+		prosek = new JLabel("Prosečna ocena: ");
+	    JTextField prosektxt = new JTextField();
+		prosektxt.setEditable(false);
+		prosektxt.setText(Double.toString(student.getProsecnaOcena()));
+		prosektxt.setBackground(new Color(204, 227, 249));
 		panLabel1.add(prosek);
+		panLabel1.add(prosektxt);
+		espb = new JLabel("Ukupno ESPB: ");
+	    JTextField espbtxt = new JTextField();
+		espbtxt.setEditable(false);
+		espbtxt.setText(Integer.toString(student.getBodove()));
+		espbtxt.setBackground(new Color(204, 227, 249));
+		panLabel1.add(prosek);
+		panLabel1.add(prosektxt);
 		panLabel2.add(espb);
+		panLabel2.add(espbtxt);
 		panLabels.add(panLabel1, BorderLayout.NORTH);
 		panLabels.add(panLabel2, BorderLayout.SOUTH);
 		
@@ -579,6 +590,23 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 		panelNepolozeni.add(scrollPane1, BorderLayout.CENTER);
 		JPanel panCommands11 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		btnAdd = new JButton("Dodaj");
+		btnAdd.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				btnAdd.setSelected(true);
+				DialogAddPredmetToStudent dialog = new DialogAddPredmetToStudent(MainFrame.getInstance(), "Dodavanje predmeta", true);
+				dialog.setVisible(true);
+				refresh();
+				dialog.setVisible(false);
+				btnAdd.setSelected(false);
+				
+			}
+			
+			
+		});
+
 		btnDelete = new JButton("Obriši");
 		
 		btnExam = new JButton("Polaganje");
@@ -594,6 +622,7 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 					btnExam.setSelected(false);
 					refresh();
 					MainFrame.getInstance().refresh();
+					
 					
 				}
 				else {

@@ -51,6 +51,23 @@ public class StudentBase {
 	public int getColumnCount() {
 		return cols.size();
 	}
+	public ArrayList<Ocena> getPolozeni(Student s) {
+		
+		
+		return polozeni;
+	}
+
+	public void setPolozeni(ArrayList<Ocena> polozeni) {
+		this.polozeni = polozeni;
+	}
+
+	public ArrayList<Predmet> getNepolozeni() {
+		return nepolozeni;
+	}
+
+	public void setNepolozeni(ArrayList<Predmet> nepolozeni) {
+		this.nepolozeni = nepolozeni;
+	}
 	
 	public String getColumnName(int index) {
 		return this.cols.get(index);
