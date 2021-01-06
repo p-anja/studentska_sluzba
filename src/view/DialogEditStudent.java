@@ -622,7 +622,8 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 					btnExam.setSelected(false);
 					refresh();
 					MainFrame.getInstance().refresh();
-					
+					prosektxt.setText(Double.toString(student.getProsecnaOcena()));
+					espbtxt.setText(Integer.toString(student.getBodove()));
 					
 				}
 				else {
