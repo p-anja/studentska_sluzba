@@ -182,10 +182,12 @@ public class StudentBase {
 		
 		Predmet p1 = new Predmet("E214", "Matematička analiza 1", Semestar.ZIMSKI, 1, ProfesorBase.getInstance().getListProfesor().get(1), 
 				9);
-		Predmet p2 = new Predmet("E214", "Algebra", Semestar.ZIMSKI, 1, ProfesorBase.getInstance().getListProfesor().get(2), 
+		Predmet p2 = new Predmet("E123", "Algebra", Semestar.ZIMSKI, 1, ProfesorBase.getInstance().getListProfesor().get(2), 
 				9);
 		Ocena o1 = new Ocena(null, p1, 9, "22.1.2019.");
 		Ocena o2 = new Ocena(null, p2, 8, "23.1.2019.");
+		ArrayList<Ocena> polozeni = new ArrayList<Ocena>();
+		ArrayList<Predmet> nepolozeni = new ArrayList<Predmet>();
 		polozeni.add(o1);
 		polozeni.add(o2);
 		ArrayList<Predmet> nep = new ArrayList<Predmet>();

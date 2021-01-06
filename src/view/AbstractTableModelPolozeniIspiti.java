@@ -32,6 +32,7 @@ public class AbstractTableModelPolozeniIspiti extends AbstractTableModel{
 	
 		ArrayList<Ocena> list= s.getPolozeniIspiti();
 		Ocena o = list.get(rowIndex);
+		
 		switch(columnIndex)
 		{
 			case 0:

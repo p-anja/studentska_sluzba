@@ -592,20 +592,22 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 				Student s = StudentJTable.getInstance().selected();
 				
 				if (row >= 0 && row <= polozeniTable.getRowCount()) {
+
 					int option = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da poništite ocenu?",
 							"Poništavanje ocene", JOptionPane.YES_NO_OPTION);
+				
+
 					if ( option == JOptionPane.YES_OPTION) {
 						
 						Ocena o = s.getPolozeniIspiti().get(row);
-						s.getPolozeniIspiti().remove(row);
+						s.getPolozeniIspiti().remove(o);
+						
 						for(Predmet p : PredmetBase.getInstance().getListPredmet()) {
 							if(o.getPredmet().getSifra().equals(p.getSifra())) {
 								s.getNepolozeniIspiti().add(p);
 							}
 						}
-						polozeniTable.remove(row);
 						refresh();
-						MainFrame.getInstance().refresh();
 						
 						prosektxt.setText(Double.toString(student.getProsecnaOcena()));
 						espbtxt.setText(Integer.toString(student.getBodove()));
@@ -854,7 +856,8 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 	void refresh() {
 		AbstractTableModelPolozeniIspiti apt = (AbstractTableModelPolozeniIspiti)polozeniTable.getModel();
 		apt.fireTableDataChanged();
-		
+	
+	
 		AbstractTableModelNepolozeniIspiti apt1 = (AbstractTableModelNepolozeniIspiti)table.getModel();
 		apt1.fireTableDataChanged();
 	}
