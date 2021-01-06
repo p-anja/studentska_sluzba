@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 
 import model.PredmetBase;
 import model.Student;
@@ -44,11 +45,22 @@ public class PolozeniIspitiTablePanel extends JPanel{
 		panLabel1.setBackground(new Color(204, 227, 249));
 		panLabel2.setBackground(new Color(204, 227, 249));
 		avgOcena = StudentBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow()).getProsecnaOcena();
-		prosek = new JLabel("Prosečnna ocena: "+ avgOcena);
+		prosek = new JLabel("Prosečna ocena: ");
+        JTextField prosektxt = new JTextField();
+        prosektxt.setEditable(false);
+        prosektxt.setText(Double.toString(avgOcena));
+        panLabel1.add(prosek);
+        panLabel1.add(prosektxt);
+        
 		bodovi =  StudentBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow()).getBodove();
-		espb = new JLabel("Ukupno ESPB: "+ bodovi);
-		panLabel1.add(prosek);
-		panLabel2.add(espb);
+		espb = new JLabel("Ukupno ESPB: ");
+        JTextField espbtxt = new JTextField();
+        espbtxt.setEditable(false);
+        espbtxt.setText(Integer.toString(bodovi));
+        espbtxt.setBackground(new Color(204, 227, 249));
+        panLabel2.add(espb);
+        panLabel2.add(espbtxt);
+
 		panLabels.add(panLabel1, BorderLayout.NORTH);
 		panLabels.add(panLabel2, BorderLayout.SOUTH);
 		
