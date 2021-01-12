@@ -25,10 +25,14 @@ import javax.swing.JTextField;
 import controller.PredmetController;
 import controller.ProfesorController;
 import controller.StudentController;
+import model.Predmet;
+import model.PredmetBase;
 import model.Profesor;
 import model.ProfesorBase;
 import model.Semestar;
 import model.StatusStudent;
+import model.Student;
+import model.StudentBase;
 
 
 public class DialogAddPredmet extends JDialog implements ActionListener{
@@ -348,6 +352,14 @@ public class DialogAddPredmet extends JDialog implements ActionListener{
 		String text[] = saveEnteredText();
 		boolean out = true;
 
+		if (text[0].length() != 0) {
+			
+			for(Predmet p: PredmetBase.getInstance().getListPredmet()) {
+				if(text[0].equals(p.getSifra())) {
+					txtSifra.setBackground(Color.RED);
+					return false;
+				}
+			}
 		if (!Pattern.matches("[a-zA-Z0-9 ]*", text[0])) {
 			txtSifra.setBackground(Color.RED);
 			return false;
@@ -372,8 +384,10 @@ public class DialogAddPredmet extends JDialog implements ActionListener{
 			}
 		}
 
+	}
 		return out;
 	}
+	
 	
 
 	@Override
