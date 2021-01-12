@@ -17,6 +17,7 @@ import model.StudentBase;
 
 public class PolozeniIspitiTablePanel extends JPanel{
 	
+	private static final long serialVersionUID = 5111850366715706157L;
 	private PolozeniIspitiJTable polozeniTable;
 	private JButton ponistiOcenu;
 	private JScrollPane scrollPane;

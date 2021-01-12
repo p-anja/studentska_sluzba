@@ -22,11 +22,10 @@ import model.ProfesorBase;
 import model.StudentBase;
 
 public class MenuBar extends JMenuBar{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
+
+
+
+	private static final long serialVersionUID = 1665172609718153640L;
 	private static MenuBar instance = null;
 	private JMenu file;
 	private JMenu edit;

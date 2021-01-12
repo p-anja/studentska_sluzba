@@ -18,6 +18,8 @@ import model.ProfesorBase;
 
 
 public class ProfesorJTable extends JTable {
+
+	private static final long serialVersionUID = -6406866711910452325L;
 	private TableRowSorter<TableModel> sorter;
 	private static ProfesorJTable instance = null;
 	

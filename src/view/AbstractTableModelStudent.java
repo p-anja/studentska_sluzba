@@ -6,6 +6,8 @@ import model.StudentBase;
 
 public class AbstractTableModelStudent extends AbstractTableModel{
 
+	private static final long serialVersionUID = -5712265068405275698L;
+
 	@Override
 	public int getColumnCount() {
 		return StudentBase.getInstance().getColumnCount();

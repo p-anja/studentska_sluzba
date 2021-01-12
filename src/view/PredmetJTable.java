@@ -11,6 +11,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
 public class PredmetJTable extends JTable {
+	private static final long serialVersionUID = 3461289329049920824L;
 	private TableRowSorter<TableModel> sorter;
 	public PredmetJTable()
 	{

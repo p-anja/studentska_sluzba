@@ -9,6 +9,8 @@ import javax.swing.table.TableCellRenderer;
 
 public class NepolozeniIspitiJTable extends JTable {
 
+	private static final long serialVersionUID = 7459399050951895618L;
+
 	public NepolozeniIspitiJTable() {
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);

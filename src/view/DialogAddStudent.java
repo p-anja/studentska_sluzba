@@ -29,7 +29,7 @@ import model.StatusStudent;
 
 public class DialogAddStudent extends JDialog implements ActionListener{
 
-	
+	private static final long serialVersionUID = 5174356442727363481L;
 	private JTextField txtIme = new JTextField();
 	private JTextField txtPrezime = new JTextField();
 	private JTextField txtDatumRodjenja = new JTextField();

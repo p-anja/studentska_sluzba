@@ -5,6 +5,8 @@ import model.ProfesorBase;
 
 public class AbstractTableModelProfesor extends AbstractTableModel {
 
+	private static final long serialVersionUID = -5831625659012310734L;
+
 	@Override
 	public int getRowCount() {
 		return ProfesorBase.getInstance().getListProfesor().size();

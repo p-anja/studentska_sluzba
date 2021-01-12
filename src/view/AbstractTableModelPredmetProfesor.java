@@ -12,6 +12,7 @@ import model.Semestar;
 
 public class AbstractTableModelPredmetProfesor extends AbstractTableModel{
 	
+	private static final long serialVersionUID = 5141091861296672302L;
 	private Profesor p = ProfesorJTable.getInstance().selected();
 	@Override
 	public int getRowCount() {

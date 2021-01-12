@@ -9,6 +9,8 @@ import javax.swing.table.TableCellRenderer;
 
 public class PolozeniIspitiJTable extends JTable{
 
+	private static final long serialVersionUID = -7020235748464382497L;
+
 	public PolozeniIspitiJTable() {
 
 		this.setRowSelectionAllowed(true);

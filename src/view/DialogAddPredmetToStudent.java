@@ -26,6 +26,8 @@ import model.StudentBase;
 
 	
 	public class DialogAddPredmetToStudent extends JDialog implements ActionListener{
+	
+		private static final long serialVersionUID = -4824722818972412448L;
 		private JButton btnOk;
 		private JButton btnCancel;
 		private String selectedPredmet;

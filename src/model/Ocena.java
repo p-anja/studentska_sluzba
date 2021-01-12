@@ -1,7 +1,10 @@
 package model;
 
-public class Ocena {
+import java.io.Serializable;
 
+public class Ocena implements Serializable {
+
+	private static final long serialVersionUID = 3714755740844262554L;
 	private Student student;
 	private Predmet predmet;
 	private int vrednostOcene;

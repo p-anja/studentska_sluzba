@@ -33,6 +33,7 @@ import model.StatusStudent;
 
 public class DialogAddPredmet extends JDialog implements ActionListener{
 
+	private static final long serialVersionUID = 5364200337008180054L;
 	JTextField txtSifra = new JTextField();
 	JTextField txtNaziv = new JTextField();
 	JComboBox<String> semestarComboBox;

@@ -8,6 +8,8 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 public class PredmetTablePanel extends JPanel{
+
+	private static final long serialVersionUID = 5995316909230759974L;
 	private PredmetJTable predmetTable;
 	private JScrollPane scrollPane;
 	

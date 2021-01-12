@@ -22,6 +22,8 @@ import model.ProfesorBase;
 import model.StudentBase;
 
 public class PredmetProfesorTablePanel extends JPanel{
+	
+	private static final long serialVersionUID = 2786111403910559115L;
 	private PredmetProfesorJTable predmetTable;
 	private JButton btnAdd;
 	private JButton btnRemove;
