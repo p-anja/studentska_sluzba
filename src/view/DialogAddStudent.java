@@ -600,11 +600,18 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 				txtEmail.setBackground(Color.WHITE);
 				txtIndeks.setBackground(Color.WHITE);
 				txtGodinaUpisa.setBackground(Color.WHITE);
-				out = false;
+				return false;
 			}
 		}
-
-		return out;
+		txtIme.setBackground(Color.WHITE);
+		txtPrezime.setBackground(Color.WHITE);
+		txtDatumRodjenja.setBackground(Color.WHITE);
+		txtAdresa.setBackground(Color.WHITE);
+		txtTelefon.setBackground(Color.WHITE);
+		txtEmail.setBackground(Color.WHITE);
+		txtIndeks.setBackground(Color.WHITE);
+		txtGodinaUpisa.setBackground(Color.WHITE);
+		return true;
 	}
 
 	@Override

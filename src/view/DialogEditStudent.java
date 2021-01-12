@@ -782,7 +782,7 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 		}
 		if (text[6].length() != 0) {
 
-			if (!Pattern.matches("[A-Za-z]{2,3}-[0-9]{1,3}-[0-9]{4}", text[6])) {
+			if (!Pattern.matches("[A-Z]{2,3} [0-9]{1,3}/[0-9]{4}", text[6])) {
 				txtIndeks.setBackground(Color.RED);
 				return false;
 			}
