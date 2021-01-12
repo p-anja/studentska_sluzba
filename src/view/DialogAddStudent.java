@@ -30,16 +30,18 @@ import model.StudentBase;
 
 public class DialogAddStudent extends JDialog implements ActionListener{
 
-	JTextField txtIme = new JTextField();
-	JTextField txtPrezime = new JTextField();
-	JTextField txtDatumRodjenja = new JTextField();
-	JTextField txtAdresa = new JTextField();
-	JTextField txtTelefon = new JTextField();
-	JTextField txtEmail = new JTextField();
-	JTextField txtIndeks = new JTextField();
-	JTextField txtGodinaUpisa = new JTextField();
-	JComboBox<String> godinaComboBox;
-	JComboBox<String> finansiranjeComboBox;
+	private static final long serialVersionUID = 5174356442727363481L;
+	private JTextField txtIme = new JTextField();
+	private JTextField txtPrezime = new JTextField();
+	private JTextField txtDatumRodjenja = new JTextField();
+	private JTextField txtAdresa = new JTextField();
+	private JTextField txtTelefon = new JTextField();
+	private JTextField txtEmail = new JTextField();
+	private JTextField txtIndeks = new JTextField();
+	private JTextField txtGodinaUpisa = new JTextField();
+	private JComboBox<String> godinaComboBox;
+	private JComboBox<String> finansiranjeComboBox;
+
 	
 
 	

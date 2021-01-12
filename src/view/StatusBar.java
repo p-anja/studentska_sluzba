@@ -12,11 +12,8 @@ import javax.swing.JPanel;
 
 public class StatusBar extends JPanel implements Runnable{
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
+	private static final long serialVersionUID = -426283139021946948L;
 	Thread thread = new Thread();;
 	JLabel time = new JLabel();
 

@@ -10,6 +10,7 @@ import javax.swing.JScrollPane;
 
 public class StudentTablePanel extends JPanel{
 	
+	private static final long serialVersionUID = -2639577441761407073L;
 	private StudentJTable studentTable;
 	private JScrollPane scrollPane;
 	

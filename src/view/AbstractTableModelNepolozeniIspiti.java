@@ -12,6 +12,8 @@ import model.Student;
 import model.StudentBase;
 
 public class AbstractTableModelNepolozeniIspiti extends AbstractTableModel{
+	
+	private static final long serialVersionUID = -1466752048822126876L;
 	Student s = StudentJTable.getInstance().selected();
 	@Override
 	public int getRowCount() {

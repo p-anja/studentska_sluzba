@@ -13,7 +13,7 @@ public class ProfesorBase {
 	}
 	
 	private ArrayList<String> columns;
-	private ArrayList<Profesor> listProfesor;
+	protected ArrayList<Profesor> listProfesor;
 	
 	private ProfesorBase() {
 		columns = new ArrayList<String>();
@@ -23,7 +23,7 @@ public class ProfesorBase {
 		columns.add("ZVANJE");
 		
 		listProfesor = new ArrayList<Profesor>();
-		init();
+		//init();
 	}
 
 	

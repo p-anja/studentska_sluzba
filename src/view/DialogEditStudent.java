@@ -37,6 +37,7 @@ import model.StudentBase;
 
 public class DialogEditStudent extends JDialog implements ActionListener{
 
+	private static final long serialVersionUID = 9030381235730679220L;
 	private JTabbedPane tabbedPane;
 	private JPanel panelInfo;
 	private JPanel panelPolozeni;

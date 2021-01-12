@@ -35,6 +35,7 @@ import model.StudentBase;
 
 public class DialogEditPredmet extends JDialog implements ActionListener{
 
+	private static final long serialVersionUID = 2490306076386700002L;
 	JTextField txtSifra = new JTextField();
 	JTextField txtNaziv = new JTextField();
 	JComboBox<String> semestarComboBox;

@@ -12,6 +12,8 @@ import model.StudentBase;
 
 public class AbstractTableModelPolozeniIspiti extends AbstractTableModel{
 
+	
+	private static final long serialVersionUID = -7439319432652452583L;
 	Student s = StudentJTable.getInstance().selected();
 	@Override
 	public int getColumnCount() {

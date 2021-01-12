@@ -17,7 +17,7 @@ public class StudentBase {
 		}
 		return instance;
 	}
-	
+
 	private List<String> cols;
 	protected List<Student> students;
 	protected ArrayList<Ocena> polozeni;
@@ -29,7 +29,7 @@ public class StudentBase {
 		this.cols = new ArrayList<String>();
 		this.students = new ArrayList<Student>();
 		
-		initStudents();
+		//initStudents();
 		
 		this.cols.add("INDEX");
 		this.cols.add("IME");

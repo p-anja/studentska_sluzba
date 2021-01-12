@@ -17,6 +17,8 @@ import model.StudentBase;
 
 public class StudentJTable extends JTable{
 	
+	private static final long serialVersionUID = -7132930592377130083L;
+
 	private TableRowSorter<TableModel> sorter;
 	
 	private static StudentJTable instance = null;

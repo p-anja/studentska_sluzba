@@ -30,6 +30,8 @@ import model.Profesor;
 import model.ProfesorBase;
 
 public class DialogEditProfesor extends JDialog {
+
+	private static final long serialVersionUID = 2147729556292938015L;
 	private JTabbedPane tabbedPane;
 	private JPanel panelInfo;
 	private PredmetProfesorTablePanel panelPredmeti;

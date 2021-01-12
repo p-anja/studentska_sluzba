@@ -29,6 +29,9 @@ import javax.swing.JOptionPane;
 
 public class Toolbar extends JToolBar {
 
+
+	private static final long serialVersionUID = -6204353317907193077L;
+
 	public Toolbar() {
 		super(SwingConstants.HORIZONTAL);
 		setFloatable(false);

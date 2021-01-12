@@ -26,6 +26,8 @@ import model.Predmet;
 import model.StudentBase;
 
 public class DialogAddMarkToStudent extends JDialog implements ActionListener {
+
+	private static final long serialVersionUID = -986281284875651792L;
 	private JButton btnOk;
 	private JButton btnCancel;
 	private JTextField txtSifra;

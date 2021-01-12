@@ -3,6 +3,7 @@ package view;
 import java.awt.BorderLayout;
 
 
+
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
@@ -16,9 +17,13 @@ import javax.swing.WindowConstants;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import model.DataBase;
+
+
 
 public class MainFrame extends JFrame implements ChangeListener{
 	
+	private static final long serialVersionUID = -966061532856661365L;
 	private JTabbedPane tabbedPane;
 	private SelectedTab selectedTab;
 	private StudentTablePanel panelStudent;
@@ -34,6 +39,9 @@ public class MainFrame extends JFrame implements ChangeListener{
 	}
 	
 	private MainFrame() {
+		DataBase db = new DataBase();
+
+		db.input();
 
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = kit.getScreenSize();

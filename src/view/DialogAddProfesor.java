@@ -32,6 +32,7 @@ import view.MainFrame;
 import controller.ProfesorController;
 
 public class DialogAddProfesor extends JDialog implements ActionListener {
+	private static final long serialVersionUID = 2820335487993637605L;
 	private JTextField txtPrezime;
 	private JTextField txtIme;
 	private JTextField txtDatumRodjenja;

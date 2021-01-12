@@ -13,7 +13,7 @@ public class PredmetBase {
 	}
 	
 	private ArrayList<String> columns;
-	private ArrayList<Predmet> listPredmet;
+	protected ArrayList<Predmet> listPredmet;
 	
 	private PredmetBase() {
 		columns = new ArrayList<String>();
@@ -25,7 +25,7 @@ public class PredmetBase {
 		columns.add("ESPB");
 		
 		listPredmet = new ArrayList<Predmet>();
-		init();
+		//init();
 	}
 	
 	private void init() {
