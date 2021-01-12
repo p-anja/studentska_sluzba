@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -13,10 +14,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.KeyStroke;
+import javax.swing.WindowConstants;
 
 import controller.PredmetController;
 import controller.ProfesorController;
 import controller.StudentController;
+import model.DataBase;
 import model.PredmetBase;
 import model.ProfesorBase;
 import model.StudentBase;
@@ -27,6 +30,7 @@ public class MenuBar extends JMenuBar{
 
 	private static final long serialVersionUID = 1665172609718153640L;
 	private static MenuBar instance = null;
+	DataBase dp = new DataBase();
 	private JMenu file;
 	private JMenu edit;
 	private JMenu help;
@@ -105,6 +109,27 @@ public class MenuBar extends JMenuBar{
 		miClose = new JMenuItem("Close");
 		miClose.setIcon(new ImageIcon("images/close.png"));
 		miClose.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
+		miClose.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				int choice = JOptionPane.showConfirmDialog(MainFrame.getInstance(),
+						"Da li ste sigurni da zelite da zatvorite aplikaciju?", "Zatvaranje aplikacije",
+						JOptionPane.YES_NO_OPTION);
+
+				if (choice == JOptionPane.YES_OPTION) {
+					try {
+						dp.save();
+
+					} catch (Exception t) {
+
+					}
+					System.exit(0);
+				}
+			}
+			
+		});
 		file.add(miClose);
 
 		miEdit = new JMenuItem("Edit");
