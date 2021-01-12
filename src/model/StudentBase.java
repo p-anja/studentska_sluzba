@@ -29,7 +29,7 @@ public class StudentBase {
 		this.cols = new ArrayList<String>();
 		this.students = new ArrayList<Student>();
 		
-		initStudents();
+		//initStudents();
 		
 		this.cols.add("INDEX");
 		this.cols.add("IME");

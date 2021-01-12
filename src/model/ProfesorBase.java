@@ -23,7 +23,7 @@ public class ProfesorBase {
 		columns.add("ZVANJE");
 		
 		listProfesor = new ArrayList<Profesor>();
-		init();
+		//init();
 	}
 
 	

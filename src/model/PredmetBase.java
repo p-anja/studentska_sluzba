@@ -25,7 +25,7 @@ public class PredmetBase {
 		columns.add("ESPB");
 		
 		this.listPredmet = new ArrayList<Predmet>();
-		init();
+		//init();
 	}
 	
 	private void init() {

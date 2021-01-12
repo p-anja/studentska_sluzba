@@ -35,7 +35,6 @@ public class DataBase {
 			o = new ObjectInputStream(new BufferedInputStream(new FileInputStream("objekti.txt")));
 			
 			studentBase.students = (ArrayList<Student>) o.readObject();
-			System.out.println("t");
 			profesorBase.listProfesor = (ArrayList<Profesor>) o.readObject();
 			predmetBase.listPredmet  =(ArrayList<Predmet>) o.readObject();
 			
