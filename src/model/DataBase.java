@@ -5,8 +5,11 @@ import model.StudentBase;
 
 
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 import model.PredmetBase;
@@ -48,5 +51,24 @@ public class DataBase {
 			
 		}
 		
+	}
+	public void save() {
+		ObjectOutputStream os = null;
+		try {
+			
+			os = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream("objekti.txt")));
+			os.writeObject(studentBase.students);
+			os.writeObject(profesorBase.listProfesor);
+			os.writeObject(predmetBase.listPredmet);
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+		}finally {
+			try {
+				os.close();
+			}catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
 	}
 }
