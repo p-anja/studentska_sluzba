@@ -29,7 +29,7 @@ public class StudentBase {
 		this.cols = new ArrayList<String>();
 		this.students = new ArrayList<Student>();
 		
-		//initStudents();
+		initStudents();
 		
 		this.cols.add("INDEX");
 		this.cols.add("IME");
@@ -176,32 +176,33 @@ public class StudentBase {
 	}
 	
 	private void initStudents() {
-		this.students = new ArrayList<Student>();
-		this.polozeni = new ArrayList<Ocena>();
-		this.nepolozeni = new ArrayList<Predmet>();
-		
-		Predmet p1 = new Predmet("E214", "Matematička analiza 1", Semestar.ZIMSKI, 1, ProfesorBase.getInstance().getListProfesor().get(1), 
-				9);
-		Predmet p2 = new Predmet("E123", "Algebra", Semestar.ZIMSKI, 1, ProfesorBase.getInstance().getListProfesor().get(2), 
-				9);
-		Ocena o1 = new Ocena(null, p1, 9, "22.1.2019.");
-		Ocena o2 = new Ocena(null, p2, 8, "23.1.2019.");
-		ArrayList<Ocena> polozeni = new ArrayList<Ocena>();
-		ArrayList<Predmet> nepolozeni = new ArrayList<Predmet>();
-		polozeni.add(o1);
-		polozeni.add(o2);
-		ArrayList<Predmet> nep = new ArrayList<Predmet>();
-		nep.add(p1);
-		nep.add(p2);
-		ArrayList<Ocena> pol = new ArrayList<Ocena>();
-
-		
-		students.add(new Student("Mika", "Mikić", "12.3.1999.", "Šumadijska 8, Novi Sad", "063563214", "mika@mail.com", "in-96-2018", "2018", 3, StatusStudent.B, polozeni, nepolozeni));
-		students.add(new Student("Pera", "Perić", "11.10.1998.", "Zlatne grede 1, Novi Sad", "065852963", "pera@mail.com", "ra-33-2017", "2017", 4, StatusStudent.S));
-		students.add(new Student("Toma", "Tomić", "20.3.2000.", "Alekse Šantića 3, Novi Sad", "063773214", "toma@mail.com", "ar-96-2019", "2019", 2, StatusStudent.B));
-		students.add(new Student("Ana", "Vidić", "20.2.2001.", "Ćirpanova 3, Novi Sad", "063721324", "ana@mail.com", "in-96-2020", "2020", 1, StatusStudent.B));
-		students.add(new Student("Jelena", "Čavić", "15.3.1999.", "Laze Kostića 2, Novi Sad", "064214564", "jelena@mail.com", "ar-180-2018", "2018", 3, StatusStudent.S));
-		students.add(new Student("Nikola", "Nikolić", "10.8.2000.", "Balzakova 13, Novi Sad", "062456987", "nikola@mail.com", "in-3-2019", "2019", 2, StatusStudent.S,pol,nep));
+		students.add(new Student("Marko", "Milošević", "12.03.2001.", "Karađorđeva 83, Novi Sad", "021/333-555", "marko.milosevic@mailinator.com", "RA 2/2020", "2020", 1, StatusStudent.B));
+		students.add(new Student( "Marija", "Milić", "12.01.2000.", "Stražilovska 12, Novi Sad", "021/555-2222", "marija.milic@mailinator.com","RA 3/2019", "2019", 2, StatusStudent.S));
+		students.add(new Student("Nikola", "Nikolić", "30.08.2001.", "Knez Mihajlova 16, Beograd", "021/135-463", "nikola.nikolic@mailinator.com", "RA 3/2017", "2017", 1, StatusStudent.B));
+		students.add(new Student("Pera", "Perić", "07.06.1995.", "Gogoljeva 3, Novi Sad", "021/903-463", "pera.peric@mailinator.com", "RA 134/2015", "2015", 3, StatusStudent.S));
+		students.add(new Student("Sofija", "Ilić", "06.05.1999.", "Miše Dimitrijevića 44, Novi Sad", "021/731-067", "sofija.ilic@mailinator.com", "RA 5/2019", "2019", 3, StatusStudent.B));
+		students.add(new Student("Martina", "Lukić", "16.05.1999.", "Vojvode Stepe 180, Beograd", "011/4333-800", "martina.lukic@mailinator.com", "RA 8/2018", "2018", 3, StatusStudent.S));
+		students.add(new Student("Stojan", "Stojaković", "19.10.2001.", "1300 Kaplara, Šabac", "011/3130-007", "stojan.stojakovic@mailinator.com", "RA 10/2017", "2017", 1, StatusStudent.B));
+		students.add(new Student("Milan", "Milanović", "02.11.2000.", "Surepova 12, Šabac", "015/313-061", "milan.milanovic@mailinator.com", "RA 12/2017", "2017", 2, StatusStudent.S));
+		students.add(new Student("Miroslav", "Milić", "11.10.2000.", "Milovana Glišića, Valjevo", "021/351-091", "miroslav.milic@mailinator.com", "RA 16/2019", "2019", 2, StatusStudent.B));
+		students.add(new Student("Stefan", "Gojić", "01.05.1999.", "Bulevar Mihajla Pupina, Novi Sad", "015/324-500", "stefan.gojic@mailinator.com", "RA 21/2015", "2015", 3, StatusStudent.S));
+		students.add(new Student("Anastasija", "Jokić", "11.07.1999.", "Braće Ribnikar 12, Novi Sad", "011/2333-900", "anastasija.jokic@mailinator.com", "RA 9/2020", "2020", 3, StatusStudent.B));
+		students.add(new Student("Bogdan", "Bogdanović", "23.07.1999.", "Cara Dušana 42, Subotica", "021/231-114", "bogdan.bogdanovic@mailinator.com", "RA 4/2017", "2017", 3, StatusStudent.S));
+		students.add(new Student("Ana", "Dabović", "12.12.2001.", "Marka Kraljevića 1, Kikinda", "014/303-007", "ana.dabovic@mailinator.com", "RA 30/2019", "2019", 1, StatusStudent.S));
+		students.add(new Student("Mika", "Mikić", "05.11.2001.", "Nikole Stojanovića 2, Kraljevo", "015/101-909", "mika.mikic@mailinator.com", "RA 1/2020", "2020", 1, StatusStudent.S));
+		students.add(new Student("Jovan", "Deretić", "10.09.1998.", "Marka Bratića 99, Niš", "002/200-300", "jovan.deretic@mailinator.com", "RA 11/2018", "2018", 4, StatusStudent.B));
+		students.add(new Student("Nikola", "Misković", "03.08.1998.", "Cara Dušana 12, Banja Luka", "022/123-456", "nikola.miskovic@mailinator.com", "RA 12/2018", "2018", 4, StatusStudent.S));
+		students.add(new Student("Martin", "Stojanović", "01.05.1998.", "Borisa Bačkog 1, Bijeljina", "024/321-775", "martin.stojanovic@mailinator.com", "RA 13/2018", "2018", 4, StatusStudent.S));
+		students.add(new Student("Tomislav", "Novaković", "25.02.1996.", "Mirka Maksića 10, Kruševac", "011/1188-379", "tomislav.novakovic@mailinator.com", "RA 14/2018", "2018", 3, StatusStudent.B));
+		students.add(new Student("Lena", "Ivić", "11.05.1998.", "Stari Most 6, Sremska Mitrovica", "024/333-555", "lena.ivic@mailinator.com", "RA 154/2016", "2016", 4, StatusStudent.B));
+		students.add(new Student("Jovan", "Lazić", "22.01.2001.", "Nevesinjskih ustanika 10", "025/1189-479", "jovan.lazic@mailinator.com", "RA 23/2020", "2020", 1, StatusStudent.B));
+		students.add(new Student("Isidora", "Mikić", "31.12.2000.", "Radničка 11, Novi Sad", "011/1122-366", "isidora.mikic@mailinator.com", "RA 1/2019", "2019", 2, StatusStudent.B));
+		students.add(new Student("Vladimir", "Ilić", "31.08.1998.", "Miloša Obilića 1, Beograd", "021/1122-367", "vladimir.ilic@mailinator.com", "SW 4/2014", "2014", 4, StatusStudent.B));
+		students.add(new Student("Mirko", "Aličić", "21.07.1999.", "Heroja Pinkija 112, Novi Sad", "012/1122-368", "mirko.alicic@mailinator.com", "SW 17/2015", "2015", 3, StatusStudent.S));
+		students.add(new Student("Milisav", "Perković", "28.09.1998.", "Pavla Bakića 26, Novi Sad", "012/1122-369", "milisav.pejkovic@mailinator.com", "SW 17/2016", "2016", 4, StatusStudent.S));
+		students.add(new Student("Purisa", "Djordjević", "29.02.2000.", "Pavla Papa 1, Novi Sad", "011/1543-370", "purisa.djordjevic@mailinator.com", "SW 27/2018", "2018", 2, StatusStudent.B));
+		students.add(new Student("Mikica", "Kovacević", "23.03.1999.", "Valentina Vodnika 112, Novi Sad", "011/1992-371", "mikica.kovacevic@mailinator.com", "RA 226/2017", "2017", 3, StatusStudent.S));
+		students.add(new Student("Miloš", "Milić", "21.10.2001.", "Neznanog junaka 12, Beograd", "011/8172-372", "milos.milic@mailinator.com", "SW 12/2020", "2020", 1, StatusStudent.S));
 		
 		
 	}

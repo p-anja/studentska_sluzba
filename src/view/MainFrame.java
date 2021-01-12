@@ -41,7 +41,7 @@ public class MainFrame extends JFrame implements ChangeListener{
 	private MainFrame() {
 		DataBase db = new DataBase();
 
-		db.input();
+		//db.input();
 
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = kit.getScreenSize();
@@ -96,7 +96,7 @@ public class MainFrame extends JFrame implements ChangeListener{
 
 					try {
 
-						//bp.cuvanje();
+						db.save();
 					} catch (Exception t) {
 						// TODO: handle exception
 					}

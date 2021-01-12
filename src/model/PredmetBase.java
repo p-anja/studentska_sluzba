@@ -24,18 +24,43 @@ public class PredmetBase {
 		columns.add("PROFESOR");
 		columns.add("ESPB");
 		
-		listPredmet = new ArrayList<Predmet>();
-		//init();
+		this.listPredmet = new ArrayList<Predmet>();
+		init();
 	}
 	
 	private void init() {
-		listPredmet.add(new Predmet("E214", "Matematička analiza 1", Semestar.ZIMSKI, 1, ProfesorBase.getInstance().getListProfesor().get(1), 
-				9));
-		listPredmet.add(new Predmet("GG03", "Nacrtna geometrija", Semestar.ZIMSKI, 2, ProfesorBase.getInstance().getListProfesor().get(2), 
-				5));
-		listPredmet.add(new Predmet("E123", "Algebra", Semestar.ZIMSKI, 1, new Profesor("","","","","","","","","",""), 
-				5));
-
+		addPredmet("p1","osnove programiranja", Semestar.ZIMSKI, 1, ProfesorBase.getInstance().getRow(1), 7 );
+		addPredmet("p2","statistika", Semestar.LETNJI, 3, ProfesorBase.getInstance().getRow(1), 8 );
+		addPredmet("p3","algoritmi i strukture podataka", Semestar.LETNJI, 2, ProfesorBase.getInstance().getRow(1) , 9 );
+		addPredmet("p4","LPRS", Semestar.ZIMSKI, 3, ProfesorBase.getInstance().getRow(1) , 7 );
+		addPredmet("p5","matematika", Semestar.LETNJI, 1, new Profesor("", "", "", "", "", "", "", "", "", ""), 11 );
+		addPredmet("p6","xml i web servisi", Semestar.LETNJI, 4, new Profesor("", "", "", "", "", "", "", "", "", ""), 6);
+		addPredmet("p7","Metode optimizacije", Semestar.ZIMSKI, 3, new Profesor("", "", "", "", "", "", "", "", "", ""), 6 );
+		addPredmet("p8","osnove elektrotehnike", Semestar.LETNJI, 1, ProfesorBase.getInstance().getRow(4), 11 );
+		addPredmet("p9","Sociologija", Semestar.ZIMSKI, 1, ProfesorBase.getInstance().getRow(4) , 10 );
+		addPredmet("p10","Filozofija", Semestar.ZIMSKI, 1, ProfesorBase.getInstance().getRow(4), 4 );
+		addPredmet("p11","ORT", Semestar.LETNJI, 2,new Profesor("", "", "", "", "", "", "", "", "", "") , 7 );
+		addPredmet("p12","NANS", Semestar.LETNJI, 2, ProfesorBase.getInstance().getRow(5), 5 );
+		addPredmet("p13","Organizacija podataka", Semestar.ZIMSKI, 2 ,ProfesorBase.getInstance().getRow(5), 7 );
+		addPredmet("p14","Baze podataka", Semestar.ZIMSKI, 2, ProfesorBase.getInstance().getRow(5), 6 );
+		addPredmet("p15","paralelno programiranje", Semestar.ZIMSKI, 2, ProfesorBase.getInstance().getRow(6), 8 );
+		addPredmet("p16","konkurentno programiranje", Semestar.LETNJI, 2, ProfesorBase.getInstance().getRow(6), 9 );
+		addPredmet("p17","operativni sistemi", Semestar.LETNJI, 2, new Profesor("", "", "", "", "", "", "", "", "", "") , 8 );
+		addPredmet("p18","algebra", Semestar.ZIMSKI, 1, new Profesor("", "", "", "", "", "", "", "", "", "") , 15 );
+		addPredmet("p19","verovatnoca", Semestar.LETNJI, 3, new Profesor("", "", "", "", "", "", "", "", "", "") , 14 );
+		addPredmet("ps20","Upravljacki sistemi", Semestar.LETNJI, 3, new Profesor("", "", "", "", "", "", "", "", "", "") , 8 );
+		addPredmet("ps21","Osnovi elektrotehnike", Semestar.ZIMSKI, 2, new Profesor("", "", "", "", "", "", "", "", "", "") , 7 );
+		addPredmet("ps22","slucajni procesi", Semestar.LETNJI, 4, new Profesor("", "", "", "", "", "", "", "", "", "") , 8 );
+		addPredmet("ps23","racunarstvo visokih performansi", Semestar.LETNJI, 4, new Profesor("", "", "", "", "", "", "", "", "", "") , 10 );
+		addPredmet("p24","Analiza 1", Semestar.ZIMSKI, 1, new Profesor("", "", "", "", "", "", "", "", "", "") , 20 );
+		addPredmet("it25","Informaciona bezbednost",Semestar.LETNJI, 4, ProfesorBase.getInstance().getRow(16) , 9 );
+		addPredmet("it26","Elektronsko placanje", Semestar.ZIMSKI, 3, ProfesorBase.getInstance().getRow(17), 8 );
+		addPredmet("it27","Distribuirani sistemi", Semestar.ZIMSKI, 4, ProfesorBase.getInstance().getRow(18), 6 );
+		addPredmet("p28","Projektovanje softvera", Semestar.ZIMSKI, 3, ProfesorBase.getInstance().getRow(17), 5 );
+		addPredmet("p29","Informacioni sistemi", Semestar.ZIMSKI, 4,  ProfesorBase.getInstance().getRow(16), 6 );
+		addPredmet("p30","Mašinsko učenje", Semestar.LETNJI, 4,new Profesor("", "", "", "", "", "", "", "", "", "") , 7 );
+		
+	
 	}
 
 	public ArrayList<Predmet> getListPredmet() {
