@@ -36,6 +36,7 @@ public class Student implements Serializable {
 		this.status = status;
 		polozeniIspiti = new ArrayList<Ocena>();
 		nepolozeniIspiti = new ArrayList<Predmet>();
+
 	}
 	
 	
@@ -146,6 +147,10 @@ public class Student implements Serializable {
 			suma += o.getVrednostOcene();
 		}
 		prosecnaOcena = suma / polozeniIspiti.size();
+		
+		if(polozeniIspiti.size() == 0) {
+			return 0;
+		}
 		return prosecnaOcena;
 	}
 	public int getBodove() {
