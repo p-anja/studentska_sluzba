@@ -25,10 +25,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
-import controller.ProfesorController;
+
 import model.Profesor;
 import model.ProfesorBase;
 import view.MainFrame;
+import controller.ProfesorController;
 
 public class DialogAddProfesor extends JDialog implements ActionListener {
 	private JTextField txtPrezime;
@@ -519,7 +520,7 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 			return false;
 		}
 		if (text[2].length() != 0) {
-		    if (!Pattern.matches("^(3[01]|[12][0-9]|[1-9]).(1[0-2]|[1-9]).[0-9]{4}.", text[2])) {
+		    if (!Pattern.matches("^(3[01]|[12][0-9]|0[1-9]).(1[0-2]|0[1-9]).[0-9]{4}.", text[2])) {
 				txtDatumRodjenja.setBackground(Color.RED);
 				return false;
 			}
@@ -533,7 +534,7 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 			return false;
 		}
 		if (text[5].length() != 0) {
-			if (!Pattern.matches("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$", text[5])) {
+			if (!Pattern.matches("^(.+)@(.+)$", text[5])) {
 				txtEmail.setBackground(Color.RED);
 				return false;
 			}
@@ -542,9 +543,18 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 			txtAdresaKancelarije.setBackground(Color.RED);
 			return false;
 		}
-		if (!Pattern.matches("^[0-9-/]*", text[7])) {
-			txtBrLicneKarte.setBackground(Color.RED);
-			return false;
+		if(text[7].length() != 0) {
+			
+				for(Profesor p: ProfesorBase.getInstance().getListProfesor()) {
+					if(text[7].equals(p.getBrLicneKarte())) {
+						txtBrLicneKarte.setBackground(Color.RED);
+						return false;
+					}
+				}
+				if (!Pattern.matches("[0-9]{9,9}", text[7])) {
+					txtBrLicneKarte.setBackground(Color.RED);
+					return false;
+				}
 		}
 		if (!Pattern.matches("[a-zA-Z0-9_ .]*", text[8])) {
 			txtTitula.setBackground(Color.RED);

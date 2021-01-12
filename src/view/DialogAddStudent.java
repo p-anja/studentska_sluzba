@@ -20,26 +20,26 @@ import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 
 import controller.StudentController;
 import model.StatusStudent;
+import model.Student;
+import model.StudentBase;
 
 
 public class DialogAddStudent extends JDialog implements ActionListener{
 
-	
-	private JTextField txtIme = new JTextField();
-	private JTextField txtPrezime = new JTextField();
-	private JTextField txtDatumRodjenja = new JTextField();
-	private JTextField txtAdresa = new JTextField();
-	private JTextField txtTelefon = new JTextField();
-	private JTextField txtEmail = new JTextField();
-	private JTextField txtIndeks = new JTextField();
-	private JTextField txtGodinaUpisa = new JTextField();
-	private JComboBox<String> godinaComboBox;
-	private JComboBox<String> finansiranjeComboBox;
+	JTextField txtIme = new JTextField();
+	JTextField txtPrezime = new JTextField();
+	JTextField txtDatumRodjenja = new JTextField();
+	JTextField txtAdresa = new JTextField();
+	JTextField txtTelefon = new JTextField();
+	JTextField txtEmail = new JTextField();
+	JTextField txtIndeks = new JTextField();
+	JTextField txtGodinaUpisa = new JTextField();
+	JComboBox<String> godinaComboBox;
+	JComboBox<String> finansiranjeComboBox;
 	
 
 	
@@ -51,7 +51,6 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
 		setTitle("Dodavanje studenta");
-		
 		
 		Dimension dim = new Dimension(120, 20);
 
@@ -545,7 +544,7 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 			return false;
 		}
 		if (text[2].length() != 0) {
-			if (!Pattern.matches("^(3[01]|[12][0-9]|[1-9]).(1[0-2]|[1-9]).[0-9]{4}.", text[2])) {
+			if (!Pattern.matches("^(3[01]|[12][0-9]|0[1-9]).(1[0-2]|[1-9]).[0-9]{4}.", text[2])) {
 				txtDatumRodjenja.setBackground(Color.RED);
 				return false;
 			}
@@ -565,13 +564,24 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 			}
 		}
 		if (text[6].length() != 0) {
+			
+			for(Student s: StudentBase.getInstance().getStudents()) {
+				if(text[6].equals(s.getBrojIndeksa())) {
+					txtIndeks.setBackground(Color.RED);
+					return false;
+				}
+			}
 
-			if (!Pattern.matches("[A-Za-z]{2,3}-[0-9]{1,3}-[0-9]{4}", text[6])) {
+			if (!Pattern.matches("[A-Z]{2,3} [0-9]{1,3}/[0-9]{4}", text[6])) {
 				txtIndeks.setBackground(Color.RED);
 				return false;
 			}
 		}
 		if (text[7].length() != 0) {
+			if(!(text[7].equals(text[6].substring(text[6].length() - 4)))) {
+				txtGodinaUpisa.setBackground(Color.RED);
+				return false;
+			}
 			if (!Pattern.matches("[0-9]{4}", text[7])) {
 				txtGodinaUpisa.setBackground(Color.RED);
 				return false;
@@ -591,14 +601,6 @@ public class DialogAddStudent extends JDialog implements ActionListener{
 				out = false;
 			}
 		}
-		txtIme.setBackground(Color.WHITE);
-		txtPrezime.setBackground(Color.WHITE);
-		txtDatumRodjenja.setBackground(Color.WHITE);
-		txtAdresa.setBackground(Color.WHITE);
-		txtTelefon.setBackground(Color.WHITE);
-		txtEmail.setBackground(Color.WHITE);
-		txtIndeks.setBackground(Color.WHITE);
-		txtGodinaUpisa.setBackground(Color.WHITE);
 
 		return out;
 	}
