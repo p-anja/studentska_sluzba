@@ -188,7 +188,7 @@ public class DialogAddMarkToStudent extends JDialog implements ActionListener {
 	public boolean check() {
 		String text = getDatum();
 		if (text.length() != 0) {
-		    if (!Pattern.matches("^(3[01]|[12][0-9]|[1-9]).(1[0-2]|[1-9]).[0-9]{4}.", text)) {
+		    if (!Pattern.matches("^(3[01]|[12][0-9]|0[1-9]).(1[0-2]|0[1-9]).[0-9]{4}.", text)) {
 				txtDatum.setBackground(Color.RED);
 				return false;
 			}
