@@ -57,7 +57,7 @@ public class PredmetProfesorTablePanel extends JPanel{
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				int row = predmetTable.getSelectedRow();
-				Profesor p = ProfesorBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow());
+				Profesor p = ProfesorJTable.getInstance().selected();
 				
 				if (row >= 0 && row <= predmetTable.getRowCount()) {
 					int option = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da obrišete predmet sa profesora?",

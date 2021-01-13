@@ -64,7 +64,7 @@ public class DialogAddPredmetToProfesor extends JDialog implements ActionListene
 		DefaultListModel listModel;
 		listModel = new DefaultListModel();
 		for(Predmet p : PredmetBase.getInstance().getListPredmet()) {
-			if(!ProfesorBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow()).getSpisakPredmeta().contains(p)) {
+			if(!ProfesorJTable.getInstance().selected().getSpisakPredmeta().contains(p)) {
 				listModel.addElement(p.getSifra() + " - " + p.getNaziv());
 		}
 		}
@@ -92,8 +92,9 @@ public class DialogAddPredmetToProfesor extends JDialog implements ActionListene
 			String id = parts[0];
 			for(Predmet p : PredmetBase.getInstance().getListPredmet()) {
 				if(id.equals(p.getSifra())) {
-					ProfesorBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow()).getSpisakPredmeta().add(p);
-					p.setProfesor(ProfesorBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow()));
+					p.getProfesor().getSpisakPredmeta().remove(p);
+					ProfesorJTable.getInstance().selected().getSpisakPredmeta().add(p);
+					p.setProfesor(ProfesorJTable.getInstance().selected());
 				}
 			}
 			JOptionPane.showMessageDialog(null, "Predmet uspešno dodat!");
