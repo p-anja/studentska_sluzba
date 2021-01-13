@@ -31,7 +31,7 @@ public class StudentJTable extends JTable{
 	}
 	
 	public Student selected() {
-		return StudentBase.getInstance().getRow(StudentJTable.getInstance().convertRowIndexToModel(StudentJTable.getInstance().getSelectedRow()));
+		return StudentBase.getInstance().getRow(StudentJTable.getInstance().getSelectedRow());
 		
 	}
 	private StudentJTable() {
