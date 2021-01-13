@@ -604,9 +604,9 @@ public class DialogEditProfesor extends JDialog {
 		txtKontaktTelefon.setText(profesor.getKontaktTelefon());
 		txtEmail.setText(profesor.getEmail());
 		txtAdresaKancelarije.setText(profesor.getAdresaKancelarije());
-		txtBrLicneKarte.setText(profesor.getBrLicneKarte());
-		titulaComboBox.setSelectedItem((profesor.getTitula()));
-		zvanjeComboBox.setSelectedItem((profesor.getZvanje()));
+		txtBrLicneKarte.setText(profesor.getBrLicneKarte()); 
+		titulaComboBox.getModel().setSelectedItem((profesor.getTitula()));
+		zvanjeComboBox.getModel().setSelectedItem((profesor.getZvanje()));
 	}
 	
 	

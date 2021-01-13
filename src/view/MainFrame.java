@@ -18,6 +18,8 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import model.DataBase;
+import model.Profesor;
+import model.ProfesorBase;
 
 
 
@@ -42,13 +44,13 @@ public class MainFrame extends JFrame implements ChangeListener{
 		DataBase db = new DataBase();
 
 		db.input();
-
+		
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = kit.getScreenSize();
 		int screenHeight = screenSize.height;
 		int screenWidth = screenSize.width;
 		setSize(3 * screenWidth / 4, 3 * screenHeight / 4);
-		setTitle("Studentska sluûba");
+		setTitle("Studentska slu≈æba");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		
@@ -90,7 +92,7 @@ public class MainFrame extends JFrame implements ChangeListener{
 			@Override
 			public void windowClosing(WindowEvent e) {
 				JFrame frame = (JFrame) e.getComponent();
-				int choice = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da ûelite da zatvorite aplikaciju?",
+				int choice = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da ≈æelite da zatvorite aplikaciju?",
 						"Close", JOptionPane.YES_NO_OPTION);
 				if (choice == JOptionPane.YES_OPTION) {
 
