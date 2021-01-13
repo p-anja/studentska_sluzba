@@ -13,7 +13,15 @@ import javax.swing.table.TableRowSorter;
 public class PredmetJTable extends JTable {
 	private static final long serialVersionUID = 3461289329049920824L;
 	private TableRowSorter<TableModel> sorter;
-	public PredmetJTable()
+    private static PredmetJTable instance = null;
+	
+	public static PredmetJTable getInstance() {
+		if(instance == null) {
+			instance = new PredmetJTable();
+		}
+		return instance;
+	}
+	private PredmetJTable()
 	{
 		this.setRowSelectionAllowed(true);
 		this.setColumnSelectionAllowed(true);
@@ -43,5 +51,6 @@ public class PredmetJTable extends JTable {
 		}
 		return c;
 	}
+
 	
 }

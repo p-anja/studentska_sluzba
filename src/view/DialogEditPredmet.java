@@ -426,7 +426,7 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 	}
 	
 	public void setPredmet() {
-		predmet = PredmetBase.getInstance().getListPredmet().get(MainFrame.getInstance().getSelectedRow());
+		predmet = PredmetBase.getInstance().getListPredmet().get(PredmetJTable.getInstance().convertRowIndexToModel(PredmetJTable.getInstance().getSelectedRow()));
 		txtSifra.setText(predmet.getSifra());
 		txtNaziv.setText(predmet.getNaziv());
 		txtESPB.setText(Integer.toString(predmet.getBrEspb()));

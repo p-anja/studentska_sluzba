@@ -7,6 +7,7 @@ import model.Profesor;
 
 import model.ProfesorBase;
 import view.MainFrame;
+import view.ProfesorJTable;
 
 
 public class ProfesorController {
@@ -56,7 +57,7 @@ private static ProfesorController instance = null;
 	public void searchProfesor(String text) {
 		if(text.equals(""))
 		{
-			MainFrame.getInstance().getPanelProfesor().getProfesorTable().clearFilter();
+			ProfesorJTable.getInstance().clearFilter();
 			MainFrame.getInstance().refresh();	
 		}
 		
@@ -64,7 +65,7 @@ private static ProfesorController instance = null;
 		
 		if(words.length == 1) {
 		String prezime = words[0];
-				MainFrame.getInstance().getPanelProfesor().getProfesorTable().setFilter(prezime, 1);
+				ProfesorJTable.getInstance().setFilter(prezime, 1);
 				MainFrame.getInstance().refresh();
 		}
 		
@@ -72,7 +73,7 @@ private static ProfesorController instance = null;
 		else if(words.length == 2) {
 		String prezime = words[0];
 		String ime = words[1];
-			MainFrame.getInstance().getPanelProfesor().getProfesorTable().setFilters(prezime, 1, ime, 0);
+			ProfesorJTable.getInstance().setFilters(prezime, 1, ime, 0);
 			MainFrame.getInstance().refresh();
 		}
 		

@@ -29,7 +29,7 @@ public class PredmetTablePanel extends JPanel{
 		right.setPreferredSize(new Dimension(width / 10, height));
 		add(left, BorderLayout.WEST);
 		add(right, BorderLayout.EAST);
-		predmetTable = new PredmetJTable();
+		predmetTable = PredmetJTable.getInstance();
 		scrollPane = new JScrollPane(predmetTable);
 		add(scrollPane, BorderLayout.CENTER);
 	}

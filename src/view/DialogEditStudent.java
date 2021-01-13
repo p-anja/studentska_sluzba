@@ -823,7 +823,7 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 	}
 	
 	public void setStudent() {
-		student = StudentBase.getInstance().getStudents().get(MainFrame.getInstance().getSelectedRow());
+		student = StudentBase.getInstance().getStudents().get(StudentJTable.getInstance().convertRowIndexToModel(StudentJTable.getInstance().getSelectedRow()));
 		txtIme.setText(student.getIme());
 		txtPrezime.setText(student.getPrezime());
 		txtDatumRodjenja.setText(student.getDatumRodjenja());

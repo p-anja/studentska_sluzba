@@ -9,6 +9,7 @@ import model.StatusStudent;
 import model.Student;
 import model.StudentBase;
 import view.MainFrame;
+import view.StudentJTable;
 
 public class StudentController {
 	
@@ -56,7 +57,7 @@ public class StudentController {
 	public void searchStudent(String text) {
 		if(text.equals(""))
 		{
-			MainFrame.getInstance().getPanelStudent().getStudentTable().clearFilter();
+			StudentJTable.getInstance().clearFilter();
 			MainFrame.getInstance().refresh();	
 		}
 		
@@ -64,7 +65,7 @@ public class StudentController {
 		
 		if(words.length == 1) {
 		String prezime = words[0];
-				MainFrame.getInstance().getPanelStudent().getStudentTable().setFilter(prezime, 2);
+				StudentJTable.getInstance().setFilter(prezime, 2);
 				MainFrame.getInstance().refresh();
 		}
 		
@@ -72,7 +73,7 @@ public class StudentController {
 		else if(words.length == 2) {
 		String prezime = words[0];
 		String ime = words[1];
-			MainFrame.getInstance().getPanelStudent().getStudentTable().set2Filter(prezime, 2, ime, 1);
+			StudentJTable.getInstance().set2Filter(prezime, 2, ime, 1);
 			MainFrame.getInstance().refresh();
 		}
 		
@@ -80,7 +81,7 @@ public class StudentController {
 			String prezime = words[0];
 			String ime = words[1];
 			String indeks = words[2];
-				MainFrame.getInstance().getPanelStudent().getStudentTable().set3Filter(prezime, 2, ime, 1, indeks, 0);
+				StudentJTable.getInstance().set3Filter(prezime, 2, ime, 1, indeks, 0);
 				MainFrame.getInstance().refresh();
 			}
 		

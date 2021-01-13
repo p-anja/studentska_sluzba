@@ -12,6 +12,7 @@ import model.StatusStudent;
 import model.Student;
 import model.StudentBase;
 import view.MainFrame;
+import view.PredmetJTable;
 
 public class PredmetController {
 private static PredmetController instance = null;
@@ -80,11 +81,11 @@ private static PredmetController instance = null;
 	public void searchPredmet(String text) {
 		if(text.equals(""))
 		{
-			MainFrame.getInstance().getPanelPredmet().getPredmetTable().clearFilter();
+			PredmetJTable.getInstance().clearFilter();
 			MainFrame.getInstance().refresh();	
 		}
 		else {
-		MainFrame.getInstance().getPanelPredmet().getPredmetTable().setFilter(text.trim(), 1);
+		PredmetJTable.getInstance().setFilter(text.trim(), 1);
 		MainFrame.getInstance().refresh();
 	}
 }

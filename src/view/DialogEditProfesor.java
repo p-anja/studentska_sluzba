@@ -596,7 +596,7 @@ public class DialogEditProfesor extends JDialog {
 	}
 	
 	public void setProfesor() {
-		profesor = ProfesorBase.getInstance().getListProfesor().get(MainFrame.getInstance().getSelectedRow());
+		profesor = ProfesorBase.getInstance().getListProfesor().get(ProfesorJTable.getInstance().convertRowIndexToModel(ProfesorJTable.getInstance().getSelectedRow()));
 		txtIme.setText(profesor.getIme());
 		txtPrezime.setText(profesor.getPrezime());
 		txtDatumRodjenja.setText(profesor.getDatumRodjenja());
