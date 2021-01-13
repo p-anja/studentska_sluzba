@@ -100,8 +100,7 @@ import model.StudentBase;
 				for(Predmet p : PredmetBase.getInstance().getListPredmet()) {
 					
 					if(sifra.equals(p.getSifra())) {
-					
-						StudentBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow()).getNepolozeniIspiti().add(p);
+					StudentJTable.getInstance().selected().getNepolozeniIspiti().add(p);
 					}
 				}
 				

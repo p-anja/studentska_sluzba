@@ -12,6 +12,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
+import model.ProfesorBase;
 import model.Student;
 import model.StudentBase;
 
@@ -31,7 +32,7 @@ public class StudentJTable extends JTable{
 	}
 	
 	public Student selected() {
-		return StudentBase.getInstance().getRow(StudentJTable.getInstance().getSelectedRow());
+		return StudentBase.getInstance().getRow(StudentJTable.getInstance().convertRowIndexToModel(StudentJTable.getInstance().getSelectedRow()));
 		
 	}
 	private StudentJTable() {
