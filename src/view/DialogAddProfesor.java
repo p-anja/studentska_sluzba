@@ -18,6 +18,7 @@ import java.awt.event.KeyListener;
 import java.util.regex.Pattern;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -41,8 +42,8 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 	private JTextField txtEmail;
 	private JTextField txtAdresaKancelarije;
 	private JTextField txtBrLicneKarte;
-	private JTextField txtTitula;
-	private JTextField txtZvanje;
+	JComboBox<String> titulaComboBox;
+	JComboBox<String> zvanjeComboBox;
 	private JButton btnOk;
 	private JButton btnCancel;
 	
@@ -294,54 +295,38 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 		
 		JLabel labelTitula = new JLabel("Titula*");
 		labelTitula.setPreferredSize(dim);
-		txtTitula = new JTextField();
-		txtTitula.setPreferredSize(dim);
-		txtTitula.addKeyListener(new KeyListener() {
+		String titula[] = {"Doktor", "Profesor Doktor" };
+		titulaComboBox = new JComboBox<String>(titula);
+		titulaComboBox.addActionListener(new ActionListener() {
 
 			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
 				if (check()) {
 					btnOk.setEnabled(true);
 				} else {
 					btnOk.setEnabled(false);
 				}
+				
 			}
+			
 		});
 		
 		JLabel labelZvanje = new JLabel("Zvanje*");
 		labelZvanje.setPreferredSize(dim);
-		txtZvanje = new JTextField();
-		txtZvanje.setPreferredSize(dim);
-		txtZvanje.addKeyListener(new KeyListener() {
+		String zvanje[] = {"Docent", "Redovni profesor", "Vanredni profesor" };
+		zvanjeComboBox = new JComboBox<String>(zvanje);
+		zvanjeComboBox.addActionListener(new ActionListener() {
 
 			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
 				if (check()) {
 					btnOk.setEnabled(true);
 				} else {
 					btnOk.setEnabled(false);
 				}
+				
 			}
+			
 		});
 		
 		GridBagConstraints gbcIme = new GridBagConstraints();
@@ -470,7 +455,7 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 		gbcTxtTitula.weightx = 200;
 		gbcTxtTitula.fill = GridBagConstraints.HORIZONTAL;
 		gbcTxtTitula.insets = new Insets(20, 20, 0, 20);
-		panAddProfesor.add(txtTitula, gbcTxtTitula);
+		panAddProfesor.add(titulaComboBox, gbcTxtTitula);
 
 		GridBagConstraints gbcZvanje = new GridBagConstraints();
 		gbcZvanje.gridx = 0;
@@ -485,7 +470,7 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 		gbcTxtZvanje.weightx = 200;
 		gbcTxtZvanje.fill = GridBagConstraints.HORIZONTAL;
 		gbcTxtZvanje.insets = new Insets(20, 20, 0, 20);
-		panAddProfesor.add(txtZvanje, gbcTxtZvanje);
+		panAddProfesor.add(zvanjeComboBox, gbcTxtZvanje);
 		
 		add(panAddProfesor, BorderLayout.CENTER);
 		add(panCommands, BorderLayout.SOUTH);
@@ -504,8 +489,8 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 		text[5] = txtEmail.getText().toString();
 		text[6] = txtAdresaKancelarije.getText().toString();
 		text[7] = txtBrLicneKarte.getText().toString();
-		text[8] = txtTitula.getText().toString();
-		text[9] = txtZvanje.getText().toString();
+		text[8] = titulaComboBox.getSelectedItem().toString();
+		text[9] = zvanjeComboBox.getSelectedItem().toString();
 		return text;
 	}
 	
@@ -557,14 +542,7 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 					return false;
 				}
 		}
-		if (!Pattern.matches("[a-zA-Z0-9_ .]*", text[8])) {
-			txtTitula.setBackground(Color.RED);
-			return false;
-		}
-		if (!Pattern.matches("[a-zA-Z0-9_ ]*", text[9])) {
-			txtZvanje.setBackground(Color.RED);
-			return false;
-		}
+		
 		
 		for (String t : text) {
 			if ((t = t.trim()).length() == 0) {
@@ -576,8 +554,6 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 				txtEmail.setBackground(Color.WHITE);
 				txtAdresaKancelarije.setBackground(Color.WHITE);
 				txtBrLicneKarte.setBackground(Color.WHITE);
-				txtTitula.setBackground(Color.WHITE);
-				txtZvanje.setBackground(Color.WHITE);
 				return false;
 			}
 		}

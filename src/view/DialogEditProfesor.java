@@ -18,6 +18,7 @@ import java.awt.event.KeyListener;
 import java.util.regex.Pattern;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -43,8 +44,8 @@ public class DialogEditProfesor extends JDialog {
 	private JTextField txtEmail;
 	private JTextField txtAdresaKancelarije;
 	private JTextField txtBrLicneKarte;
-	private JTextField txtTitula;
-	private JTextField txtZvanje;
+	private JComboBox titulaComboBox;
+	private JComboBox zvanjeComboBox;
 	private JButton btnOk;
 	private JButton btnCancel;
 	private Profesor profesor;
@@ -285,7 +286,7 @@ public class DialogEditProfesor extends JDialog {
 			}
 		});
 		
-		JLabel labelBrLicneKarte = new JLabel("Broj liÄŤne karte*");
+		JLabel labelBrLicneKarte = new JLabel("Broj lične karte*");
 		labelBrLicneKarte.setPreferredSize(dim);
 		txtBrLicneKarte = new JTextField();
 		txtBrLicneKarte.setPreferredSize(dim);
@@ -313,54 +314,38 @@ public class DialogEditProfesor extends JDialog {
 		
 		JLabel labelTitula = new JLabel("Titula*");
 		labelTitula.setPreferredSize(dim);
-		txtTitula = new JTextField();
-		txtTitula.setPreferredSize(dim);
-		txtTitula.addKeyListener(new KeyListener() {
+		String titula[] = {"Doktor", "Profesor Doktor" };
+		titulaComboBox = new JComboBox<String>(titula);
+		titulaComboBox.addActionListener(new ActionListener() {
 
 			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
 				if (check()) {
 					btnOk.setEnabled(true);
 				} else {
 					btnOk.setEnabled(false);
 				}
+				
 			}
+			
 		});
 		
 		JLabel labelZvanje = new JLabel("Zvanje*");
 		labelZvanje.setPreferredSize(dim);
-		txtZvanje = new JTextField();
-		txtZvanje.setPreferredSize(dim);
-		txtZvanje.addKeyListener(new KeyListener() {
+		String zvanje[] = {"Docent", "Redovni profesor", "Vanredni profesor" };
+		zvanjeComboBox = new JComboBox<String>(zvanje);
+		zvanjeComboBox.addActionListener(new ActionListener() {
 
 			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-				// TODO Auto-generated method stub
-			}
-
-			@Override
-			public void keyReleased(KeyEvent e) {
+			public void actionPerformed(ActionEvent arg0) {
 				if (check()) {
 					btnOk.setEnabled(true);
 				} else {
 					btnOk.setEnabled(false);
 				}
+				
 			}
+			
 		});
 		
 		GridBagConstraints gbcIme = new GridBagConstraints();
@@ -489,7 +474,7 @@ public class DialogEditProfesor extends JDialog {
 		gbcTxtTitula.weightx = 200;
 		gbcTxtTitula.fill = GridBagConstraints.HORIZONTAL;
 		gbcTxtTitula.insets = new Insets(20, 20, 0, 20);
-		panEditProfesor.add(txtTitula, gbcTxtTitula);
+		panEditProfesor.add(titulaComboBox, gbcTxtTitula);
 
 		GridBagConstraints gbcZvanje = new GridBagConstraints();
 		gbcZvanje.gridx = 0;
@@ -504,7 +489,7 @@ public class DialogEditProfesor extends JDialog {
 		gbcTxtZvanje.weightx = 200;
 		gbcTxtZvanje.fill = GridBagConstraints.HORIZONTAL;
 		gbcTxtZvanje.insets = new Insets(20, 20, 0, 20);
-		panEditProfesor.add(txtZvanje, gbcTxtZvanje);
+		panEditProfesor.add(zvanjeComboBox, gbcTxtZvanje);
 		
 		
 		panelInfo = new JPanel();
@@ -537,8 +522,8 @@ public class DialogEditProfesor extends JDialog {
 		text[5] = txtEmail.getText().toString();
 		text[6] = txtAdresaKancelarije.getText().toString();
 		text[7] = txtBrLicneKarte.getText().toString();
-		text[8] = txtTitula.getText().toString();
-		text[9] = txtZvanje.getText().toString();
+		text[8] = titulaComboBox.getSelectedItem().toString();
+		text[9] = zvanjeComboBox.getSelectedItem().toString();
 		return text;
 	}
 	
@@ -554,7 +539,7 @@ public class DialogEditProfesor extends JDialog {
 			return false;
 		}
 		if (text[2].length() != 0) {
-		    if (!Pattern.matches("^(3[01]|[12][0-9]|[1-9]).(1[0-2]|[1-9]).[0-9]{4}.", text[2])) {
+		    if (!Pattern.matches("^(3[01]|[12][0-9]|0[1-9]).(1[0-2]|0[1-9]).[0-9]{4}.", text[2])) {
 				txtDatumRodjenja.setBackground(Color.RED);
 				return false;
 			}
@@ -568,7 +553,7 @@ public class DialogEditProfesor extends JDialog {
 			return false;
 		}
 		if (text[5].length() != 0) {
-			if (!Pattern.matches("^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$", text[5])) {
+			if (!Pattern.matches("^(.+)@(.+)$", text[5])) {
 				txtEmail.setBackground(Color.RED);
 				return false;
 			}
@@ -581,14 +566,7 @@ public class DialogEditProfesor extends JDialog {
 			txtBrLicneKarte.setBackground(Color.RED);
 			return false;
 		}
-		if (!Pattern.matches("[a-zA-Z0-9_ .]*", text[8])) {
-			txtTitula.setBackground(Color.RED);
-			return false;
-		}
-		if (!Pattern.matches("[a-zA-Z0-9_ ]*", text[9])) {
-			txtZvanje.setBackground(Color.RED);
-			return false;
-		}
+		
 		
 		for (String t : text) {
 			if ((t = t.trim()).length() == 0) {
@@ -600,8 +578,7 @@ public class DialogEditProfesor extends JDialog {
 				txtEmail.setBackground(Color.WHITE);
 				txtAdresaKancelarije.setBackground(Color.WHITE);
 				txtBrLicneKarte.setBackground(Color.WHITE);
-				txtTitula.setBackground(Color.WHITE);
-				txtZvanje.setBackground(Color.WHITE);
+			
 				return false;
 			}
 		}
@@ -614,8 +591,7 @@ public class DialogEditProfesor extends JDialog {
 		txtEmail.setBackground(Color.WHITE);
 		txtAdresaKancelarije.setBackground(Color.WHITE);
 		txtBrLicneKarte.setBackground(Color.WHITE);
-		txtTitula.setBackground(Color.WHITE);
-		txtZvanje.setBackground(Color.WHITE);
+		
 		return true;
 	}
 	
@@ -629,8 +605,8 @@ public class DialogEditProfesor extends JDialog {
 		txtEmail.setText(profesor.getEmail());
 		txtAdresaKancelarije.setText(profesor.getAdresaKancelarije());
 		txtBrLicneKarte.setText(profesor.getBrLicneKarte());
-		txtTitula.setText(profesor.getTitula());
-		txtZvanje.setText(profesor.getZvanje());
+		titulaComboBox.setSelectedItem((profesor.getTitula()));
+		zvanjeComboBox.setSelectedItem((profesor.getZvanje()));
 	}
 	
 	
