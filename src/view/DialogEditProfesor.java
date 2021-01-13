@@ -73,7 +73,7 @@ public class DialogEditProfesor extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				String text[] = getTxt();
 				setVisible(true);
-				ProfesorController.getInstance().editProfesor(MainFrame.getInstance().getSelectedRow(), text[0], text[1], text[2], text[3], text[4],
+				ProfesorController.getInstance().editProfesor(ProfesorJTable.getInstance().convertRowIndexToModel(ProfesorJTable.getInstance().getSelectedRow()), text[0], text[1], text[2], text[3], text[4],
 						text[5], text[6], text[8], text[9]);
 				dispose();
 				JOptionPane.showMessageDialog((Component) e.getSource(), "Uspešna izmena!");

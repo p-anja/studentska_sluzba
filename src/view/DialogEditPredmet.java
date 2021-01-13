@@ -555,7 +555,7 @@ public class DialogEditPredmet extends JDialog implements ActionListener{
 			}
 		}
 		
-		PredmetController.getInstance().editPredmet(MainFrame.getInstance().getSelectedRow(), text[0], text[1], Semestar.valueOf(semestar), god, prof,
+		PredmetController.getInstance().editPredmet(PredmetJTable.getInstance().convertRowIndexToModel(PredmetJTable.getInstance().getSelectedRow()), text[0], text[1], Semestar.valueOf(semestar), god, prof,
 			Integer.parseInt(text[4]));
 	    setVisible(false);
 		

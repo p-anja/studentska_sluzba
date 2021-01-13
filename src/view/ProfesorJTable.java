@@ -41,7 +41,7 @@ public class ProfesorJTable extends JTable {
 	}
 	
 	public Profesor selected() {
-		return ProfesorBase.getInstance().getRow(this.getSelectedRow());
+		return ProfesorBase.getInstance().getRow(ProfesorJTable.getInstance().convertRowIndexToModel(ProfesorJTable.getInstance().getSelectedRow()));
 	}
 	
 	public void clearFilter()

@@ -888,7 +888,7 @@ public class DialogEditStudent extends JDialog implements ActionListener{
 			status = "S";
 		}
 		
-		StudentController.getInstance().editStudent(MainFrame.getInstance().getSelectedRow(), text[0], text[1], text[2], text[3], text[4],
+		StudentController.getInstance().editStudent(StudentJTable.getInstance().convertRowIndexToModel(StudentJTable.getInstance().getSelectedRow()), text[0], text[1], text[2], text[3], text[4],
 				text[5], text[6], text[7], god, StatusStudent.valueOf(status));
 		dispose();
 		JOptionPane.showMessageDialog((Component) e.getSource(), "Uspešna izmena!");
