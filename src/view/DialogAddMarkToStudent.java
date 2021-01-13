@@ -207,10 +207,10 @@ public class DialogAddMarkToStudent extends JDialog implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		String datum = getDatum();
 		int value = (int) ocenaComboBox.getSelectedItem();
-		StudentBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow()).getNepolozeniIspiti().remove(p);
-		Ocena o = new Ocena(StudentBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow()),p,value,datum);
+		StudentJTable.getInstance().selected().getNepolozeniIspiti().remove(p);
+		Ocena o = new Ocena(StudentJTable.getInstance().selected(),p,value,datum);
 		
-		StudentBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow()).getPolozeniIspiti().add(o);
+		StudentJTable.getInstance().selected().getPolozeniIspiti().add(o);
 		//p.getStudentiKojiNisuPolozili().remove(StudentBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow()));
 		//p.getStudentiKojiSuPolozili().add(StudentBase.getInstance().getRow(MainFrame.getInstance().getSelectedRow()));
 		JOptionPane.showMessageDialog(null, "Upisana ocena");
