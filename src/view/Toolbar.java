@@ -126,7 +126,7 @@ public class Toolbar extends JToolBar {
 				}
 				case PROFESOR:
 					if (MainFrame.getInstance().getSelectedRow() >= 0 &&  
-					MainFrame.getInstance().getSelectedRow() < ProfesorBase.getInstance().getProfesorCount()) {
+							MainFrame.getInstance().getSelectedRow() < ProfesorBase.getInstance().getProfesorCount()) {
 						DialogEditProfesor dialog = new DialogEditProfesor(MainFrame.getInstance(),
 								"Izmena profesora", true);
 								dialog.setVisible(true);
