@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 
 
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -55,6 +56,8 @@ public class MainFrame extends JFrame implements ChangeListener{
 		setTitle("Studentska služba");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
+		Image img = kit.createImage("images/logo.png");
+		this.setIconImage(img);
 		
 		MenuBar menu = new MenuBar();
 		this.setJMenuBar(menu);
