@@ -155,13 +155,12 @@ public class Toolbar extends JToolBar {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				int row;
-				int model;
+				int row = MainFrame.getInstance().getSelectedRow();
 				switch(MainFrame.getInstance().getSelectedTab()) {
 				case STUDENT:
-					row = StudentJTable.getInstance().getSelectedRow();
-					model = StudentJTable.getInstance().convertRowIndexToModel(row);
+					System.out.println("a");
 					if (row >= 0 && row < StudentBase.getInstance().getStudentCount()) {
+						int model = StudentJTable.getInstance().convertRowIndexToModel(row);
 						int option = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da obrišete studenta?",
 								"Brisanje studenta", JOptionPane.YES_NO_OPTION);
 						if ( option == JOptionPane.YES_OPTION) {
@@ -177,13 +176,13 @@ public class Toolbar extends JToolBar {
 					delete.setSelected(false);
 					break;
 				case PREDMET:
-					row = PredmetJTable.getInstance().getSelectedRow();
-					model = PredmetJTable.getInstance().convertRowIndexToModel(row);
+					
 					if (row >= 0 && row < PredmetBase.getInstance().getPredmetCount()) {
+						int model1 = PredmetJTable.getInstance().convertRowIndexToModel(row);
 						int option = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da obrišete predmet?",
 								"Brisanje predmeta", JOptionPane.YES_NO_OPTION);
 						if ( option == JOptionPane.YES_OPTION) {
-							PredmetController.getInstance().deletePredmet(model);
+							PredmetController.getInstance().deletePredmet(model1);
 							JOptionPane.showMessageDialog(null, "Predmet je obrisan!");
 						} else {
 							JOptionPane.showMessageDialog(null, "Predmet nije obrisan.");
@@ -196,13 +195,13 @@ public class Toolbar extends JToolBar {
 					break;
 					
 				case PROFESOR:
-					row = ProfesorJTable.getInstance().getSelectedRow();
-					model = ProfesorJTable.getInstance().convertRowIndexToModel(row);
+					
 					if (row >= 0 && row < ProfesorBase.getInstance().getProfesorCount()) {
+						int model2 = ProfesorJTable.getInstance().convertRowIndexToModel(row);
 						int option = JOptionPane.showConfirmDialog(null, "Da li ste sigurni da želite da obrišete profesora?",
 								"Brisanje profesora", JOptionPane.YES_NO_OPTION);
 						if ( option == JOptionPane.YES_OPTION) {
-							ProfesorController.getInstance().deleteProfesor(model);
+							ProfesorController.getInstance().deleteProfesor(model2);
 							JOptionPane.showMessageDialog(null, "Profesor je obrisan!");
 						} else {
 							JOptionPane.showMessageDialog(null, "Profesor nije obrisan.");
