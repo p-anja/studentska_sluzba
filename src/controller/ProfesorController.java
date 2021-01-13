@@ -2,6 +2,7 @@ package controller;
 
 import javax.swing.JOptionPane;
 
+import model.Predmet;
 import model.Profesor;
 
 import model.ProfesorBase;
@@ -46,6 +47,10 @@ private static ProfesorController instance = null;
 		Profesor profesor = ProfesorBase.getInstance().getRow(rowSelectedIndex);
 		ProfesorBase.getInstance().deleteProfesor(profesor.getBrLicneKarte());
 		MainFrame.getInstance().refresh();
+		
+		for(Predmet p : profesor.getSpisakPredmeta()) {
+			p.setProfesor(new Profesor("","","","","","","","","",""));
+		}
 	}
 			
 	public void searchProfesor(String text) {
