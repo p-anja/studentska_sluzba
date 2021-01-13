@@ -558,7 +558,14 @@ public class DialogAddProfesor extends JDialog implements ActionListener {
 			}
 		}
 		
-		
+		txtIme.setBackground(Color.WHITE);
+		txtPrezime.setBackground(Color.WHITE);
+		txtDatumRodjenja.setBackground(Color.WHITE);
+		txtAdresaStanovanja.setBackground(Color.WHITE);
+		txtKontaktTelefon.setBackground(Color.WHITE);
+		txtEmail.setBackground(Color.WHITE);
+		txtAdresaKancelarije.setBackground(Color.WHITE);
+		txtBrLicneKarte.setBackground(Color.WHITE);
 		return true;
 	}
 	
