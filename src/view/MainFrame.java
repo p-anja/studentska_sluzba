@@ -20,6 +20,8 @@ import javax.swing.event.ChangeListener;
 import model.DataBase;
 import model.Profesor;
 import model.ProfesorBase;
+import model.Student;
+import model.StudentBase;
 
 
 
