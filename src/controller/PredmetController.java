@@ -2,9 +2,11 @@ package controller;
 
 import javax.swing.JOptionPane;
 
+import model.Ocena;
 import model.Predmet;
 import model.PredmetBase;
 import model.Profesor;
+import model.ProfesorBase;
 import model.Semestar;
 import model.StatusStudent;
 import model.Student;
@@ -34,9 +36,17 @@ private static PredmetController instance = null;
 			return;
 		}
 
-		Predmet p = PredmetBase.getInstance().getRow(selectedIndex);
+		Predmet predmet = PredmetBase.getInstance().getRow(selectedIndex);
 		PredmetBase.getInstance().editPredmet(sifra, naziv, semestar, godina, profesor, brEspb);
 		MainFrame.getInstance().refresh();
+		
+		for(Profesor p: ProfesorBase.getInstance().getListProfesor()) {
+			if(p.getBrLicneKarte().equals(predmet.getProfesor().getBrLicneKarte())) {
+				if(!p.getSpisakPredmeta().contains(predmet)) {
+					p.getSpisakPredmeta().add(predmet);
+				}
+			}
+		}
 	}
 	
 	public void deletePredmet(int rowSelectedIndex) {
@@ -47,6 +57,24 @@ private static PredmetController instance = null;
 		Predmet predmet = PredmetBase.getInstance().getRow(rowSelectedIndex);
 		PredmetBase.getInstance().deletePredmet(predmet.getSifra());
 		MainFrame.getInstance().refresh();
+		
+		for(Student s : StudentBase.getInstance().getStudents()) {
+			
+			for(Predmet p : s.getNepolozeniIspiti()) {
+				if(p.getSifra().equals(predmet.getSifra())) {
+					s.getNepolozeniIspiti().remove(p);
+					break;
+				}
+			}
+			for(Ocena o : s.getPolozeniIspiti()) {
+				if(o.getPredmet().getSifra().equals(predmet.getSifra())) {
+					s.getPolozeniIspiti().remove(o);
+					break;
+				}
+			}
+		}
+		Profesor p = predmet.getProfesor();
+		p.getSpisakPredmeta().remove(predmet);
 	}
 	
 	public void searchPredmet(String text) {
